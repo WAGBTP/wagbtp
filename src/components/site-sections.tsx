@@ -43,11 +43,14 @@ export function BeforeAfter({
   avant,
   apres,
   titre,
+  badgeApres = true,
 }: {
   avant?: string | undefined;
   apres: string;
   titre: string;
+  badgeApres?: boolean;
 }) {
+
   if (!avant) {
     return (
       <img
