@@ -44,7 +44,7 @@ export function BeforeAfter({
   apres,
   titre,
 }: {
-  avant?: string;
+  avant?: string | undefined;
   apres: string;
   titre: string;
 }) {

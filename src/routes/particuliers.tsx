@@ -33,7 +33,7 @@ function ProjetCard({
     titre: string;
     texte: string;
     inclus: string[];
-    avant?: string;
+    avant?: string | undefined;
     apres: string;
   };
 }) {
