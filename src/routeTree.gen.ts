@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EntreprisesRouteImport } from './routes/entreprises'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as ParticuliersRouteImport } from './routes/particuliers'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +20,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EntreprisesRoute = EntreprisesRouteImport.update({
   id: '/entreprises',
   path: '/entreprises',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ParticuliersRoute = ParticuliersRouteImport.update({
@@ -31,31 +43,46 @@ const ParticuliersRoute = ParticuliersRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/entreprises': typeof EntreprisesRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/particuliers': typeof ParticuliersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/entreprises': typeof EntreprisesRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/particuliers': typeof ParticuliersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contact': typeof ContactRoute
   '/entreprises': typeof EntreprisesRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/particuliers': typeof ParticuliersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/entreprises' | '/particuliers'
+  fullPaths:
+    '/' | '/contact' | '/entreprises' | '/mentions-legales' | '/particuliers'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/entreprises' | '/particuliers'
-  id: '__root__' | '/' | '/entreprises' | '/particuliers'
+  to: '/' | '/contact' | '/entreprises' | '/mentions-legales' | '/particuliers'
+  id:
+    | '__root__'
+    | '/'
+    | '/contact'
+    | '/entreprises'
+    | '/mentions-legales'
+    | '/particuliers'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactRoute: typeof ContactRoute
   EntreprisesRoute: typeof EntreprisesRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
   ParticuliersRoute: typeof ParticuliersRoute
 }
 
@@ -68,11 +95,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/entreprises': {
       id: '/entreprises'
       path: '/entreprises'
       fullPath: '/entreprises'
       preLoaderRoute: typeof EntreprisesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/particuliers': {
@@ -87,7 +128,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactRoute: ContactRoute,
   EntreprisesRoute: EntreprisesRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
   ParticuliersRoute: ParticuliersRoute,
 }
 export const routeTree = rootRouteImport

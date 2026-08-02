@@ -31,10 +31,10 @@ function MentionsLegales() {
         <section>
           <h2 className="text-xl text-foreground">Éditeur du site</h2>
           <p className="mt-3">
-            {company.nom} — entreprise générale de bâtiment tous corps d'état, en activité depuis{" "}
+            {company.name} — entreprise générale de bâtiment tous corps d'état, en activité depuis{" "}
             {company.depuis}. Zones d'intervention : {company.zones}.
             <br />
-            Téléphone : {company.telephone} — E-mail : {company.email}
+            Téléphone : {company.phone} — E-mail : {company.email}
           </p>
           <p className="mt-3">
             Les informations d'immatriculation (SIRET, forme juridique, siège social, TVA

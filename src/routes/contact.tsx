@@ -160,9 +160,9 @@ function Contact() {
                 ou appelez le{" "}
                 <a
                   className="font-medium text-primary underline"
-                  href={`tel:${company.telephoneRaw}`}
+                  href={`tel:${company.phoneHref}`}
                 >
-                  {company.telephone}
+                  {company.phone}
                 </a>
                 .
               </p>
@@ -401,8 +401,8 @@ function Contact() {
             <ul className="mt-5 space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <Phone className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-                <a className="hover:text-primary" href={`tel:${company.telephoneRaw}`}>
-                  {company.telephone}
+                <a className="hover:text-primary" href={`tel:${company.phoneHref}`}>
+                  {company.phone}
                 </a>
               </li>
               <li className="flex items-start gap-3">
