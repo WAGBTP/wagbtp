@@ -34,6 +34,7 @@ function ProjetCard({
     texte: string;
     inclus: string[];
     avant?: string | undefined;
+    badgeApres?: boolean | undefined;
     apres: string;
   };
 }) {
@@ -43,7 +44,12 @@ function ProjetCard({
       className="overflow-hidden rounded-md border border-border bg-card shadow-[var(--shadow-card)]"
     >
       <div className="p-3">
-        <BeforeAfter avant={projet.avant} apres={projet.apres} titre={projet.titre} />
+        <BeforeAfter
+          avant={projet.avant}
+          apres={projet.apres}
+          titre={projet.titre}
+          badgeApres={projet.badgeApres ?? true}
+        />
       </div>
       <div className="px-6 pb-7 pt-3">
         <h3 className="text-2xl text-card-foreground">{projet.titre}</h3>

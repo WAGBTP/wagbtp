@@ -120,6 +120,7 @@ export const projetsParticuliers = [
       "De la conception à la réalisation : implantation, réseaux, revêtements, pose du mobilier et des plans de travail.",
     inclus: ["Plan d'implantation", "Réseaux eau / élec / gaz", "Revêtements sols et murs", "Pose mobilier et électroménager"],
     avant: img.cuisineAvant,
+    badgeApres: false,
     apres: img.cuisineApres,
   },
   {

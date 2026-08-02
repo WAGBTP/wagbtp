@@ -67,8 +67,8 @@ export function BeforeAfter({
   return (
     <div className="grid grid-cols-2 gap-2">
       {[
-        { src: avant, label: "Avant", gold: false },
-        { src: apres, label: "Après", gold: true },
+        { src: avant, label: "Avant", gold: false, badge: true },
+        { src: apres, label: "Après", gold: true, badge: badgeApres },
       ].map((item) => (
         <figure key={item.label} className="relative overflow-hidden rounded-md">
           <img
@@ -79,6 +79,7 @@ export function BeforeAfter({
             loading="lazy"
             className="aspect-4/3 w-full object-cover"
           />
+          {item.badge && (
           <figcaption
             className={`absolute left-2 top-2 rounded px-2 py-1 font-display text-[0.65rem] font-bold uppercase tracking-widest ${
               item.gold ? "bg-gold text-gold-foreground" : "bg-primary text-primary-foreground"
@@ -86,6 +87,7 @@ export function BeforeAfter({
           >
             {item.label}
           </figcaption>
+          )}
         </figure>
       ))}
     </div>
