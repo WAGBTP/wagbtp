@@ -16,14 +16,16 @@ export const Route = createFileRoute("/mentions-legales")({
         property: "og:description",
         content: "Informations légales relatives au site vitrine de WAG BTP.",
       },
+      { property: "og:url", content: "/mentions-legales" },
     ],
+    links: [{ rel: "canonical", href: "/mentions-legales" }],
   }),
   component: MentionsLegales,
 });
 
 function MentionsLegales() {
   return (
-    <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
       <p className="eyebrow rule-gold">Informations légales</p>
       <h1 className="mt-5 text-4xl leading-tight">Mentions légales</h1>
 

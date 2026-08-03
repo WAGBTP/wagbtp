@@ -5,7 +5,7 @@ import { company, img } from "@/lib/site-data";
 
 export function SiteFooter() {
   return (
-    <footer className="surface-deep blueprint mt-24">
+    <footer className="surface-deep blueprint mt-16 sm:mt-24">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
           <img

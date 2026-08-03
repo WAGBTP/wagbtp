@@ -17,14 +17,16 @@ export const Route = createFileRoute("/confidentialite")({
         content:
           "Comment WAG BTP collecte, utilise et conserve les données transmises par les visiteurs du site.",
       },
+      { property: "og:url", content: "/confidentialite" },
     ],
+    links: [{ rel: "canonical", href: "/confidentialite" }],
   }),
   component: Confidentialite,
 });
 
 function Confidentialite() {
   return (
-    <article className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+    <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
       <p className="eyebrow rule-gold">RGPD</p>
       <h1 className="mt-5 text-4xl leading-tight">Politique de confidentialité</h1>
 

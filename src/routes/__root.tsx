@@ -11,7 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { SiteHeader } from "@/components/site-header";
+import { MobileActionBar, SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -96,6 +96,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "GeneralContractor",
+          name: "WAG BTP",
+          description:
+            "Entreprise générale de bâtiment tous corps d'état depuis 2013 : rénovation et construction pour particuliers et entreprises en Île-de-France et en Guadeloupe.",
+          telephone: "+33682758037",
+          email: "wagbtp@gmail.com",
+          foundingDate: "2013",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Asnières-sur-Seine",
+            addressCountry: "FR",
+          },
+          areaServed: ["Île-de-France", "Guadeloupe"],
+          knowsLanguage: "fr-FR",
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
@@ -122,7 +144,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col pb-[5.5rem] md:pb-0">
         <SiteHeader />
         <main className="flex-1">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
@@ -130,7 +152,9 @@ function RootComponent() {
         </main>
         <SiteFooter />
       </div>
+      <MobileActionBar />
       <Toaster />
+
     </QueryClientProvider>
   );
 }

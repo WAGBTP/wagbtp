@@ -20,7 +20,9 @@ export const Route = createFileRoute("/particuliers")({
         content:
           "Photos avant/après, prestations incluses et déroulé simplifié pour chaque type de projet. Devis gratuit sous 24 à 48h ouvrées.",
       },
+      { property: "og:url", content: "/particuliers" },
     ],
+    links: [{ rel: "canonical", href: "/particuliers" }],
   }),
   component: Particuliers,
 });
@@ -78,9 +80,9 @@ function Particuliers() {
   return (
     <>
       <section className="border-b border-border bg-secondary">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
           <p className="eyebrow rule-gold">Particuliers</p>
-          <h1 className="mt-5 max-w-3xl text-4xl leading-[1.08] sm:text-5xl">
+          <h1 className="mt-5 max-w-3xl text-[2rem] leading-[1.12] sm:text-5xl">
             Votre logement transformé, sans mauvaise surprise.
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
@@ -100,7 +102,7 @@ function Particuliers() {
         </div>
       </section>
 
-      <section id="renovation" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <section id="renovation" className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
         <SectionHeading
           eyebrow="Rénovation"
           titre="Pièce par pièce, ou du sol au plafond."
@@ -114,7 +116,7 @@ function Particuliers() {
       </section>
 
       <section id="construction" className="border-y border-border bg-secondary">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
           <SectionHeading
             eyebrow="Construction maison individuelle"
             titre="Agrandir, construire, prolonger dehors."
@@ -128,7 +130,7 @@ function Particuliers() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
         <SectionHeading
           eyebrow="Déroulé simplifié"
           titre="Ce qui se passe après votre message."

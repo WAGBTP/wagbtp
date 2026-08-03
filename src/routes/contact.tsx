@@ -49,7 +49,9 @@ export const Route = createFileRoute("/contact")({
         content:
           "Particulier ou entreprise : un formulaire adapté à votre profil et une réponse sous 24 à 48h ouvrées.",
       },
+      { property: "og:url", content: "/contact" },
     ],
+    links: [{ rel: "canonical", href: "/contact" }],
   }),
   component: Contact,
 });
@@ -133,9 +135,9 @@ function Contact() {
   return (
     <>
       <section className="border-b border-border bg-secondary">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:py-16">
           <p className="eyebrow rule-gold">Contact</p>
-          <h1 className="mt-5 max-w-3xl text-4xl leading-[1.08] sm:text-5xl">
+          <h1 className="mt-5 max-w-3xl text-[2rem] leading-[1.12] sm:text-5xl">
             Parlons de votre chantier.
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
@@ -145,7 +147,7 @@ function Contact() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_20rem] lg:gap-16">
+      <section className="mx-auto grid max-w-6xl gap-12 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_20rem] lg:gap-16">
         <div>
           {envoye ? (
             <div className="rounded-md border border-border bg-card p-8 shadow-[var(--shadow-card)]">
@@ -160,7 +162,7 @@ function Contact() {
                 ou appelez le{" "}
                 <a
                   className="font-medium text-primary underline"
-                  href={`tel:${company.phoneHref}`}
+                  href={company.phoneHref}
                 >
                   {company.phone}
                 </a>
@@ -401,7 +403,7 @@ function Contact() {
             <ul className="mt-5 space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <Phone className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-                <a className="hover:text-primary" href={`tel:${company.phoneHref}`}>
+                <a className="hover:text-primary" href={company.phoneHref}>
                   {company.phone}
                 </a>
               </li>
