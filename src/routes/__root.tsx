@@ -96,6 +96,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "GeneralContractor",
+          name: "WAG BTP",
+          description:
+            "Entreprise générale de bâtiment tous corps d'état depuis 2013 : rénovation et construction pour particuliers et entreprises en Île-de-France et en Guadeloupe.",
+          telephone: "+33682758037",
+          email: "wagbtp@gmail.com",
+          foundingDate: "2013",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Asnières-sur-Seine",
+            addressCountry: "FR",
+          },
+          areaServed: ["Île-de-France", "Guadeloupe"],
+          knowsLanguage: "fr-FR",
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
