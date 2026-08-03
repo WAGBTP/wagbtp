@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- TODO: préfixer chaque <loc> par le domaine définitif (ex. https://www.wag-btp.fr) une fois le site publié. -->
-<urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>/particuliers</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>/entreprises</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
