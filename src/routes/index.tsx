@@ -20,7 +20,9 @@ export const Route = createFileRoute("/")({
         content:
           "Rénovation et construction tous corps d'état, clé en main. Un interlocuteur unique, un chantier suivi. Île-de-France et Guadeloupe.",
       },
+      { property: "og:url", content: "/" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Accueil,
 });
@@ -38,9 +40,9 @@ function Accueil() {
           className="absolute inset-0 size-full object-cover opacity-25"
         />
         <div className="absolute inset-0 bg-linear-to-r from-anthracite via-anthracite/85 to-anthracite/40" />
-        <div className="blueprint relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
+        <div className="blueprint relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
           <p className="eyebrow eyebrow-gold rule-gold">Tous corps d'état · depuis {company.depuis}</p>
-          <h1 className="mt-6 max-w-3xl text-4xl leading-[1.05] text-anthracite-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 max-w-3xl text-[2rem] leading-[1.1] text-anthracite-foreground sm:text-5xl lg:text-6xl">
             Votre vision,
             <br />
             notre expertise chantier.
@@ -88,7 +90,7 @@ function Accueil() {
       </section>
 
       {/* DOUBLE ENTREE */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
         <SectionHeading
           eyebrow="Deux entrées, deux discours"
           titre="Dites-nous qui vous êtes, nous adaptons le chantier."
@@ -143,7 +145,7 @@ function Accueil() {
       </section>
 
       {/* REALISATIONS */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
         <SectionHeading
           eyebrow="Réalisations"
           titre="Trois chantiers, trois preuves."
@@ -174,7 +176,7 @@ function Accueil() {
 
       {/* METHODE */}
       <section className="surface-deep blueprint">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
           <SectionHeading
             eyebrow="Méthode"
             titre="Cinq étapes, aucune zone d'ombre."
@@ -202,7 +204,7 @@ function Accueil() {
         </div>
       </section>
 
-      <div className="py-20">
+      <div className="py-14 sm:py-20">
         <CtaBand
           titre="Parler de votre projet"
           texte="Décrivez-nous votre chantier en quelques lignes : nous revenons vers vous avec les bonnes questions, puis un devis clair."

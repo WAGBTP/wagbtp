@@ -20,7 +20,9 @@ export const Route = createFileRoute("/entreprises")({
         content:
           "Capacité d'exécution, coordination des corps de métier et reporting pour gestionnaires de parcs et responsables d'exploitation.",
       },
+      { property: "og:url", content: "/entreprises" },
     ],
+    links: [{ rel: "canonical", href: "/entreprises" }],
   }),
   component: Entreprises,
 });
@@ -29,9 +31,9 @@ function Entreprises() {
   return (
     <>
       <section className="surface-deep blueprint border-b border-anthracite-foreground/10">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-20">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
           <p className="eyebrow eyebrow-gold rule-gold">Entreprises & gestionnaires</p>
-          <h1 className="mt-5 max-w-3xl text-4xl leading-[1.08] text-anthracite-foreground sm:text-5xl">
+          <h1 className="mt-5 max-w-3xl text-[2rem] leading-[1.12] text-anthracite-foreground sm:text-5xl">
             Des chantiers tenus, sur site occupé.
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-anthracite-foreground/75">
@@ -53,7 +55,7 @@ function Entreprises() {
         </div>
       </section>
 
-      <section id="prestations" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+      <section id="prestations" className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
         <SectionHeading
           eyebrow="Rénovation pour professionnels"
           titre="Trois terrains d'intervention."
@@ -101,7 +103,7 @@ function Entreprises() {
       </section>
 
       <section className="border-y border-border bg-secondary">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
           <SectionHeading
             eyebrow="Nos engagements"
             titre="Ce que vous obtenez en confiant un lot à WAG BTP."
@@ -119,7 +121,7 @@ function Entreprises() {
         </div>
       </section>
 
-      <div className="py-20">
+      <div className="py-14 sm:py-20">
         <CtaBand
           titre="Un parc, un plateau, un local à reprendre ?"
           texte="Envoyez-nous le périmètre et vos contraintes d'exploitation. Nous vous proposons une visite technique puis un chiffrage par lot."
