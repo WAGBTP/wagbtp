@@ -85,7 +85,7 @@ export function SiteHeader() {
 
       {open && (
         <nav
-          className="fixed inset-x-0 bottom-0 top-14 z-40 overflow-y-auto border-t border-border bg-background px-4 pb-10 pt-2 md:hidden"
+          className="absolute inset-x-0 top-full z-40 h-[calc(100dvh-3.5rem)] overflow-y-auto border-t border-border bg-background px-4 pb-24 pt-2 md:hidden"
           aria-label="Navigation mobile"
         >
           {links.map((link) => (
