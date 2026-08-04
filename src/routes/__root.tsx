@@ -37,12 +37,26 @@ function NotFoundComponent() {
   );
 }
 
+const STALE_CHUNK_PATTERN =
+  /Failed to fetch dynamically imported module|error loading dynamically imported module|Importing a module script failed/i;
+
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
+    // Après un nouveau déploiement, les anciens chunks hachés n'existent plus :
+    // on recharge une seule fois pour récupérer le nouveau manifeste.
+    if (typeof window !== "undefined" && STALE_CHUNK_PATTERN.test(error.message)) {
+      const key = "wagbtp:stale-chunk-reload";
+      if (!sessionStorage.getItem(key)) {
+        sessionStorage.setItem(key, "1");
+        window.location.reload();
+        return;
+      }
+    }
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
+
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
