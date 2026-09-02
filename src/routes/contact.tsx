@@ -18,7 +18,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { company } from "@/lib/site-data";
 
@@ -49,6 +48,8 @@ export const Route = createFileRoute("/contact")({
         content:
           "Particulier ou entreprise : un formulaire adapté à votre profil et une réponse sous 24 à 48h ouvrées.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:url", content: "/contact" },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
@@ -59,14 +60,11 @@ export const Route = createFileRoute("/contact")({
 const schema = z
   .object({
     profil: z.enum(["particulier", "entreprise"]),
+    prenom: z.string().trim().min(2, "Indiquez votre prénom.").max(60),
     nom: z.string().trim().min(2, "Indiquez votre nom.").max(80),
     societe: z.string().trim().max(120).optional(),
     email: z.string().trim().email("Adresse e-mail invalide.").max(160),
-    telephone: z
-      .string()
-      .trim()
-      .min(8, "Numéro trop court.")
-      .max(24, "Numéro trop long."),
+    telephone: z.string().trim().min(8, "Numéro trop court.").max(24, "Numéro trop long."),
     ville: z.string().trim().min(2, "Indiquez la ville ou le code postal.").max(80),
     typeProjet: z.string().trim().min(2, "Précisez le type de projet.").max(120),
     delai: z.string().trim().max(80).optional(),
@@ -86,6 +84,9 @@ const schema = z
 
 type FormValues = z.input<typeof schema>;
 
+const labelCls =
+  "font-display text-[0.7rem] font-bold uppercase tracking-[0.14em] text-muted-foreground";
+
 function Contact() {
   const search = Route.useSearch();
   const [envoye, setEnvoye] = useState(false);
@@ -94,6 +95,7 @@ function Contact() {
     resolver: zodResolver(schema),
     defaultValues: {
       profil: search.profil ?? "particulier",
+      prenom: "",
       nom: "",
       societe: "",
       email: "",
@@ -112,7 +114,7 @@ function Contact() {
     const corps = [
       `Profil : ${values.profil}`,
       values.societe ? `Société : ${values.societe}` : null,
-      `Nom : ${values.nom}`,
+      `Nom : ${values.prenom} ${values.nom}`,
       `E-mail : ${values.email}`,
       `Téléphone : ${values.telephone}`,
       `Ville / code postal : ${values.ville}`,
@@ -132,25 +134,62 @@ function Contact() {
     toast.success("Votre demande est prête à être envoyée depuis votre messagerie.");
   };
 
+  const infos = [
+    { icon: MapPin, titre: "Zone d'intervention", valeur: "Île-de-France · Guadeloupe" },
+    { icon: Phone, titre: "Téléphone", valeur: company.phone, href: company.phoneHref },
+    { icon: Mail, titre: "E-mail", valeur: company.email, href: `mailto:${company.email}` },
+    { icon: Clock, titre: "Délai de réponse", valeur: "Sous 24 à 48h ouvrées" },
+  ];
+
   return (
-    <>
-      <section className="border-b border-border bg-secondary">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:py-16">
+    <section className="bg-secondary">
+      <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1fr_1.15fr] lg:gap-20 lg:px-10">
+        {/* Colonne информations */}
+        <div>
           <p className="eyebrow rule-gold">Contact</p>
-          <h1 className="mt-5 max-w-3xl text-[2rem] leading-[1.12] sm:text-5xl">
-            Parlons de votre chantier.
+          <h1 className="mt-6 text-[2.25rem] leading-[1.02] sm:text-[3.25rem]">
+            Parler de
+            <br />
+            votre projet.
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Devis gratuit et sans engagement. Nous revenons vers vous sous 24 à 48h ouvrées avec les
-            bonnes questions.
+          <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
+            Décrivez-nous votre chantier en quelques lignes. Nous revenons vers vous avec les bonnes
+            questions, puis un devis clair.
+          </p>
+
+          <ul className="mt-10 space-y-5">
+            {infos.map((info) => (
+              <li key={info.titre} className="flex items-start gap-4">
+                <span className="inline-flex size-10 shrink-0 items-center justify-center bg-primary/10">
+                  <info.icon className="size-4 text-primary" aria-hidden="true" />
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-display text-sm font-bold">{info.titre}</span>
+                  {info.href ? (
+                    <a
+                      href={info.href}
+                      className="block break-words text-sm text-primary hover:underline"
+                    >
+                      {info.valeur}
+                    </a>
+                  ) : (
+                    <span className="block text-sm text-muted-foreground">{info.valeur}</span>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <p className="mt-10 border-l-2 border-gold bg-gold/10 p-5 text-sm leading-relaxed">
+            <strong className="font-display font-bold">Engagement :</strong> «&nbsp;
+            {company.delaiReponse}. Devis gratuit et sans engagement.&nbsp;»
           </p>
         </div>
-      </section>
 
-      <section className="mx-auto grid max-w-6xl gap-12 px-4 py-12 sm:px-6 sm:py-16 lg:grid-cols-[1fr_20rem] lg:gap-16">
-        <div>
+        {/* Colonne formulaire */}
+        <div className="border border-border bg-card p-6 sm:p-8 lg:p-10">
           {envoye ? (
-            <div className="rounded-md border border-border bg-card p-8 shadow-[var(--shadow-card)]">
+            <div>
               <Check className="size-8 text-gold" aria-hidden="true" />
               <h2 className="mt-4 text-2xl">Demande enregistrée</h2>
               <p className="mt-3 leading-relaxed text-muted-foreground">
@@ -160,10 +199,7 @@ function Contact() {
                   {company.email}
                 </a>{" "}
                 ou appelez le{" "}
-                <a
-                  className="font-medium text-primary underline"
-                  href={company.phoneHref}
-                >
+                <a className="font-medium text-primary underline" href={company.phoneHref}>
                   {company.phone}
                 </a>
                 .
@@ -181,34 +217,40 @@ function Contact() {
             </div>
           ) : (
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-7">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
                   control={form.control}
                   name="profil"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Vous êtes</FormLabel>
                       <FormControl>
-                        <RadioGroup
-                          value={field.value}
-                          onValueChange={field.onChange}
-                          className="grid gap-3 sm:grid-cols-2"
+                        <div
+                          role="radiogroup"
+                          aria-label="Vous êtes"
+                          className="grid grid-cols-2 border border-border"
                         >
                           {(
                             [
-                              ["particulier", "Un particulier"],
-                              ["entreprise", "Une entreprise / un gestionnaire"],
+                              ["particulier", "Particulier"],
+                              ["entreprise", "Professionnel"],
                             ] as const
                           ).map(([value, label]) => (
-                            <FormLabel
+                            <button
                               key={value}
-                              className="flex cursor-pointer items-center gap-3 rounded-md border border-input bg-card p-4 font-normal has-[button[data-state=checked]]:border-primary has-[button[data-state=checked]]:bg-primary/5"
+                              type="button"
+                              role="radio"
+                              aria-checked={field.value === value}
+                              onClick={() => field.onChange(value)}
+                              className={`min-h-12 cursor-pointer font-display text-sm font-bold transition-colors ${
+                                field.value === value
+                                  ? "bg-primary text-primary-foreground"
+                                  : "bg-card text-muted-foreground hover:text-foreground"
+                              }`}
                             >
-                              <RadioGroupItem value={value} />
                               {label}
-                            </FormLabel>
+                            </button>
                           ))}
-                        </RadioGroup>
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -218,12 +260,25 @@ function Contact() {
                 <div className="grid gap-5 sm:grid-cols-2">
                   <FormField
                     control={form.control}
+                    name="prenom"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className={labelCls}>Prénom</FormLabel>
+                        <FormControl>
+                          <Input autoComplete="given-name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
                     name="nom"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Nom et prénom</FormLabel>
+                        <FormLabel className={labelCls}>Nom</FormLabel>
                         <FormControl>
-                          <Input placeholder="Marie Dupont" autoComplete="name" {...field} />
+                          <Input autoComplete="family-name" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -235,14 +290,10 @@ function Contact() {
                       control={form.control}
                       name="societe"
                       render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Société</FormLabel>
+                        <FormItem className="sm:col-span-2">
+                          <FormLabel className={labelCls}>Société</FormLabel>
                           <FormControl>
-                            <Input
-                              placeholder="Nom de la structure"
-                              autoComplete="organization"
-                              {...field}
-                            />
+                            <Input autoComplete="organization" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -252,17 +303,12 @@ function Contact() {
 
                   <FormField
                     control={form.control}
-                    name="email"
+                    name="telephone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>E-mail</FormLabel>
+                        <FormLabel className={labelCls}>Téléphone</FormLabel>
                         <FormControl>
-                          <Input
-                            type="email"
-                            placeholder="vous@exemple.fr"
-                            autoComplete="email"
-                            {...field}
-                          />
+                          <Input type="tel" autoComplete="tel" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -271,17 +317,12 @@ function Contact() {
 
                   <FormField
                     control={form.control}
-                    name="telephone"
+                    name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Téléphone</FormLabel>
+                        <FormLabel className={labelCls}>E-mail</FormLabel>
                         <FormControl>
-                          <Input
-                            type="tel"
-                            placeholder="06 12 34 56 78"
-                            autoComplete="tel"
-                            {...field}
-                          />
+                          <Input type="email" autoComplete="email" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -293,9 +334,9 @@ function Contact() {
                     name="ville"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Ville ou code postal du chantier</FormLabel>
+                        <FormLabel className={labelCls}>Ville ou code postal</FormLabel>
                         <FormControl>
-                          <Input placeholder="93200 Saint-Denis" {...field} />
+                          <Input placeholder="92600 Asnières-sur-Seine" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -307,10 +348,8 @@ function Contact() {
                     name="typeProjet"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>
-                          {profil === "entreprise"
-                            ? "Nature de l'intervention"
-                            : "Type de projet"}
+                        <FormLabel className={labelCls}>
+                          {profil === "entreprise" ? "Nature de l'intervention" : "Type de projet"}
                         </FormLabel>
                         <FormControl>
                           <Input
@@ -331,8 +370,8 @@ function Contact() {
                     control={form.control}
                     name="delai"
                     render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Délai souhaité (optionnel)</FormLabel>
+                      <FormItem className="sm:col-span-2">
+                        <FormLabel className={labelCls}>Délai souhaité (optionnel)</FormLabel>
                         <FormControl>
                           <Input placeholder="Dès que possible / 3 mois" {...field} />
                         </FormControl>
@@ -347,7 +386,7 @@ function Contact() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Votre projet</FormLabel>
+                      <FormLabel className={labelCls}>Votre projet</FormLabel>
                       <FormControl>
                         <Textarea
                           rows={6}
@@ -389,51 +428,14 @@ function Contact() {
                   )}
                 />
 
-                <Button type="submit" size="xl">
+                <Button type="submit" size="xl" className="w-full">
                   Envoyer ma demande
                 </Button>
               </form>
             </Form>
           )}
         </div>
-
-        <aside className="space-y-8 lg:border-l lg:border-border lg:pl-10">
-          <div>
-            <p className="eyebrow rule-gold">Coordonnées</p>
-            <ul className="mt-5 space-y-4 text-sm">
-              <li className="flex items-start gap-3">
-                <Phone className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-                <a className="hover:text-primary" href={company.phoneHref}>
-                  {company.phone}
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-                <a className="break-all hover:text-primary" href={`mailto:${company.email}`}>
-                  {company.email}
-                </a>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <MapPin className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-                <span>{company.zones}</span>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <Clock className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-                <span>Réponse sous 24 à 48h ouvrées</span>
-              </li>
-            </ul>
-          </div>
-          <div className="rounded-md border border-border bg-secondary p-6">
-            <h2 className="font-display text-base font-bold uppercase tracking-wide">
-              Urgence chantier ?
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Pour une fuite, un sinistre ou une mise en sécurité, appelez-nous directement : le
-              téléphone reste le canal le plus rapide.
-            </p>
-          </div>
-        </aside>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }
