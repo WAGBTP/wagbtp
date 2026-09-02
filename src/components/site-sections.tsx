@@ -20,7 +20,7 @@ export function SectionHeading({
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       <p className={`eyebrow rule-gold ${onDark ? "eyebrow-gold" : ""}`}>{eyebrow}</p>
       <h2
-        className={`mt-4 text-3xl leading-tight sm:text-4xl ${
+        className={`mt-5 text-[2rem] leading-[1.08] sm:text-[2.75rem] ${
           onDark ? "text-anthracite-foreground" : "text-foreground"
         }`}
       >
@@ -28,8 +28,8 @@ export function SectionHeading({
       </h2>
       {texte && (
         <p
-          className={`mt-4 text-base leading-relaxed ${
-            onDark ? "text-anthracite-foreground/70" : "text-muted-foreground"
+          className={`mt-5 max-w-xl text-base leading-relaxed ${
+            onDark ? "text-anthracite-foreground/60" : "text-muted-foreground"
           }`}
         >
           {texte}
@@ -39,57 +39,60 @@ export function SectionHeading({
   );
 }
 
+/** Bandeau de libellés + visuel avant / après, esprit fiche de chantier. */
 export function BeforeAfter({
   avant,
   apres,
   titre,
-  badgeApres = true,
 }: {
   avant?: string | undefined;
   apres: string;
   titre: string;
-  badgeApres?: boolean;
 }) {
-
   if (!avant) {
     return (
-      <img
-        src={apres}
-        alt={`${titre} après travaux`}
-        width={1200}
-        height={900}
-        loading="lazy"
-        className="aspect-4/3 w-full rounded-md object-cover"
-      />
+      <figure>
+        <figcaption className="bg-primary px-3 py-2 text-center font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary-foreground">
+          Réalisation
+        </figcaption>
+        <img
+          src={apres}
+          alt={`${titre} après travaux`}
+          width={1200}
+          height={900}
+          loading="lazy"
+          className="aspect-[16/9] w-full object-cover"
+        />
+      </figure>
     );
   }
 
   return (
-    <div className="grid grid-cols-2 gap-2">
-      {[
-        { src: avant, label: "Avant", gold: false, badge: true },
-        { src: apres, label: "Après", gold: true, badge: badgeApres },
-      ].map((item) => (
-        <figure key={item.label} className="relative overflow-hidden rounded-md">
+    <div>
+      <div className="grid grid-cols-2">
+        <p className="bg-anthracite/85 px-3 py-2 text-center font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-anthracite-foreground/70">
+          Avant
+        </p>
+        <p className="bg-primary px-3 py-2 text-center font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary-foreground">
+          Après
+        </p>
+      </div>
+      <div className="grid grid-cols-2">
+        {[
+          { src: avant, label: "avant" },
+          { src: apres, label: "après" },
+        ].map((item) => (
           <img
+            key={item.label}
             src={item.src}
-            alt={`${titre} ${item.label.toLowerCase()} travaux`}
-            width={1200}
+            alt={`${titre} ${item.label} travaux`}
+            width={900}
             height={900}
             loading="lazy"
-            className="aspect-4/3 w-full object-cover"
+            className="aspect-square w-full object-cover"
           />
-          {item.badge && (
-          <figcaption
-            className={`absolute left-2 top-2 rounded px-2 py-1 font-display text-[0.65rem] font-bold uppercase tracking-widest ${
-              item.gold ? "bg-gold text-gold-foreground" : "bg-primary text-primary-foreground"
-            }`}
-          >
-            {item.label}
-          </figcaption>
-          )}
-        </figure>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
@@ -106,11 +109,13 @@ export function CtaBand({
   profil?: "particulier" | "entreprise";
 }) {
   return (
-    <section className="mx-auto max-w-6xl px-4 sm:px-6">
-      <div className="surface-deep blueprint relative overflow-hidden rounded-md px-6 py-12 sm:px-12 sm:py-16">
+    <section className="surface-deep blueprint relative overflow-hidden">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-10">
         <div className="max-w-2xl">
-          <h2 className="text-3xl leading-tight text-anthracite-foreground sm:text-4xl">{titre}</h2>
-          <p className="mt-4 text-anthracite-foreground/75">{texte}</p>
+          <h2 className="text-[2rem] leading-[1.08] text-anthracite-foreground sm:text-[2.75rem]">
+            {titre}
+          </h2>
+          <p className="mt-5 text-anthracite-foreground/70">{texte}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild variant="gold" size="xl">
               <Link to="/contact" search={profil ? { profil } : {}}>
@@ -121,7 +126,7 @@ export function CtaBand({
               <a href={company.phoneHref}>{company.phone}</a>
             </Button>
           </div>
-          <p className="mt-5 text-sm text-anthracite-foreground/55">
+          <p className="mt-6 text-sm text-anthracite-foreground/50">
             {company.delaiReponse} · Devis gratuit et sans engagement.
           </p>
         </div>
