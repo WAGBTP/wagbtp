@@ -1,26 +1,21 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 
-import { company, img } from "@/lib/site-data";
+import { LogoWagBtp } from "@/components/logo-wagbtp";
+import { company } from "@/lib/site-data";
 
 export function SiteFooter() {
   return (
-    <footer className="surface-deep blueprint mt-16 sm:mt-24">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
+    <footer className="surface-deep blueprint border-t border-anthracite-foreground/10">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3 lg:px-10">
         <div>
-          <img
-            src={img.logo}
-            alt="Logo WAG-BTP"
-            width={64}
-            height={74}
-            loading="lazy"
-            className="h-14 w-auto brightness-0 invert"
-          />
-          <p className="mt-5 max-w-xs text-sm leading-relaxed text-anthracite-foreground/70">
+          <LogoWagBtp onDark />
+          <p className="mt-5 max-w-xs text-sm leading-relaxed text-anthracite-foreground/60">
             Entreprise générale de bâtiment tous corps d'état depuis {company.depuis}, en
             Île-de-France et en Guadeloupe.
           </p>
         </div>
+
 
         <div>
           <h2 className="eyebrow eyebrow-gold rule-gold">Contact</h2>
