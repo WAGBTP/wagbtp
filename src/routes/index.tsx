@@ -20,6 +20,8 @@ export const Route = createFileRoute("/")({
         content:
           "Rénovation et construction tous corps d'état, clé en main. Un interlocuteur unique, un chantier suivi. Île-de-France et Guadeloupe.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -30,24 +32,20 @@ export const Route = createFileRoute("/")({
 function Accueil() {
   return (
     <>
-      {/* HERO */}
-      <section className="surface-deep relative isolate overflow-hidden">
-        <img
-          src={img.hero}
-          alt="Artisans WAG BTP sur un chantier de rénovation d'appartement en Île-de-France"
-          width={1600}
-          height={1104}
-          className="absolute inset-0 size-full object-cover opacity-25"
-        />
-        <div className="absolute inset-0 bg-linear-to-r from-anthracite via-anthracite/85 to-anthracite/40" />
-        <div className="blueprint relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
-          <p className="eyebrow eyebrow-gold rule-gold">Tous corps d'état · depuis {company.depuis}</p>
-          <h1 className="mt-6 max-w-3xl text-[2rem] leading-[1.1] text-anthracite-foreground sm:text-5xl lg:text-6xl">
+      {/* HERO — split indigo / photo */}
+      <section className="grid lg:grid-cols-2">
+        <div className="blueprint relative flex flex-col justify-center bg-primary px-4 py-14 sm:px-6 sm:py-20 lg:min-h-[38rem] lg:py-24 lg:pl-10 lg:pr-14 xl:pl-16">
+          <p className="eyebrow eyebrow-gold rule-gold">
+            Tous corps d'état · depuis {company.depuis}
+          </p>
+          <h1 className="mt-6 text-[2.25rem] leading-[1.02] text-primary-foreground sm:text-[3.25rem] lg:text-[3.5rem]">
             Votre vision,
             <br />
-            notre expertise chantier.
+            <span className="text-gold">notre expertise</span>
+            <br />
+            chantier.
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-anthracite-foreground/80">
+          <p className="mt-7 max-w-md text-lg leading-relaxed text-primary-foreground/85">
             WAG BTP matérialise votre habitat idéal, clé en main. Rénovation, construction,
             extension, terrasse — de l'étude à la réception.
           </p>
@@ -67,36 +65,28 @@ function Accueil() {
             </Button>
           </div>
 
-          <p className="mt-8 max-w-xl border-l-2 border-gold pl-4 text-sm leading-relaxed text-anthracite-foreground/65">
+          <p className="mt-10 max-w-lg border-l-2 border-gold pl-4 text-sm leading-relaxed text-primary-foreground/65">
             {company.promesse}
           </p>
         </div>
 
-        {/* Barre de valeurs */}
-        <div className="relative border-t border-anthracite-foreground/10">
-          <ul className="mx-auto grid max-w-6xl gap-px px-4 sm:px-6 md:grid-cols-4">
-            {valeurs.map((v) => (
-              <li key={v.titre} className="py-6 md:pr-6">
-                <h2 className="font-display text-sm font-bold uppercase tracking-widest text-gold">
-                  {v.titre}
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-anthracite-foreground/65">
-                  {v.texte}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <img
+          src={img.hero}
+          alt="Compagnon WAG BTP sur un échafaudage de chantier en Île-de-France"
+          width={1600}
+          height={1104}
+          className="h-72 w-full bg-muted object-cover sm:h-96 lg:h-full"
+        />
       </section>
 
       {/* DOUBLE ENTREE */}
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
         <SectionHeading
           eyebrow="Deux entrées, deux discours"
           titre="Dites-nous qui vous êtes, nous adaptons le chantier."
           texte="Particuliers et professionnels n'ont pas les mêmes attentes. Chaque parcours a sa page, ses réalisations et son formulaire."
         />
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
+        <div className="mt-12 grid gap-0 border border-border md:grid-cols-2">
           {[
             {
               to: "/particuliers" as const,
@@ -114,16 +104,18 @@ function Accueil() {
                 "Parcs immobiliers, bureaux, locaux professionnels. Capacité d'exécution, pilotage multi-sites, reporting et interlocuteur unique.",
               lien: "Voir les prestations entreprises",
             },
-          ].map((card) => (
+          ].map((card, i) => (
             <Link
               key={card.to}
               to={card.to}
-              className="group flex flex-col rounded-md border border-border bg-card p-8 shadow-[var(--shadow-card)] transition-colors hover:border-primary"
+              className={`group flex flex-col bg-card p-8 transition-colors hover:bg-secondary sm:p-10 ${
+                i === 1 ? "border-t border-border md:border-l md:border-t-0" : ""
+              }`}
             >
               <card.icon className="size-7 text-primary" aria-hidden="true" />
-              <h3 className="mt-5 text-2xl text-card-foreground">{card.titre}</h3>
-              <p className="mt-3 flex-1 leading-relaxed text-muted-foreground">{card.texte}</p>
-              <span className="mt-6 inline-flex items-center gap-2 font-display text-sm font-bold uppercase tracking-widest text-primary">
+              <h3 className="mt-6 text-2xl text-card-foreground">{card.titre}</h3>
+              <p className="mt-4 flex-1 leading-relaxed text-muted-foreground">{card.texte}</p>
+              <span className="mt-8 inline-flex items-center gap-2 font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary">
                 {card.lien}
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </span>
@@ -134,26 +126,31 @@ function Accueil() {
 
       {/* CHIFFRES */}
       <section className="border-y border-border bg-secondary">
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-14 sm:px-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-10">
           {chiffres.map((c) => (
             <div key={c.libelle}>
-              <p className="font-display text-4xl font-extrabold text-primary">{c.valeur}</p>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.libelle}</p>
+              <p className="font-display text-[2.5rem] font-extrabold leading-none text-primary">
+                {c.valeur}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.libelle}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* REALISATIONS */}
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
         <SectionHeading
           eyebrow="Réalisations"
           titre="Trois chantiers, trois preuves."
           texte="Logements collectifs, bâtiments publics, maisons individuelles : la même méthode, quelle que soit l'échelle."
         />
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {realisationsPhares.map((r) => (
-            <article key={r.projet} className="overflow-hidden rounded-md border border-border bg-card">
+        <div className="mt-12 grid gap-0 border border-border md:grid-cols-3">
+          {realisationsPhares.map((r, i) => (
+            <article
+              key={r.projet}
+              className={`bg-card ${i > 0 ? "border-t border-border md:border-l md:border-t-0" : ""}`}
+            >
               <img
                 src={r.image}
                 alt={r.alt}
@@ -162,11 +159,11 @@ function Accueil() {
                 loading="lazy"
                 className="aspect-4/3 w-full object-cover"
               />
-              <div className="p-6">
-                <p className="font-display text-[0.65rem] font-bold uppercase tracking-widest text-gold">
+              <div className="p-7">
+                <p className="font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-gold">
                   {r.cible}
                 </p>
-                <h3 className="mt-2 text-lg leading-snug text-card-foreground">{r.projet}</h3>
+                <h3 className="mt-3 text-lg leading-snug text-card-foreground">{r.projet}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{r.resultat}</p>
               </div>
             </article>
@@ -174,29 +171,51 @@ function Accueil() {
         </div>
       </section>
 
-      {/* METHODE */}
+      {/* METHODE — frise horizontale sur anthracite */}
       <section className="surface-deep blueprint">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
           <SectionHeading
-            eyebrow="Méthode"
+            eyebrow=""
             titre="Cinq étapes, aucune zone d'ombre."
             texte="De la première visite à la remise des clés, vous savez toujours où en est le chantier."
             onDark
           />
-          <ol className="mt-12 grid gap-px sm:grid-cols-2 lg:grid-cols-5">
-            {methode.map((e) => (
-              <li key={e.etape} className="border-t-2 border-gold/50 pt-5 lg:pr-6">
-                <span className="font-display text-sm font-bold tracking-widest text-gold">
-                  {e.etape}
-                </span>
-                <h3 className="mt-2 text-lg text-anthracite-foreground">{e.titre}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-anthracite-foreground/65">
-                  {e.texte}
-                </p>
-              </li>
-            ))}
-          </ol>
-          <p className="mt-12 inline-flex items-start gap-3 text-sm text-anthracite-foreground/65">
+          <div className="relative mt-14 border-t border-anthracite-foreground/15">
+            <span
+              className="absolute -top-px left-0 h-0.5 w-full bg-gold sm:w-1/5"
+              aria-hidden="true"
+            />
+            <ol className="grid gap-10 pt-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
+              {methode.map((e, i) => (
+                <li key={e.etape} className="lg:pr-8">
+                  <span
+                    className={`font-display text-sm font-bold tracking-[0.18em] ${
+                      i === 0 ? "text-gold" : "text-anthracite-foreground/40"
+                    }`}
+                  >
+                    {e.etape}
+                  </span>
+                  <h3
+                    className={`mt-3 text-lg ${
+                      i === 0 ? "text-anthracite-foreground" : "text-anthracite-foreground/85"
+                    }`}
+                  >
+                    {e.titre}
+                  </h3>
+                  <p
+                    className={`mt-2 text-sm leading-relaxed ${
+                      i === 0
+                        ? "text-anthracite-foreground/80"
+                        : "text-anthracite-foreground/50"
+                    }`}
+                  >
+                    {e.texte}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <p className="mt-14 inline-flex items-start gap-3 text-sm text-anthracite-foreground/60">
             <ShieldCheck className="mt-0.5 size-5 shrink-0 text-gold" aria-hidden="true" />
             Entreprise assurée, garanties légales appliquées, un conducteur de travaux référent sur
             toute la durée du chantier.
@@ -204,12 +223,22 @@ function Accueil() {
         </div>
       </section>
 
-      <div className="py-14 sm:py-20">
-        <CtaBand
-          titre="Parler de votre projet"
-          texte="Décrivez-nous votre chantier en quelques lignes : nous revenons vers vous avec les bonnes questions, puis un devis clair."
-        />
-      </div>
+      {/* VALEURS */}
+      <section className="bg-secondary">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:grid-cols-2 sm:px-6 sm:py-20 lg:grid-cols-4 lg:px-10">
+          {valeurs.map((v) => (
+            <div key={v.titre}>
+              <h2 className="eyebrow rule-gold">{v.titre}</h2>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{v.texte}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <CtaBand
+        titre="Parler de votre projet."
+        texte="Décrivez-nous votre chantier en quelques lignes : nous revenons vers vous avec les bonnes questions, puis un devis clair."
+      />
     </>
   );
 }
