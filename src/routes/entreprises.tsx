@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { CtaBand, SectionHeading } from "@/components/site-sections";
-import { engagementsPro, offresEntreprises } from "@/lib/site-data";
+import { engagementsPro, img, offresEntreprises } from "@/lib/site-data";
 
 export const Route = createFileRoute("/entreprises")({
   head: () => ({
@@ -20,6 +20,8 @@ export const Route = createFileRoute("/entreprises")({
         content:
           "Capacité d'exécution, coordination des corps de métier et reporting pour gestionnaires de parcs et responsables d'exploitation.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:url", content: "/entreprises" },
     ],
     links: [{ rel: "canonical", href: "/entreprises" }],
@@ -27,16 +29,44 @@ export const Route = createFileRoute("/entreprises")({
   component: Entreprises,
 });
 
+/** Palette des tuiles du damier : clair, indigo, anthracite. */
+const tuiles = [
+  {
+    bg: "bg-secondary",
+    eyebrow: "text-primary",
+    titre: "text-foreground",
+    texte: "text-muted-foreground",
+    lien: "text-primary",
+  },
+  {
+    bg: "bg-primary",
+    eyebrow: "text-gold",
+    titre: "text-primary-foreground",
+    texte: "text-primary-foreground/75",
+    lien: "text-gold",
+  },
+  {
+    bg: "surface-deep",
+    eyebrow: "text-gold",
+    titre: "text-anthracite-foreground",
+    texte: "text-anthracite-foreground/70",
+    lien: "text-gold",
+  },
+] as const;
+
 function Entreprises() {
   return (
     <>
-      <section className="surface-deep blueprint border-b border-anthracite-foreground/10">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
+      {/* HERO */}
+      <section className="grid lg:grid-cols-2">
+        <div className="surface-deep blueprint flex flex-col justify-center px-4 py-14 sm:px-6 sm:py-20 lg:min-h-[32rem] lg:pl-10 lg:pr-14 xl:pl-16">
           <p className="eyebrow eyebrow-gold rule-gold">Entreprises & gestionnaires</p>
-          <h1 className="mt-5 max-w-3xl text-[2rem] leading-[1.12] text-anthracite-foreground sm:text-5xl">
-            Des chantiers tenus, sur site occupé.
+          <h1 className="mt-6 text-[2.25rem] leading-[1.02] text-anthracite-foreground sm:text-[3.25rem]">
+            Des chantiers tenus,
+            <br />
+            <span className="text-gold">sur site occupé.</span>
           </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-anthracite-foreground/75">
+          <p className="mt-6 max-w-md text-lg leading-relaxed text-anthracite-foreground/70">
             Un seul interlocuteur pour tous les lots et tous les sites, un planning consolidé et un
             reporting d'avancement à chaque étape. Vos usagers restent en place, votre activité
             continue.
@@ -53,82 +83,85 @@ function Entreprises() {
             </Button>
           </div>
         </div>
+        <img
+          src={img.copropriete}
+          alt="Cordistes WAG BTP intervenant en façade sur une copropriété"
+          width={1200}
+          height={900}
+          className="h-72 w-full bg-muted object-cover sm:h-96 lg:h-full"
+        />
       </section>
 
-      <section id="prestations" className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+      {/* PRESTATIONS — damier image / texte */}
+      <section id="prestations" className="mx-auto max-w-7xl px-4 pt-16 sm:px-6 sm:pt-24 lg:px-10">
         <SectionHeading
           eyebrow="Rénovation pour professionnels"
           titre="Trois terrains d'intervention."
-          texte="Résidences et copropriétés, plateaux de bureaux, locaux d'activité et commerces : la même exigence d'organisation."
         />
-        <div className="mt-12 space-y-12">
-          {offresEntreprises.map((o, i) => (
-            <article
-              key={o.slug}
-              id={o.slug}
-              className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12"
-            >
+      </section>
+
+      <div className="mx-auto mt-12 grid max-w-7xl px-4 sm:px-6 md:grid-cols-2 lg:px-10">
+        {offresEntreprises.map((o, i) => {
+          const t = tuiles[i % tuiles.length]!;
+          const imageFirst = i % 2 === 0;
+          return (
+            <div key={o.slug} id={o.slug} className="contents">
               <img
                 src={o.image}
                 alt={o.alt}
                 width={1200}
                 height={900}
                 loading="lazy"
-                className={`aspect-4/3 w-full rounded-md object-cover ${
-                  i % 2 === 1 ? "lg:order-last" : ""
+                className={`aspect-4/3 w-full bg-muted object-cover ${
+                  imageFirst ? "" : "md:order-last"
                 }`}
               />
-              <div>
-                <p className="eyebrow rule-gold">{o.sousTitre}</p>
-                <h3 className="mt-4 text-3xl leading-tight">{o.titre}</h3>
-                <p className="mt-4 leading-relaxed text-muted-foreground">{o.texte}</p>
-                <ul className="mt-6 space-y-2">
-                  {o.points.map((p) => (
-                    <li key={p} className="flex items-start gap-2 text-sm text-foreground/80">
-                      <Check className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-                <Button asChild size="lg" className="mt-7">
-                  <Link to="/contact" search={{ profil: "entreprise", projet: o.slug }}>
-                    Demande professionnelle
-                    <ArrowRight />
-                  </Link>
-                </Button>
+              <div className={`${t.bg} flex flex-col justify-center p-8 sm:p-12`}>
+                <p
+                  className={`rule-gold inline-flex items-center gap-2.5 font-display text-xs font-bold uppercase tracking-[0.16em] ${t.eyebrow}`}
+                >
+                  {o.sousTitre}
+                </p>
+                <h3 className={`mt-5 text-[1.75rem] leading-tight sm:text-[2rem] ${t.titre}`}>
+                  {o.titre}
+                </h3>
+                <p className={`mt-5 leading-relaxed ${t.texte}`}>{o.texte}</p>
+                <Link
+                  to="/contact"
+                  search={{ profil: "entreprise", projet: o.slug }}
+                  className={`group mt-7 inline-flex items-center gap-2 font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] ${t.lien}`}
+                >
+                  Demande professionnelle
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </Link>
               </div>
-            </article>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* ENGAGEMENTS */}
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
+        <SectionHeading
+          eyebrow="Nos engagements"
+          titre="Ce que vous obtenez en confiant un lot à WAG BTP."
+        />
+        <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          {engagementsPro.map((e) => (
+            <div key={e.titre} className="border-t border-border pt-6">
+              <h3 className="eyebrow">{e.titre}</h3>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{e.texte}</p>
+            </div>
           ))}
         </div>
       </section>
 
-      <section className="border-y border-border bg-secondary">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-          <SectionHeading
-            eyebrow="Nos engagements"
-            titre="Ce que vous obtenez en confiant un lot à WAG BTP."
-          />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {engagementsPro.map((e) => (
-              <div key={e.titre} className="rounded-md border border-border bg-card p-6">
-                <h3 className="font-display text-base font-bold uppercase tracking-wide text-primary">
-                  {e.titre}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{e.texte}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="py-14 sm:py-20">
-        <CtaBand
-          titre="Un parc, un plateau, un local à reprendre ?"
-          texte="Envoyez-nous le périmètre et vos contraintes d'exploitation. Nous vous proposons une visite technique puis un chiffrage par lot."
-          ctaLabel="Envoyer une demande professionnelle"
-          profil="entreprise"
-        />
-      </div>
+      <CtaBand
+        titre="Un parc, un plateau, un local à reprendre ?"
+        texte="Envoyez-nous le périmètre et vos contraintes d'exploitation. Nous vous proposons une visite technique puis un chiffrage par lot."
+        ctaLabel="Envoyer une demande professionnelle"
+        profil="entreprise"
+      />
     </>
   );
 }
