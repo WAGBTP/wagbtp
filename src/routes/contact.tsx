@@ -144,7 +144,7 @@ function Contact() {
   return (
     <section className="bg-secondary">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1fr_1.15fr] lg:gap-20 lg:px-10">
-        {/* Colonne информations */}
+        {/* Colonne informations */}
         <div>
           <p className="eyebrow rule-gold">Contact</p>
           <h1 className="mt-6 text-[2.25rem] leading-[1.02] sm:text-[3.25rem]">
