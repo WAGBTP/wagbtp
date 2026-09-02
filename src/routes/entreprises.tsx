@@ -118,8 +118,7 @@ function Entreprises() {
               />
               <div className={`${t.bg} flex flex-col justify-center p-8 sm:p-12`}>
                 <p
-                  className={`eyebrow rule-gold ${t.eyebrow}`}
-                  style={{ color: undefined }}
+                  className={`rule-gold inline-flex items-center gap-2.5 font-display text-xs font-bold uppercase tracking-[0.16em] ${t.eyebrow}`}
                 >
                   {o.sousTitre}
                 </p>
