@@ -39,7 +39,7 @@ export function SectionHeading({
   );
 }
 
-/** Bandeau de libellés + visuel avant / après, esprit fiche de chantier. */
+/** Comparateur avant / après : poignée déplaçable à la souris, au doigt ou au clavier. */
 export function BeforeAfter({
   avant,
   apres,
@@ -49,6 +49,35 @@ export function BeforeAfter({
   apres: string;
   titre: string;
 }) {
+  const zoneRef = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState(50);
+  const [actif, setActif] = useState(false);
+
+  const majDepuisClientX = useCallback((clientX: number) => {
+    const zone = zoneRef.current;
+    if (!zone) return;
+    const rect = zone.getBoundingClientRect();
+    const ratio = ((clientX - rect.left) / rect.width) * 100;
+    setPos(Math.min(100, Math.max(0, ratio)));
+  }, []);
+
+  useEffect(() => {
+    if (!actif) return;
+    const onMove = (e: PointerEvent) => {
+      e.preventDefault();
+      majDepuisClientX(e.clientX);
+    };
+    const onUp = () => setActif(false);
+    window.addEventListener("pointermove", onMove, { passive: false });
+    window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onUp);
+    return () => {
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onUp);
+    };
+  }, [actif, majDepuisClientX]);
+
   if (!avant) {
     return (
       <figure>
@@ -77,25 +106,62 @@ export function BeforeAfter({
           Après
         </p>
       </div>
-      <div className="grid grid-cols-2">
-        {[
-          { src: avant, label: "avant" },
-          { src: apres, label: "après" },
-        ].map((item) => (
-          <img
-            key={item.label}
-            src={item.src}
-            alt={`${titre} ${item.label} travaux`}
-            width={900}
-            height={900}
-            loading="lazy"
-            className="aspect-square w-full object-cover"
-          />
-        ))}
+
+      <div
+        ref={zoneRef}
+        onPointerDown={(e) => {
+          setActif(true);
+          majDepuisClientX(e.clientX);
+        }}
+        className="relative aspect-4/3 w-full touch-none select-none overflow-hidden bg-muted"
+      >
+        <img
+          src={apres}
+          alt={`${titre} après travaux`}
+          width={1200}
+          height={900}
+          loading="lazy"
+          draggable={false}
+          className="absolute inset-0 size-full object-cover"
+        />
+        <img
+          src={avant}
+          alt={`${titre} avant travaux`}
+          width={1200}
+          height={900}
+          loading="lazy"
+          draggable={false}
+          className="absolute inset-0 size-full object-cover"
+          style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+        />
+
+        <span
+          className="pointer-events-none absolute inset-y-0 w-0.5 bg-gold"
+          style={{ left: `${pos}%` }}
+          aria-hidden="true"
+        />
+
+        <div
+          role="slider"
+          tabIndex={0}
+          aria-label={`Comparer avant et après — ${titre}`}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={Math.round(pos)}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft") setPos((p) => Math.max(0, p - 4));
+            if (e.key === "ArrowRight") setPos((p) => Math.min(100, p + 4));
+          }}
+          className="absolute top-1/2 z-10 flex size-11 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full bg-gold text-gold-foreground shadow-lg outline-none ring-offset-2 focus-visible:ring-2 focus-visible:ring-gold"
+          style={{ left: `${pos}%` }}
+        >
+          <ChevronsLeftRight className="size-5" aria-hidden="true" />
+        </div>
       </div>
     </div>
   );
 }
+
 
 export function CtaBand({
   titre,
