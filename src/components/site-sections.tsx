@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
+import { ChevronsLeftRight } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { company } from "@/lib/site-data";
 
 export function SectionHeading({
   eyebrow,
