@@ -16,6 +16,12 @@ import accueilHeroAsset from "@/assets/wag1.png.asset.json";
 import particuliersHeroAsset from "@/assets/pavillon-puy-en-velay.png.asset.json";
 import cantineMontmirailApresAsset from "@/assets/facade-cantine-montmirail-renovee.jpg.asset.json";
 import cantineMontmirailAvantAsset from "@/assets/cantine-montmirail-avant.png.asset.json";
+import gendarmerieAvantAsset from "@/assets/gendarmerie-avant.jpg.asset.json";
+import gendarmerieApresAsset from "@/assets/gendarmerie-apres.jpg.asset.json";
+import gendarmerieGrosOeuvreAsset from "@/assets/gendarmerie-gros-oeuvre.jpg.asset.json";
+import gendarmerieInterieurAsset from "@/assets/gendarmerie-interieur.jpg.asset.json";
+import gendarmerieEntreeAsset from "@/assets/gendarmerie-entree.png.asset.json";
+import gendarmerieVrdAsset from "@/assets/gendarmerie-vrd.jpg.asset.json";
 
 export const img = {
   logo: logoAsset.url,
