@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -19,7 +21,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { submitDevisRequest } from "@/lib/contact.functions";
 import { company } from "@/lib/site-data";
+
 
 type Profil = "particulier" | "entreprise";
 
@@ -109,30 +113,34 @@ function Contact() {
   });
 
   const profil = form.watch("profil");
+  const envoyerDemande = useServerFn(submitDevisRequest);
 
-  const onSubmit = (values: FormValues) => {
-    const corps = [
-      `Profil : ${values.profil}`,
-      values.societe ? `Société : ${values.societe}` : null,
-      `Nom : ${values.prenom} ${values.nom}`,
-      `E-mail : ${values.email}`,
-      `Téléphone : ${values.telephone}`,
-      `Ville / code postal : ${values.ville}`,
-      `Type de projet : ${values.typeProjet}`,
-      values.delai ? `Délai souhaité : ${values.delai}` : null,
-      "",
-      values.message,
-    ]
-      .filter(Boolean)
-      .join("\n");
 
-    window.location.href = `mailto:${company.email}?subject=${encodeURIComponent(
-      `Demande ${values.profil} — ${values.typeProjet}`,
-    )}&body=${encodeURIComponent(corps)}`;
-
-    setEnvoye(true);
-    toast.success("Votre demande est prête à être envoyée depuis votre messagerie.");
+  const onSubmit = async (values: FormValues) => {
+    try {
+      await envoyerDemande({
+        data: {
+          profil: values.profil,
+          societe: values.societe || undefined,
+          prenom: values.prenom,
+          nom: values.nom,
+          email: values.email,
+          telephone: values.telephone,
+          ville: values.ville,
+          typeProjet: values.typeProjet,
+          delai: values.delai || undefined,
+          message: values.message,
+        },
+      });
+      setEnvoye(true);
+      toast.success("Demande envoyée. Un accusé de réception vient de vous être adressé.");
+    } catch {
+      toast.error(
+        `Envoi impossible pour le moment. Écrivez-nous directement à ${company.email} ou appelez le ${company.phone}.`,
+      );
+    }
   };
+
 
   const infos = [
     { icon: MapPin, titre: "Zone d'intervention", valeur: "Île-de-France · Guadeloupe" },
@@ -428,9 +436,15 @@ function Contact() {
                   )}
                 />
 
-                <Button type="submit" size="xl" className="w-full">
-                  Envoyer ma demande
+                <Button
+                  type="submit"
+                  size="xl"
+                  className="w-full"
+                  disabled={form.formState.isSubmitting}
+                >
+                  {form.formState.isSubmitting ? "Envoi en cours…" : "Envoyer ma demande"}
                 </Button>
+
               </form>
             </Form>
           )}
