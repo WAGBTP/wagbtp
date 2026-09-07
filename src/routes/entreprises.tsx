@@ -90,12 +90,13 @@ function Entreprises() {
           </div>
         </div>
         <img
-          src={img.copropriete}
-          alt="Cordistes WAG BTP intervenant en façade sur une copropriété"
+          src={img.entreprisesHero}
+          alt="Façade sur cour et accès d'un local professionnel rénové par WAG BTP"
           width={1200}
           height={900}
           className="h-72 w-full bg-muted object-cover sm:h-96 lg:h-full"
         />
+
       </section>
 
       {/* PRESTATIONS — damier image / texte */}
