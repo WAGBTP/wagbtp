@@ -3,7 +3,13 @@ import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { BeforeAfter, CtaBand, SectionHeading } from "@/components/site-sections";
-import { img, projetsConstruction, projetsParticuliers } from "@/lib/site-data";
+import {
+  appartementHaussmannien,
+  img,
+  pavillonThiais,
+  projetsConstruction,
+  projetsParticuliers,
+} from "@/lib/site-data";
 
 export const Route = createFileRoute("/particuliers")({
   head: () => ({
@@ -140,10 +146,57 @@ function Particuliers() {
         </div>
       </section>
 
+      {/* REALISATIONS — PAVILLON THIAIS */}
+      <section className="border-y border-border bg-secondary">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
+          <SectionHeading
+            eyebrow="Réalisation · Thiais"
+            titre={pavillonThiais.titre}
+            texte={pavillonThiais.resume}
+          />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-[1.35fr_0.65fr_0.65fr]">
+            {pavillonThiais.galerie.map((photo, index) => (
+              <figure key={photo.image} className="group relative overflow-hidden bg-muted">
+                <img
+                  src={photo.image}
+                  alt={photo.alt}
+                  width={index === 0 ? 1400 : 900}
+                  height={1200}
+                  loading="lazy"
+                  className={`w-full object-cover transition-transform duration-500 group-hover:scale-[1.02] ${
+                    index === 0 ? "aspect-4/3 sm:col-span-2 lg:col-span-1" : "aspect-4/3 lg:aspect-auto lg:h-full"
+                  }`}
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 bg-anthracite/85 px-4 py-3 font-display text-xs font-bold uppercase tracking-[0.18em] text-anthracite-foreground">
+                  {photo.legende}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* AVANT / APRES — APPARTEMENT HAUSSMANNIEN */}
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[0.72fr_1.28fr] lg:items-center lg:gap-16 lg:px-10">
+        <SectionHeading
+          eyebrow="Avant / après · Paris"
+          titre={appartementHaussmannien.titre}
+          texte={appartementHaussmannien.resume}
+        />
+        <div className="overflow-hidden border border-border bg-card">
+          <BeforeAfter
+            avant={appartementHaussmannien.avant}
+            apres={appartementHaussmannien.apres}
+            titre={appartementHaussmannien.titre}
+          />
+        </div>
+      </section>
+
       {/* DEROULE */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
-        <SectionHeading eyebrow="Déroulé simplifié" titre="Ce qui se passe après votre message." />
-        <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
+          <SectionHeading eyebrow="Déroulé simplifié" titre="Ce qui se passe après votre message." />
+          <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { t: "Échange", d: "Nous rappelons sous 24 à 48h ouvrées pour cadrer le besoin." },
             { t: "Visite technique", d: "Relevé sur place, contraintes et faisabilité." },
@@ -158,7 +211,8 @@ function Particuliers() {
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
             </li>
           ))}
-        </ol>
+          </ol>
+        </div>
       </section>
 
       <CtaBand
