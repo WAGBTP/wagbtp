@@ -1,19 +1,5 @@
 import logoAsset from "@/assets/logo_wagbtp.png.asset.json";
-import heroAsset from "@/assets/hero-chantier.jpg.asset.json";
-import logementsAsset from "@/assets/real-logements.jpg.asset.json";
-import publicAsset from "@/assets/real-public.jpg.asset.json";
-import maisonAsset from "@/assets/real-maison.jpg.asset.json";
-import cuisineAvantAsset from "@/assets/cuisine_avant.jpg.asset.json";
-import cuisineApresAsset from "@/assets/cuisine_apres.jpg.asset.json";
-import sdbAvantAsset from "@/assets/sdb-avant.jpg.asset.json";
-import sdbApresAsset from "@/assets/sdb-apres.jpg.asset.json";
-import sejourAsset from "@/assets/sejour.jpg.asset.json";
-import extensionAsset from "@/assets/extension.jpg.asset.json";
-import bureauxAsset from "@/assets/bureaux.jpg.asset.json";
-import coproAsset from "@/assets/copropriete.jpg.asset.json";
-import localProAsset from "@/assets/local-pro.jpg.asset.json";
 import accueilHeroAsset from "@/assets/wag1.png.asset.json";
-import particuliersHeroAsset from "@/assets/pavillon-puy-en-velay.png.asset.json";
 import cantineMontmirailApresAsset from "@/assets/facade-cantine-montmirail-renovee.jpg.asset.json";
 import cantineMontmirailAvantAsset from "@/assets/cantine-montmirail-avant.png.asset.json";
 import gendarmerieAvantAsset from "@/assets/gendarmerie-avant.jpg.asset.json";
@@ -28,6 +14,18 @@ import pavillonThiaisEscalierAsset from "@/assets/pavillon-thiais-escalier.jpg.a
 import pavillonThiaisFacadeAsset from "@/assets/pavillon-thiais-facade.jpg.asset.json";
 import haussmannienDaruAvantAsset from "@/assets/haussmannien-daru-avant.jpg.asset.json";
 import haussmannienDaruApresAsset from "@/assets/haussmannien-daru-apres.jpg.asset.json";
+import daruCouloirRenoveAsset from "@/assets/daru-couloir-renove.jpg.asset.json";
+import daruParquetCouloirAsset from "@/assets/daru-parquet-couloir.jpg.asset.json";
+import soignollesApresAsset from "@/assets/soignolles-apres.jpg.asset.json";
+import soignollesCharpenteAsset from "@/assets/soignolles-charpente.jpg.asset.json";
+import soignollesCouvertureAsset from "@/assets/soignolles-couverture.jpg.asset.json";
+import soignollesGrosOeuvreAsset from "@/assets/soignolles-gros-oeuvre.jpg.asset.json";
+import localProPiecePierreAsset from "@/assets/local-pro-piece-pierre.jpg.asset.json";
+import localProCouloirAsset from "@/assets/local-pro-couloir.jpg.asset.json";
+import localProReserveAsset from "@/assets/local-pro-reserve.jpg.asset.json";
+import localProFacadeCourAsset from "@/assets/local-pro-facade-cour.jpg.asset.json";
+import localProPlateauCarreleAsset from "@/assets/local-pro-plateau-carrele.jpg.asset.json";
+import localProSalleCarreleeAsset from "@/assets/local-pro-salle-carrelee.jpg.asset.json";
 
 export const img = {
   logo: logoAsset.url,
@@ -37,18 +35,18 @@ export const img = {
   cantineMontmirailApres: cantineMontmirailApresAsset.url,
   gendarmerieAvant: gendarmerieAvantAsset.url,
   gendarmerieApres: gendarmerieApresAsset.url,
-  logements: logementsAsset.url,
-  public: publicAsset.url,
-  maison: maisonAsset.url,
-  cuisineAvant: cuisineAvantAsset.url,
-  cuisineApres: cuisineApresAsset.url,
-  sdbAvant: sdbAvantAsset.url,
-  sdbApres: sdbApresAsset.url,
-  sejour: sejourAsset.url,
-  extension: extensionAsset.url,
-  bureaux: bureauxAsset.url,
-  copropriete: coproAsset.url,
-  localPro: localProAsset.url,
+  logements: soignollesApresAsset.url,
+  public: cantineMontmirailApresAsset.url,
+  maison: soignollesApresAsset.url,
+  cuisineAvant: pavillonThiaisCuisineAsset.url,
+  cuisineApres: pavillonThiaisCuisineAsset.url,
+  sdbAvant: localProReserveAsset.url,
+  sdbApres: localProPlateauCarreleAsset.url,
+  sejour: haussmannienDaruApresAsset.url,
+  extension: pavillonThiaisFacadeAsset.url,
+  bureaux: localProPlateauCarreleAsset.url,
+  copropriete: soignollesApresAsset.url,
+  localPro: localProPiecePierreAsset.url,
 };
 
 export const pavillonThiais = {
@@ -79,6 +77,84 @@ export const appartementHaussmannien = {
     "Rénovation du séjour avec remise en état des décors, des murs et du parquet en point de Hongrie.",
   avant: haussmannienDaruAvantAsset.url,
   apres: haussmannienDaruApresAsset.url,
+  galerie: [
+    {
+      image: daruParquetCouloirAsset.url,
+      alt: "Couloir rénové avec parquet en point de Hongrie rue Daru",
+      legende: "Parquet en point de Hongrie",
+    },
+    {
+      image: daruCouloirRenoveAsset.url,
+      alt: "Couloir haussmannien rénové avec moulures rue Daru",
+      legende: "Moulures et finitions",
+    },
+  ],
+};
+
+export const constructionSoignolles = {
+  titre: "Construction à Soignolles",
+  resume:
+    "Construction de logements, du gros œuvre à la livraison : maçonnerie, charpente, couverture, menuiseries et façades.",
+  galerie: [
+    {
+      image: soignollesGrosOeuvreAsset.url,
+      alt: "Maçonnerie et pose de la charpente du chantier de Soignolles",
+      legende: "Gros œuvre et charpente",
+    },
+    {
+      image: soignollesCharpenteAsset.url,
+      alt: "Charpente en cours de pose sur le chantier de Soignolles",
+      legende: "Pose de la charpente",
+    },
+    {
+      image: soignollesCouvertureAsset.url,
+      alt: "Couverture et menuiseries en cours sur le chantier de Soignolles",
+      legende: "Couverture et menuiseries",
+    },
+    {
+      image: soignollesApresAsset.url,
+      alt: "Logements de Soignolles après réalisation des façades",
+      legende: "Façades après travaux",
+    },
+  ],
+};
+
+export const renovationLocalProfessionnel = {
+  titre: "Rénovation d'un local professionnel",
+  resume:
+    "Remise en état complète des espaces intérieurs : supports, peintures, sols carrelés, éclairage et accès sur cour.",
+  galerie: [
+    {
+      image: localProPiecePierreAsset.url,
+      alt: "Pièce rénovée avec mur en pierre apparent dans un local professionnel",
+      legende: "Pierre apparente et finitions",
+    },
+    {
+      image: localProCouloirAsset.url,
+      alt: "Circulation rénovée et éclairée dans un local professionnel",
+      legende: "Circulations intérieures",
+    },
+    {
+      image: localProPlateauCarreleAsset.url,
+      alt: "Plateau professionnel rénové avec sol carrelé et éclairage",
+      legende: "Plateau principal",
+    },
+    {
+      image: localProSalleCarreleeAsset.url,
+      alt: "Salle annexe rénovée dans un local professionnel",
+      legende: "Salle annexe",
+    },
+    {
+      image: localProReserveAsset.url,
+      alt: "Réserve carrelée remise en état dans un local professionnel",
+      legende: "Réserve",
+    },
+    {
+      image: localProFacadeCourAsset.url,
+      alt: "Accès sur cour du local professionnel après travaux",
+      legende: "Accès sur cour",
+    },
+  ],
 };
 
 export const company = {

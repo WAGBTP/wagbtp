@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { BeforeAfter, CtaBand, SectionHeading } from "@/components/site-sections";
 import {
   appartementHaussmannien,
+  constructionSoignolles,
   img,
   pavillonThiais,
   projetsConstruction,
@@ -146,6 +147,37 @@ function Particuliers() {
         </div>
       </section>
 
+      {/* REALISATION — CONSTRUCTION SOIGNOLLES */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
+          <SectionHeading
+            eyebrow="Réalisation · Construction"
+            titre={constructionSoignolles.titre}
+            texte={constructionSoignolles.resume}
+          />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
+            {constructionSoignolles.galerie.map((photo, index) => (
+              <figure
+                key={photo.image}
+                className={`relative overflow-hidden bg-muted ${index === 3 ? "sm:col-span-2 lg:col-span-2" : ""}`}
+              >
+                <img
+                  src={photo.image}
+                  alt={photo.alt}
+                  width={index === 3 ? 1600 : 900}
+                  height={1200}
+                  loading="lazy"
+                  className="aspect-4/3 h-full w-full object-cover"
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 bg-anthracite/85 px-4 py-3 font-display text-xs font-bold uppercase tracking-[0.18em] text-anthracite-foreground">
+                  {photo.legende}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* REALISATIONS — PAVILLON THIAIS */}
       <section className="border-y border-border bg-secondary">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
@@ -194,6 +226,23 @@ function Particuliers() {
             apres={appartementHaussmannien.apres}
             titre={appartementHaussmannien.titre}
           />
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:col-start-2">
+          {appartementHaussmannien.galerie.map((photo) => (
+            <figure key={photo.image} className="relative overflow-hidden bg-muted">
+              <img
+                src={photo.image}
+                alt={photo.alt}
+                width={900}
+                height={1200}
+                loading="lazy"
+                className="aspect-4/3 w-full object-cover"
+              />
+              <figcaption className="absolute inset-x-0 bottom-0 bg-anthracite/85 px-4 py-3 font-display text-xs font-bold uppercase tracking-[0.18em] text-anthracite-foreground">
+                {photo.legende}
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 
