@@ -44,37 +44,33 @@ function ProjetCard({
     titre: string;
     texte: string;
     inclus: string[];
-    avant?: string | undefined;
-    apres: string;
   };
 }) {
   return (
-    <article id={projet.slug} className="flex flex-col border border-border bg-card">
-      <BeforeAfter avant={projet.avant} apres={projet.apres} titre={projet.titre} />
-      <div className="flex flex-1 flex-col p-6 sm:p-7">
-        <h3 className="text-2xl text-card-foreground">{projet.titre}</h3>
-        <p className="mt-3 leading-relaxed text-muted-foreground">{projet.texte}</p>
-        <p className="mt-7 font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary">
-          Ce qui est inclus
-        </p>
-        <ul className="mt-4 flex-1 space-y-2.5">
-          {projet.inclus.map((i) => (
-            <li key={i} className="flex items-start gap-3 text-sm text-foreground/85">
-              <span className="mt-2.5 h-px w-3 shrink-0 bg-gold" aria-hidden="true" />
-              {i}
-            </li>
-          ))}
-        </ul>
-        <Button asChild size="xl" className="mt-7 w-full">
-          <Link to="/contact" search={{ profil: "particulier", projet: projet.slug }}>
-            Demander un devis
-            <ArrowRight />
-          </Link>
-        </Button>
-      </div>
+    <article id={projet.slug} className="flex flex-col border border-border bg-card p-6 sm:p-7">
+      <h3 className="text-2xl text-card-foreground">{projet.titre}</h3>
+      <p className="mt-3 leading-relaxed text-muted-foreground">{projet.texte}</p>
+      <p className="mt-7 font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary">
+        Ce qui est inclus
+      </p>
+      <ul className="mt-4 flex-1 space-y-2.5">
+        {projet.inclus.map((i) => (
+          <li key={i} className="flex items-start gap-3 text-sm text-foreground/85">
+            <span className="mt-2.5 h-px w-3 shrink-0 bg-gold" aria-hidden="true" />
+            {i}
+          </li>
+        ))}
+      </ul>
+      <Button asChild size="xl" className="mt-7 w-full">
+        <Link to="/contact" search={{ profil: "particulier", projet: projet.slug }}>
+          Demander un devis
+          <ArrowRight />
+        </Link>
+      </Button>
     </article>
   );
 }
+
 
 function Particuliers() {
   return (
