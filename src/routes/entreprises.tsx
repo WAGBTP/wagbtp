@@ -107,45 +107,43 @@ function Entreprises() {
         />
       </section>
 
-      <div className="mx-auto mt-12 grid max-w-7xl px-4 sm:px-6 md:grid-cols-2 lg:px-10">
+      <div className="mx-auto mt-12 grid max-w-7xl gap-px bg-border px-4 sm:px-6 md:grid-cols-3 lg:px-10">
         {offresEntreprises.map((o, i) => {
           const t = tuiles[i % tuiles.length]!;
-          const imageFirst = i % 2 === 0;
           return (
-            <div key={o.slug} id={o.slug} className="contents">
-              <img
-                src={o.image}
-                alt={o.alt}
-                width={1200}
-                height={900}
-                loading="lazy"
-                className={`aspect-4/3 w-full bg-muted object-cover ${
-                  imageFirst ? "" : "md:order-last"
-                }`}
-              />
-              <div className={`${t.bg} flex flex-col justify-center p-8 sm:p-12`}>
+            <div key={o.slug} id={o.slug} className={`${t.bg} flex flex-col justify-between p-8 sm:p-10`}>
+              <div>
                 <p
                   className={`rule-gold inline-flex items-center gap-2.5 font-display text-xs font-bold uppercase tracking-[0.16em] ${t.eyebrow}`}
                 >
                   {o.sousTitre}
                 </p>
-                <h3 className={`mt-5 text-[1.75rem] leading-tight sm:text-[2rem] ${t.titre}`}>
+                <h3 className={`mt-5 text-[1.6rem] leading-tight sm:text-[1.85rem] ${t.titre}`}>
                   {o.titre}
                 </h3>
                 <p className={`mt-5 leading-relaxed ${t.texte}`}>{o.texte}</p>
-                <Link
-                  to="/contact"
-                  search={{ profil: "entreprise", projet: o.slug }}
-                  className={`group mt-7 inline-flex items-center gap-2 font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] ${t.lien}`}
-                >
-                  Demande professionnelle
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </Link>
+                <ul className="mt-6 space-y-2.5">
+                  {o.points.map((p) => (
+                    <li key={p} className={`flex items-start gap-3 text-sm ${t.texte}`}>
+                      <span className="mt-2 size-1.5 shrink-0 bg-gold" aria-hidden="true" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
               </div>
+              <Link
+                to="/contact"
+                search={{ profil: "entreprise", projet: o.slug }}
+                className={`group mt-8 inline-flex items-center gap-2 font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] ${t.lien}`}
+              >
+                Demande professionnelle
+                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+              </Link>
             </div>
           );
         })}
       </div>
+
 
       {/* AVANT / APRÈS */}
       <section className="border-y border-border bg-secondary">
