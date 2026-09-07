@@ -3,7 +3,13 @@ import { ArrowRight, Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { BeforeAfter, CtaBand, SectionHeading } from "@/components/site-sections";
-import { engagementsPro, gendarmerieSurvilliers, img, offresEntreprises } from "@/lib/site-data";
+import {
+  engagementsPro,
+  gendarmerieSurvilliers,
+  img,
+  offresEntreprises,
+  renovationLocalProfessionnel,
+} from "@/lib/site-data";
 
 export const Route = createFileRoute("/entreprises")({
   head: () => ({
@@ -224,6 +230,37 @@ function Entreprises() {
               </div>
             </div>
           </details>
+        </div>
+      </section>
+
+      {/* RÉALISATION — LOCAL PROFESSIONNEL */}
+      <section className="border-b border-border bg-secondary">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
+          <SectionHeading
+            eyebrow="Réalisation · Local professionnel"
+            titre={renovationLocalProfessionnel.titre}
+            texte={renovationLocalProfessionnel.resume}
+          />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3">
+            {renovationLocalProfessionnel.galerie.map((photo, index) => (
+              <figure
+                key={photo.image}
+                className={`relative overflow-hidden bg-muted ${index === 0 ? "sm:col-span-2 lg:col-span-2" : ""}`}
+              >
+                <img
+                  src={photo.image}
+                  alt={photo.alt}
+                  width={index === 0 ? 1600 : 900}
+                  height={1200}
+                  loading="lazy"
+                  className={`w-full object-cover ${index === 0 ? "aspect-4/3 lg:aspect-8/5" : "aspect-4/3"}`}
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 bg-anthracite/85 px-4 py-3 font-display text-xs font-bold uppercase tracking-[0.18em] text-anthracite-foreground">
+                  {photo.legende}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
