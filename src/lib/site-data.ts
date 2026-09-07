@@ -29,6 +29,8 @@ export const img = {
   particuliersHero: particuliersHeroAsset.url,
   cantineMontmirailAvant: cantineMontmirailAvantAsset.url,
   cantineMontmirailApres: cantineMontmirailApresAsset.url,
+  gendarmerieAvant: gendarmerieAvantAsset.url,
+  gendarmerieApres: gendarmerieApresAsset.url,
   logements: logementsAsset.url,
   public: publicAsset.url,
   maison: maisonAsset.url,
