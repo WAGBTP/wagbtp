@@ -12,10 +12,17 @@ import extensionAsset from "@/assets/extension.jpg.asset.json";
 import bureauxAsset from "@/assets/bureaux.jpg.asset.json";
 import coproAsset from "@/assets/copropriete.jpg.asset.json";
 import localProAsset from "@/assets/local-pro.jpg.asset.json";
+import accueilHeroAsset from "@/assets/wag1.png.asset.json";
+import particuliersHeroAsset from "@/assets/pavillon-puy-en-velay.png.asset.json";
+import cantineMontmirailApresAsset from "@/assets/facade-cantine-montmirail-renovee.jpg.asset.json";
+import cantineMontmirailAvantAsset from "@/assets/cantine-montmirail-avant.png.asset.json";
 
 export const img = {
   logo: logoAsset.url,
-  hero: heroAsset.url,
+  hero: accueilHeroAsset.url,
+  particuliersHero: particuliersHeroAsset.url,
+  cantineMontmirailAvant: cantineMontmirailAvantAsset.url,
+  cantineMontmirailApres: cantineMontmirailApresAsset.url,
   logements: logementsAsset.url,
   public: publicAsset.url,
   maison: maisonAsset.url,
