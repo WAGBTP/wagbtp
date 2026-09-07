@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { BeforeAfter, CtaBand, SectionHeading } from "@/components/site-sections";
-import { engagementsPro, img, offresEntreprises } from "@/lib/site-data";
+import { engagementsPro, gendarmerieSurvilliers, img, offresEntreprises } from "@/lib/site-data";
 
 export const Route = createFileRoute("/entreprises")({
   head: () => ({
