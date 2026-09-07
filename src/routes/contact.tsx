@@ -430,9 +430,15 @@ function Contact() {
                   )}
                 />
 
-                <Button type="submit" size="xl" className="w-full">
-                  Envoyer ma demande
+                <Button
+                  type="submit"
+                  size="xl"
+                  className="w-full"
+                  disabled={form.formState.isSubmitting}
+                >
+                  {form.formState.isSubmitting ? "Envoi en cours…" : "Envoyer ma demande"}
                 </Button>
+
               </form>
             </Form>
           )}
