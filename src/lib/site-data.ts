@@ -16,6 +16,12 @@ import accueilHeroAsset from "@/assets/wag1.png.asset.json";
 import particuliersHeroAsset from "@/assets/pavillon-puy-en-velay.png.asset.json";
 import cantineMontmirailApresAsset from "@/assets/facade-cantine-montmirail-renovee.jpg.asset.json";
 import cantineMontmirailAvantAsset from "@/assets/cantine-montmirail-avant.png.asset.json";
+import gendarmerieAvantAsset from "@/assets/gendarmerie-avant.jpg.asset.json";
+import gendarmerieApresAsset from "@/assets/gendarmerie-apres.jpg.asset.json";
+import gendarmerieGrosOeuvreAsset from "@/assets/gendarmerie-gros-oeuvre.jpg.asset.json";
+import gendarmerieInterieurAsset from "@/assets/gendarmerie-interieur.jpg.asset.json";
+import gendarmerieEntreeAsset from "@/assets/gendarmerie-entree.png.asset.json";
+import gendarmerieVrdAsset from "@/assets/gendarmerie-vrd.jpg.asset.json";
 
 export const img = {
   logo: logoAsset.url,
@@ -23,6 +29,8 @@ export const img = {
   particuliersHero: particuliersHeroAsset.url,
   cantineMontmirailAvant: cantineMontmirailAvantAsset.url,
   cantineMontmirailApres: cantineMontmirailApresAsset.url,
+  gendarmerieAvant: gendarmerieAvantAsset.url,
+  gendarmerieApres: gendarmerieApresAsset.url,
   logements: logementsAsset.url,
   public: publicAsset.url,
   maison: maisonAsset.url,
@@ -223,3 +231,48 @@ export const engagementsPro = [
     texte: "Protections, propreté quotidienne et sécurité des usagers pendant les travaux.",
   },
 ];
+
+export const gendarmerieSurvilliers = {
+  titre: "Gendarmerie de Survilliers",
+  lieu: "Survilliers (95)",
+  resume:
+    "Construction et aménagement complet d'une brigade de gendarmerie : gros œuvre, second œuvre, cellules sécurisées, façades et VRD, livrés en site sensible avec un seul interlocuteur.",
+  chiffres: [
+    { valeur: "Tous", libelle: "Corps d'état coordonnés" },
+    { valeur: "Neuf", libelle: "Construction et aménagement" },
+    { valeur: "ERP", libelle: "Normes sécurité et accessibilité" },
+    { valeur: "VRD", libelle: "Voiries, clôtures et espaces verts" },
+  ],
+  lots: [
+    "Gros œuvre : fondations, murs en blocs, dalles et acrotères",
+    "Charpente, étanchéité de toiture et zinguerie",
+    "Menuiseries extérieures, serrurerie et clôtures barreaudées",
+    "Cellules de garde à vue : portes blindées, oculus, verrouillage",
+    "Second œuvre : cloisons, faux plafonds, sols, peintures",
+    "Électricité, éclairage de sécurité, CVC et plomberie",
+    "Façades enduites et signalétique Gendarmerie Nationale",
+    "VRD : enrobés, bordures, marquage, plantations",
+  ],
+  galerie: [
+    {
+      image: gendarmerieGrosOeuvreAsset.url,
+      alt: "Gros œuvre de la gendarmerie de Survilliers en cours d'élévation",
+      legende: "Élévation du gros œuvre et réservations des ouvertures.",
+    },
+    {
+      image: gendarmerieInterieurAsset.url,
+      alt: "Couloir des cellules de garde à vue avec portes blindées",
+      legende: "Cellules de garde à vue : portes blindées et verrouillage.",
+    },
+    {
+      image: gendarmerieEntreeAsset.url,
+      alt: "Entrée de la gendarmerie nationale de Survilliers terminée",
+      legende: "Façade d'accueil, serrurerie et signalétique posées.",
+    },
+    {
+      image: gendarmerieVrdAsset.url,
+      alt: "Voiries et abords de la gendarmerie de Survilliers livrés",
+      legende: "Abords livrés : enrobés, bordures, marquage et espaces verts.",
+    },
+  ],
+};

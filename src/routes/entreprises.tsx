@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { BeforeAfter, CtaBand, SectionHeading } from "@/components/site-sections";
-import { engagementsPro, img, offresEntreprises } from "@/lib/site-data";
+import { engagementsPro, gendarmerieSurvilliers, img, offresEntreprises } from "@/lib/site-data";
 
 export const Route = createFileRoute("/entreprises")({
   head: () => ({
@@ -155,6 +155,75 @@ function Entreprises() {
               titre="Rénovation de la cantine de Montmirail"
             />
           </div>
+        </div>
+      </section>
+
+      {/* GENDARMERIE DE SURVILLIERS */}
+      <section className="border-b border-border">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[1.28fr_0.72fr] lg:gap-16 lg:px-10">
+          <div className="border border-border bg-card">
+            <BeforeAfter
+              avant={img.gendarmerieAvant}
+              apres={img.gendarmerieApres}
+              titre={gendarmerieSurvilliers.titre}
+            />
+          </div>
+          <div>
+            <SectionHeading
+              eyebrow={`Avant / après · ${gendarmerieSurvilliers.lieu}`}
+              titre="Gendarmerie de Survilliers."
+              texte={gendarmerieSurvilliers.resume}
+            />
+            <dl className="mt-8 grid grid-cols-2 gap-6">
+              {gendarmerieSurvilliers.chiffres.map((c) => (
+                <div key={c.libelle} className="border-t border-border pt-4">
+                  <dt className="font-display text-2xl text-primary">{c.valeur}</dt>
+                  <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.libelle}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+
+        <div className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 sm:pb-24 lg:px-10">
+          <details className="group border border-border bg-secondary">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-6 font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary sm:p-8">
+              Plus de détails sur ce chantier
+              <Plus className="size-5 shrink-0 transition-transform group-open:rotate-45" aria-hidden="true" />
+            </summary>
+
+            <div className="grid gap-10 border-t border-border p-6 sm:p-8 lg:grid-cols-2 lg:gap-16">
+              <div>
+                <h3 className="eyebrow rule-gold">Lots réalisés</h3>
+                <ul className="mt-6 space-y-3">
+                  {gendarmerieSurvilliers.lots.map((l) => (
+                    <li key={l} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+                      <span className="mt-2 size-1.5 shrink-0 bg-gold" aria-hidden="true" />
+                      {l}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="grid gap-6 sm:grid-cols-2">
+                {gendarmerieSurvilliers.galerie.map((g) => (
+                  <figure key={g.image}>
+                    <img
+                      src={g.image}
+                      alt={g.alt}
+                      width={1200}
+                      height={900}
+                      loading="lazy"
+                      className="aspect-4/3 w-full bg-muted object-cover"
+                    />
+                    <figcaption className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                      {g.legende}
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </details>
         </div>
       </section>
 
