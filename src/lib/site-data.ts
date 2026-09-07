@@ -31,23 +31,13 @@ export const img = {
   logo: logoAsset.url,
   hero: accueilHeroAsset.url,
   particuliersHero: wag2Asset.url,
+  entreprisesHero: localProFacadeCourAsset.url,
   cantineMontmirailAvant: cantineMontmirailAvantAsset.url,
   cantineMontmirailApres: cantineMontmirailApresAsset.url,
   gendarmerieAvant: gendarmerieAvantAsset.url,
   gendarmerieApres: gendarmerieApresAsset.url,
-  logements: soignollesApresAsset.url,
-  public: cantineMontmirailApresAsset.url,
-  maison: soignollesApresAsset.url,
-  cuisineAvant: pavillonThiaisCuisineAsset.url,
-  cuisineApres: pavillonThiaisCuisineAsset.url,
-  sdbAvant: localProReserveAsset.url,
-  sdbApres: localProPlateauCarreleAsset.url,
-  sejour: haussmannienDaruApresAsset.url,
-  extension: pavillonThiaisFacadeAsset.url,
-  bureaux: localProPlateauCarreleAsset.url,
-  copropriete: soignollesApresAsset.url,
-  localPro: localProPiecePierreAsset.url,
 };
+
 
 export const pavillonThiais = {
   titre: "Pavillon Thiais",
@@ -149,11 +139,6 @@ export const renovationLocalProfessionnel = {
       alt: "Réserve carrelée remise en état dans un local professionnel",
       legende: "Réserve",
     },
-    {
-      image: localProFacadeCourAsset.url,
-      alt: "Accès sur cour du local professionnel après travaux",
-      legende: "Accès sur cour",
-    },
   ],
 };
 
@@ -208,25 +193,25 @@ export const methode = [
 
 export const realisationsPhares = [
   {
-    image: img.logements,
-    alt: "Résidence de logements collectifs rénovée en Île-de-France",
+    image: gendarmerieApresAsset.url,
+    alt: "Gendarmerie nationale de Survilliers livrée après travaux",
     cible: "Entreprises",
-    projet: "Résidence de 48 logements, Hauts-de-Seine",
-    resultat: "Reprise des parties communes et ravalement en site occupé, en 4 mois.",
+    projet: "Gendarmerie de Survilliers (95)",
+    resultat: "Construction et aménagement complets : gros œuvre, cellules sécurisées, façades et VRD.",
   },
   {
-    image: img.public,
-    alt: "Couloir d'établissement scolaire entièrement rénové",
+    image: cantineMontmirailApresAsset.url,
+    alt: "Façade rénovée de la cantine de Montmirail",
     cible: "Entreprises",
-    projet: "Groupe scolaire, Val-de-Marne",
-    resultat: "Sols, peintures, menuiseries et électricité repris pendant les vacances scolaires.",
+    projet: "Cantine de Montmirail",
+    resultat: "Reprise complète de la façade : supports, ouvertures et nouvelle finition.",
   },
   {
-    image: img.maison,
-    alt: "Maison individuelle avec extension et terrasse en bois",
+    image: pavillonThiaisFacadeAsset.url,
+    alt: "Façade rénovée du pavillon de Thiais",
     cible: "Particuliers",
-    projet: "Maison individuelle, Asnières-sur-Seine",
-    resultat: "Extension, terrasse bois et rénovation complète, livrées clé en main.",
+    projet: "Pavillon à Thiais",
+    resultat: "Rénovation intérieure et façade, de la cuisine à l'escalier.",
   },
 ];
 
@@ -237,8 +222,6 @@ export const projetsParticuliers = [
     texte:
       "Dépose complète, reprise de la plomberie et de l'électricité, étanchéité, carrelage et pose des équipements.",
     inclus: ["Plomberie et évacuations", "Étanchéité et carrelage", "Électricité et ventilation", "Pose des sanitaires"],
-    avant: img.sdbAvant,
-    apres: img.sdbApres,
   },
   {
     slug: "cuisine",
@@ -246,9 +229,6 @@ export const projetsParticuliers = [
     texte:
       "De la conception à la réalisation : implantation, réseaux, revêtements, pose du mobilier et des plans de travail.",
     inclus: ["Plan d'implantation", "Réseaux eau / élec / gaz", "Revêtements sols et murs", "Pose mobilier et électroménager"],
-    avant: img.cuisineAvant,
-    badgeApres: false,
-    apres: img.cuisineApres,
   },
   {
     slug: "sejour",
@@ -256,7 +236,6 @@ export const projetsParticuliers = [
     texte:
       "Ouverture de mur porteur, isolation, plâtrerie, sols et peinture pour une pièce de vie plus lumineuse.",
     inclus: ["Étude structure si ouverture", "Isolation et plâtrerie", "Parquet ou carrelage", "Peinture et éclairage"],
-    apres: img.sejour,
   },
   {
     slug: "renovation-complete",
@@ -264,7 +243,6 @@ export const projetsParticuliers = [
     texte:
       "Tous corps d'état coordonnés par un interlocuteur unique, du diagnostic à la réception de l'appartement ou de la maison.",
     inclus: ["Diagnostic et plans", "Tous corps d'état", "Planning et suivi hebdomadaire", "Réception et garanties"],
-    apres: img.logements,
   },
 ];
 
@@ -274,21 +252,18 @@ export const projetsConstruction = [
     titre: "Construction neuve",
     texte: "Maison individuelle du terrassement à la remise des clés, avec suivi administratif.",
     inclus: ["Fondations et gros œuvre", "Charpente et couverture", "Second œuvre complet", "Raccordements et finitions"],
-    apres: img.maison,
   },
   {
     slug: "extension",
     titre: "Extension",
     texte: "Agrandissement maçonné ou ossature, raccordé proprement à l'existant.",
     inclus: ["Dossier d'urbanisme", "Gros œuvre et toiture", "Isolation et menuiseries", "Raccord à l'existant"],
-    apres: img.extension,
   },
   {
     slug: "terrasse",
     titre: "Terrasse",
     texte: "Terrasse bois, composite ou carrelée sur plots, avec évacuation des eaux.",
     inclus: ["Préparation du support", "Structure et plots", "Pose du platelage", "Garde-corps et finitions"],
-    apres: img.extension,
   },
 ];
 
@@ -300,8 +275,6 @@ export const offresEntreprises = [
     texte:
       "Rénovation des parties communes, ravalement, remise en état de logements entre deux locataires. Interventions en site occupé, avec information des résidents et respect des horaires.",
     points: ["Planning par cage d'escalier", "Site occupé et voisinage géré", "Reporting photo hebdomadaire"],
-    image: img.copropriete,
-    alt: "Chantier de ravalement sur une copropriété en site occupé",
   },
   {
     slug: "bureaux",
@@ -310,8 +283,6 @@ export const offresEntreprises = [
     texte:
       "Aménagement et rénovation de plateaux : cloisonnement, faux plafonds, sols souples, électricité et CVC. Travaux possibles en horaires décalés pour ne pas interrompre l'activité.",
     points: ["Travaux en horaires décalés", "Coordination des corps d'état", "Livraison par zones"],
-    image: img.bureaux,
-    alt: "Plateau de bureaux rénové avec faux plafond et cloisons vitrées",
   },
   {
     slug: "locaux-professionnels",
@@ -320,8 +291,6 @@ export const offresEntreprises = [
     texte:
       "Création et remise en état de locaux commerciaux : vitrines, agencement, mise aux normes accessibilité et sécurité, finitions soignées avant ouverture.",
     points: ["Mise aux normes ERP", "Délais courts avant ouverture", "Un seul interlocuteur"],
-    image: img.localPro,
-    alt: "Local commercial en cours d'aménagement avec vitrine",
   },
 ];
 
