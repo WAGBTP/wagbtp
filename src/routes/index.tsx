@@ -72,7 +72,7 @@ function Accueil() {
 
         <img
           src={img.hero}
-          alt="Compagnon WAG BTP sur un échafaudage de chantier en Île-de-France"
+          alt="Artisan WAG BTP rénovant un parquet ancien dans un appartement"
           width={1600}
           height={1104}
           className="h-72 w-full bg-muted object-cover sm:h-96 lg:h-full"

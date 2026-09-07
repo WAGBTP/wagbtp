@@ -96,8 +96,8 @@ function Particuliers() {
 
           <figure className="relative">
             <img
-              src={img.sejour}
-              alt="Séjour d'appartement haussmannien rénové par WAG BTP"
+              src={img.particuliersHero}
+              alt="Pavillon avec piscine et terrasse réalisé par WAG BTP"
               width={1200}
               height={900}
               className="aspect-4/3 w-full bg-muted object-cover"

@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { CtaBand, SectionHeading } from "@/components/site-sections";
+import { BeforeAfter, CtaBand, SectionHeading } from "@/components/site-sections";
 import { engagementsPro, img, offresEntreprises } from "@/lib/site-data";
 
 export const Route = createFileRoute("/entreprises")({
@@ -139,6 +139,24 @@ function Entreprises() {
           );
         })}
       </div>
+
+      {/* AVANT / APRÈS */}
+      <section className="border-y border-border bg-secondary">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-24 lg:grid-cols-[0.72fr_1.28fr] lg:gap-16 lg:px-10">
+          <SectionHeading
+            eyebrow="Avant / après"
+            titre="Cantine de Montmirail."
+            texte="Rénovation complète de la façade avec remise en état des supports, nouvelle finition et traitement soigné des ouvertures. Faites glisser le curseur pour comparer."
+          />
+          <div className="border border-border bg-card">
+            <BeforeAfter
+              avant={img.cantineMontmirailAvant}
+              apres={img.cantineMontmirailApres}
+              titre="Rénovation de la cantine de Montmirail"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* ENGAGEMENTS */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
