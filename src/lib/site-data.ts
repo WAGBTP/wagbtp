@@ -31,23 +31,13 @@ export const img = {
   logo: logoAsset.url,
   hero: accueilHeroAsset.url,
   particuliersHero: wag2Asset.url,
+  entreprisesHero: localProFacadeCourAsset.url,
   cantineMontmirailAvant: cantineMontmirailAvantAsset.url,
   cantineMontmirailApres: cantineMontmirailApresAsset.url,
   gendarmerieAvant: gendarmerieAvantAsset.url,
   gendarmerieApres: gendarmerieApresAsset.url,
-  logements: soignollesApresAsset.url,
-  public: cantineMontmirailApresAsset.url,
-  maison: soignollesApresAsset.url,
-  cuisineAvant: pavillonThiaisCuisineAsset.url,
-  cuisineApres: pavillonThiaisCuisineAsset.url,
-  sdbAvant: localProReserveAsset.url,
-  sdbApres: localProPlateauCarreleAsset.url,
-  sejour: haussmannienDaruApresAsset.url,
-  extension: pavillonThiaisFacadeAsset.url,
-  bureaux: localProPlateauCarreleAsset.url,
-  copropriete: soignollesApresAsset.url,
-  localPro: localProPiecePierreAsset.url,
 };
+
 
 export const pavillonThiais = {
   titre: "Pavillon Thiais",
