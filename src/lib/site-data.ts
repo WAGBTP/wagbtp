@@ -22,11 +22,17 @@ import gendarmerieGrosOeuvreAsset from "@/assets/gendarmerie-gros-oeuvre.jpg.ass
 import gendarmerieInterieurAsset from "@/assets/gendarmerie-interieur.jpg.asset.json";
 import gendarmerieEntreeAsset from "@/assets/gendarmerie-entree.png.asset.json";
 import gendarmerieVrdAsset from "@/assets/gendarmerie-vrd.jpg.asset.json";
+import wag2Asset from "@/assets/wag2.png.asset.json";
+import pavillonThiaisCuisineAsset from "@/assets/pavillon-thiais-cuisine-interieur.jpg.asset.json";
+import pavillonThiaisEscalierAsset from "@/assets/pavillon-thiais-escalier.jpg.asset.json";
+import pavillonThiaisFacadeAsset from "@/assets/pavillon-thiais-facade.jpg.asset.json";
+import haussmannienDaruAvantAsset from "@/assets/haussmannien-daru-avant.jpg.asset.json";
+import haussmannienDaruApresAsset from "@/assets/haussmannien-daru-apres.jpg.asset.json";
 
 export const img = {
   logo: logoAsset.url,
   hero: accueilHeroAsset.url,
-  particuliersHero: particuliersHeroAsset.url,
+  particuliersHero: wag2Asset.url,
   cantineMontmirailAvant: cantineMontmirailAvantAsset.url,
   cantineMontmirailApres: cantineMontmirailApresAsset.url,
   gendarmerieAvant: gendarmerieAvantAsset.url,
@@ -43,6 +49,36 @@ export const img = {
   bureaux: bureauxAsset.url,
   copropriete: coproAsset.url,
   localPro: localProAsset.url,
+};
+
+export const pavillonThiais = {
+  titre: "Pavillon Thiais",
+  resume: "Rénovation d'un pavillon à Thiais, des espaces intérieurs jusqu'à la façade.",
+  galerie: [
+    {
+      image: pavillonThiaisCuisineAsset.url,
+      alt: "Cuisine rénovée avec îlot central dans le pavillon de Thiais",
+      legende: "Cuisine et îlot central",
+    },
+    {
+      image: pavillonThiaisEscalierAsset.url,
+      alt: "Escalier courbe rénové dans le pavillon de Thiais",
+      legende: "Escalier intérieur",
+    },
+    {
+      image: pavillonThiaisFacadeAsset.url,
+      alt: "Façade rénovée du pavillon de Thiais",
+      legende: "Façade du pavillon",
+    },
+  ],
+};
+
+export const appartementHaussmannien = {
+  titre: "Appartement haussmannien — rue Daru",
+  resume:
+    "Rénovation du séjour avec remise en état des décors, des murs et du parquet en point de Hongrie.",
+  avant: haussmannienDaruAvantAsset.url,
+  apres: haussmannienDaruApresAsset.url,
 };
 
 export const company = {
