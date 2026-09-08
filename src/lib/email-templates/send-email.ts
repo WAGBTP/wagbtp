@@ -6,8 +6,8 @@ import { TEMPLATES } from './registry'
 // Envoi 100% autonome via l'API HTTP de Resend (aucune dépendance externe).
 
 const SITE_NAME = process.env['MAIL_FROM_NAME'] ?? 'WAG BTP'
-// Adresse d'expédition : identique à l'adresse de réception pour ce projet.
-const FROM_EMAIL = process.env['MAIL_FROM_EMAIL'] ?? 'wagbtp@gmail.com'
+// Adresse d'expédition : domaine vérifié chez Resend. La réception reste sur wagbtp@gmail.com.
+const FROM_EMAIL = process.env['MAIL_FROM_EMAIL'] ?? 'contact@wagbtp.fr'
 
 export type SendTemplateEmailResult = { sent: true } | { sent: false; reason: string }
 
