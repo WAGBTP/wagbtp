@@ -1,5 +1,7 @@
 import * as React from 'react'
 import { render } from '@react-email/render'
+import { readFile } from 'node:fs/promises'
+import path from 'node:path'
 import { TEMPLATES } from './registry'
 
 // Server-only : lit RESEND_API_KEY. Ne jamais importer depuis un composant client.
@@ -46,19 +48,32 @@ async function loadMailConfig(): Promise<MailConfig> {
   // Hostinger remplace hbuilds/current à chaque déploiement. Si les variables
   // ne sont pas configurées dans hPanel, charge le fichier privé persistant
   // placé à ~/domains/wagbtp.fr/.env, hors du répertoire de chaque version.
-  if (!apiKey && process.env['HOME']) {
-    try {
-      const { readFile } = await import('node:fs/promises')
-      const persistentEnv = await readFile(
-        `${process.env['HOME']}/domains/wagbtp.fr/.env`,
-        'utf8',
-      )
-      const values = parseEnvFile(persistentEnv)
-      apiKey = values['RESEND_API_KEY']
-      siteName ??= values['MAIL_FROM_NAME']
-      fromEmail ??= values['MAIL_FROM_EMAIL']
-    } catch {
-      // L'erreur explicite ci-dessous indique quoi configurer sans exposer la clé.
+  // Passenger peut masquer HOME : les chemins relatifs couvrent donc aussi
+  // le répertoire hbuilds/current/nodejs réellement utilisé en production.
+  if (!apiKey) {
+    const home = process.env['HOME']
+    const user = process.env['USER'] || process.env['LOGNAME']
+    const cwd = process.cwd()
+    const candidates = [
+      ...(home ? [path.join(home, 'domains/wagbtp.fr/.env')] : []),
+      ...(user ? [path.join('/home', user, 'domains/wagbtp.fr/.env')] : []),
+      path.resolve(cwd, '../../../../.env'),
+      path.resolve(cwd, '../../../.env'),
+      path.resolve(cwd, '../../.env'),
+      path.resolve(cwd, '../.env'),
+    ]
+
+    for (const candidate of [...new Set(candidates)]) {
+      try {
+        const values = parseEnvFile(await readFile(candidate, 'utf8'))
+        if (!values['RESEND_API_KEY']) continue
+        apiKey = values['RESEND_API_KEY']
+        siteName ??= values['MAIL_FROM_NAME']
+        fromEmail ??= values['MAIL_FROM_EMAIL']
+        break
+      } catch {
+        // Essaie le chemin Hostinger suivant sans journaliser de secret.
+      }
     }
   }
 
