@@ -93,6 +93,20 @@ Assurez-vous que la dernière version du dépôt GitHub est bien déployée sur 
 - Si GitHub Actions est configuré : poussez sur la branche principale
 - Si le déploiement Git est configuré dans hPanel : cliquez sur **Deploy**
 
+La configuration du projet produit désormais explicitement une application
+Node.js (`node-server`), qui est le format attendu par l'hébergement Hostinger.
+Après le déploiement, le fichier suivant doit indiquer `"preset": "node-server"` :
+
+```bash
+cat ~/domains/wagbtp.fr/hbuilds/current/nodejs/nitro.json
+```
+
+Redémarrer ensuite l'application déployée :
+
+```bash
+touch ~/domains/wagbtp.fr/hbuilds/current/nodejs/tmp/restart.txt
+```
+
 ## 5. Tester le formulaire
 
 1. Ouvrir le site en production
