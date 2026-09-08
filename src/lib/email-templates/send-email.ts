@@ -5,9 +5,75 @@ import { TEMPLATES } from './registry'
 // Server-only : lit RESEND_API_KEY. Ne jamais importer depuis un composant client.
 // Envoi 100% autonome via l'API HTTP de Resend (aucune dépendance externe).
 
-const SITE_NAME = process.env['MAIL_FROM_NAME'] ?? 'WAG BTP'
-// Adresse d'expédition : domaine vérifié chez Resend. La réception reste sur wagbtp@gmail.com.
-const FROM_EMAIL = process.env['MAIL_FROM_EMAIL'] ?? 'contact@wagbtp.fr'
+const DEFAULT_SITE_NAME = 'WAG BTP'
+const DEFAULT_FROM_EMAIL = 'contact@wagbtp.fr'
+
+type MailConfig = {
+  apiKey: string
+  siteName: string
+  fromEmail: string
+}
+
+function parseEnvFile(contents: string) {
+  const values: Record<string, string> = {}
+
+  for (const rawLine of contents.split(/\r?\n/)) {
+    const line = rawLine.trim()
+    if (!line || line.startsWith('#')) continue
+
+    const separator = line.indexOf('=')
+    if (separator < 1) continue
+
+    const key = line.slice(0, separator).trim()
+    let value = line.slice(separator + 1).trim()
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1)
+    }
+    values[key] = value
+  }
+
+  return values
+}
+
+async function loadMailConfig(): Promise<MailConfig> {
+  let apiKey = process.env['RESEND_API_KEY']
+  let siteName = process.env['MAIL_FROM_NAME']
+  let fromEmail = process.env['MAIL_FROM_EMAIL']
+
+  // Hostinger remplace hbuilds/current à chaque déploiement. Si les variables
+  // ne sont pas configurées dans hPanel, charge le fichier privé persistant
+  // placé à ~/domains/wagbtp.fr/.env, hors du répertoire de chaque version.
+  if (!apiKey && process.env['HOME']) {
+    try {
+      const { readFile } = await import('node:fs/promises')
+      const persistentEnv = await readFile(
+        `${process.env['HOME']}/domains/wagbtp.fr/.env`,
+        'utf8',
+      )
+      const values = parseEnvFile(persistentEnv)
+      apiKey = values['RESEND_API_KEY']
+      siteName ??= values['MAIL_FROM_NAME']
+      fromEmail ??= values['MAIL_FROM_EMAIL']
+    } catch {
+      // L'erreur explicite ci-dessous indique quoi configurer sans exposer la clé.
+    }
+  }
+
+  if (!apiKey) {
+    throw new Error(
+      "RESEND_API_KEY n'est pas configurée dans Hostinger ni dans ~/domains/wagbtp.fr/.env",
+    )
+  }
+
+  return {
+    apiKey,
+    siteName: siteName || DEFAULT_SITE_NAME,
+    fromEmail: fromEmail || DEFAULT_FROM_EMAIL,
+  }
+}
 
 export type SendTemplateEmailResult = { sent: true } | { sent: false; reason: string }
 
@@ -23,10 +89,7 @@ export async function sendTemplateEmail(
   to: string,
   options: SendTemplateEmailOptions = {}
 ): Promise<SendTemplateEmailResult> {
-  const apiKey = process.env['RESEND_API_KEY']
-  if (!apiKey) {
-    throw new Error("RESEND_API_KEY n'est pas configurée")
-  }
+  const { apiKey, siteName, fromEmail } = await loadMailConfig()
 
   const template = TEMPLATES[templateName]
   if (!template) {
@@ -55,7 +118,7 @@ export async function sendTemplateEmail(
       ...(options.idempotencyKey ? { 'Idempotency-Key': options.idempotencyKey } : {}),
     },
     body: JSON.stringify({
-      from: `${SITE_NAME} <${FROM_EMAIL}>`,
+      from: `${siteName} <${fromEmail}>`,
       to: [recipient],
       subject,
       html,
