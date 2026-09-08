@@ -31,14 +31,50 @@ L'expéditeur affiché est : `WAG BTP <contact@wagbtp.fr>`.
 
 > **Important** : sans cette vérification, Resend refusera d'envoyer des e-mails depuis `contact@wagbtp.fr`.
 
-## 3. Configurer les variables d'environnement dans Hostinger
+## 3. Configurer les variables de façon persistante
 
-### Si vous utilisez hPanel (hébergement mutualisé avec Node.js)
+Le dossier `hbuilds/current` est remplacé à chaque déploiement. Il ne faut donc
+jamais y conserver le fichier `.env`.
 
-1. Connectez-vous à hPanel
-2. Allez dans **Websites** → cliquez sur le site WAG-BTP
-3. Cliquez sur **Advanced** → **Node.js**
-4. Trouvez la section **Environment Variables**
+### Méthode SSH adaptée à ce site
+
+Créer une seule fois le fichier privé à cet emplacement stable :
+
+```bash
+nano ~/domains/wagbtp.fr/.env
+```
+
+Ajouter :
+
+```bash
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxx
+MAIL_FROM_NAME="WAG BTP"
+MAIL_FROM_EMAIL=contact@wagbtp.fr
+```
+
+Puis protéger le fichier :
+
+```bash
+chmod 600 ~/domains/wagbtp.fr/.env
+```
+
+L'application charge automatiquement ce fichier si Hostinger ne lui fournit
+pas déjà `RESEND_API_KEY`. Cet emplacement se trouve hors de `hbuilds/current`
+et reste donc intact après les déploiements GitHub.
+
+Si le fichier avait déjà été créé dans la version actuellement déployée, le
+déplacer une seule fois :
+
+```bash
+mv ~/domains/wagbtp.fr/hbuilds/current/nodejs/.env ~/domains/wagbtp.fr/.env
+chmod 600 ~/domains/wagbtp.fr/.env
+```
+
+### Alternative officielle dans hPanel
+
+1. Ouvrir **Websites** puis le tableau de bord du site WAG-BTP
+2. Ouvrir directement **Environment variables** dans la barre latérale du site
+3. Ajouter les trois variables
 5. Ajoutez les trois variables suivantes :
 
 ```
@@ -47,28 +83,8 @@ MAIL_FROM_NAME=WAG BTP
 MAIL_FROM_EMAIL=contact@wagbtp.fr
 ```
 
-6. Enregistrez les variables
-7. Cliquez sur **Restart** pour redémarrer l'application Node.js
-
-### Si vous utilisez un VPS Hostinger
-
-1. Connectez-vous au serveur en SSH
-2. Éditez le fichier d'environnement du projet (souvent `.env` à la racine)
-3. Ajoutez :
-
-```bash
-RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxx
-MAIL_FROM_NAME="WAG BTP"
-MAIL_FROM_EMAIL=contact@wagbtp.fr
-```
-
-4. Rechargez le service, par exemple :
-
-```bash
-sudo systemctl restart wagbtp
-# ou
-pm2 restart all
-```
+4. Enregistrer : Hostinger redéploie l'application et conserve ces valeurs pour
+   les livraisons suivantes.
 
 ## 4. Vérifier le déploiement du code
 
@@ -97,12 +113,13 @@ Assurez-vous que la dernière version du dépôt GitHub est bien déployée sur 
 
 - Ne jamais écrire `RESEND_API_KEY` dans le code source
 - Ne jamais committer un fichier `.env` contenant la vraie clé
-- Hostinger stocke ces variables de manière sécurisée côté serveur
+- Le fichier persistant doit rester hors de GitHub et être protégé avec `chmod 600`
+- Hostinger stocke les variables hPanel chiffrées côté serveur
 
 ## Problèmes courants
 
 | Symptôme | Cause probable | Solution |
 |---|---|---|
-| "RESEND_API_KEY n'est pas configurée" | Variable manquante dans Hostinger | Ajouter `RESEND_API_KEY` et redémarrer |
+| "RESEND_API_KEY n'est pas configurée" | Variable et fichier persistant manquants | Créer `~/domains/wagbtp.fr/.env`, puis redéployer |
 | Envoi refusé par Resend | Domaine `wagbtp.fr` non vérifié | Vérifier le domaine dans Resend |
 | E-mail dans les spam | Authentification DKIM/SPF manquante | Vérifier les enregistrements DNS |
