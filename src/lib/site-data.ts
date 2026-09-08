@@ -1,41 +1,41 @@
-import logoAsset from "@/assets/logo_wagbtp.png.asset.json";
-import accueilHeroAsset from "@/assets/wag1.png.asset.json";
-import cantineMontmirailApresAsset from "@/assets/facade-cantine-montmirail-renovee.jpg.asset.json";
-import cantineMontmirailAvantAsset from "@/assets/cantine-montmirail-avant.png.asset.json";
-import gendarmerieAvantAsset from "@/assets/gendarmerie-avant.jpg.asset.json";
-import gendarmerieApresAsset from "@/assets/gendarmerie-apres.jpg.asset.json";
-import gendarmerieGrosOeuvreAsset from "@/assets/gendarmerie-gros-oeuvre.jpg.asset.json";
-import gendarmerieInterieurAsset from "@/assets/gendarmerie-interieur.jpg.asset.json";
-import gendarmerieEntreeAsset from "@/assets/gendarmerie-entree.png.asset.json";
-import gendarmerieVrdAsset from "@/assets/gendarmerie-vrd.jpg.asset.json";
-import wag2Asset from "@/assets/wag2.png.asset.json";
-import pavillonThiaisCuisineAsset from "@/assets/pavillon-thiais-cuisine-interieur.jpg.asset.json";
-import pavillonThiaisEscalierAsset from "@/assets/pavillon-thiais-escalier.jpg.asset.json";
-import pavillonThiaisFacadeAsset from "@/assets/pavillon-thiais-facade.jpg.asset.json";
-import haussmannienDaruAvantAsset from "@/assets/haussmannien-daru-avant.jpg.asset.json";
-import haussmannienDaruApresAsset from "@/assets/haussmannien-daru-apres.jpg.asset.json";
-import daruCouloirRenoveAsset from "@/assets/daru-couloir-renove.jpg.asset.json";
-import daruParquetCouloirAsset from "@/assets/daru-parquet-couloir.jpg.asset.json";
-import soignollesApresAsset from "@/assets/soignolles-apres.jpg.asset.json";
-import soignollesCharpenteAsset from "@/assets/soignolles-charpente.jpg.asset.json";
-import soignollesCouvertureAsset from "@/assets/soignolles-couverture.jpg.asset.json";
-import soignollesGrosOeuvreAsset from "@/assets/soignolles-gros-oeuvre.jpg.asset.json";
-import localProPiecePierreAsset from "@/assets/local-pro-piece-pierre.jpg.asset.json";
-import localProCouloirAsset from "@/assets/local-pro-couloir.jpg.asset.json";
-import localProReserveAsset from "@/assets/local-pro-reserve.jpg.asset.json";
-import localProFacadeCourAsset from "@/assets/local-pro-facade-cour.jpg.asset.json";
-import localProPlateauCarreleAsset from "@/assets/local-pro-plateau-carrele.jpg.asset.json";
-import localProSalleCarreleeAsset from "@/assets/local-pro-salle-carrelee.jpg.asset.json";
+import logoAsset from "@/assets/logo_wagbtp.png";
+import accueilHeroAsset from "@/assets/wag1.png";
+import cantineMontmirailApresAsset from "@/assets/facade-cantine-montmirail-renovee.jpg";
+import cantineMontmirailAvantAsset from "@/assets/cantine-montmirail-avant.png";
+import gendarmerieAvantAsset from "@/assets/gendarmerie-avant.jpg";
+import gendarmerieApresAsset from "@/assets/gendarmerie-apres.jpg";
+import gendarmerieGrosOeuvreAsset from "@/assets/gendarmerie-gros-oeuvre.jpg";
+import gendarmerieInterieurAsset from "@/assets/gendarmerie-interieur.jpg";
+import gendarmerieEntreeAsset from "@/assets/gendarmerie-entree.png";
+import gendarmerieVrdAsset from "@/assets/gendarmerie-vrd.jpg";
+import wag2Asset from "@/assets/wag2.png";
+import pavillonThiaisCuisineAsset from "@/assets/pavillon-thiais-cuisine-interieur.jpg";
+import pavillonThiaisEscalierAsset from "@/assets/pavillon-thiais-escalier.jpg";
+import pavillonThiaisFacadeAsset from "@/assets/pavillon-thiais-facade.jpg";
+import haussmannienDaruAvantAsset from "@/assets/haussmannien-daru-avant.jpg";
+import haussmannienDaruApresAsset from "@/assets/haussmannien-daru-apres.jpg";
+import daruCouloirRenoveAsset from "@/assets/daru-couloir-renove.jpg";
+import daruParquetCouloirAsset from "@/assets/daru-parquet-couloir.jpg";
+import soignollesApresAsset from "@/assets/soignolles-apres.jpg";
+import soignollesCharpenteAsset from "@/assets/soignolles-charpente.jpg";
+import soignollesCouvertureAsset from "@/assets/soignolles-couverture.jpg";
+import soignollesGrosOeuvreAsset from "@/assets/soignolles-gros-oeuvre.jpg";
+import localProPiecePierreAsset from "@/assets/local-pro-piece-pierre.jpg";
+import localProCouloirAsset from "@/assets/local-pro-couloir.jpg";
+import localProReserveAsset from "@/assets/local-pro-reserve.jpg";
+import localProFacadeCourAsset from "@/assets/local-pro-facade-cour.jpg";
+import localProPlateauCarreleAsset from "@/assets/local-pro-plateau-carrele.jpg";
+import localProSalleCarreleeAsset from "@/assets/local-pro-salle-carrelee.jpg";
 
 export const img = {
-  logo: logoAsset.url,
-  hero: accueilHeroAsset.url,
-  particuliersHero: wag2Asset.url,
-  entreprisesHero: localProFacadeCourAsset.url,
-  cantineMontmirailAvant: cantineMontmirailAvantAsset.url,
-  cantineMontmirailApres: cantineMontmirailApresAsset.url,
-  gendarmerieAvant: gendarmerieAvantAsset.url,
-  gendarmerieApres: gendarmerieApresAsset.url,
+  logo: logoAsset,
+  hero: accueilHeroAsset,
+  particuliersHero: wag2Asset,
+  entreprisesHero: localProFacadeCourAsset,
+  cantineMontmirailAvant: cantineMontmirailAvantAsset,
+  cantineMontmirailApres: cantineMontmirailApresAsset,
+  gendarmerieAvant: gendarmerieAvantAsset,
+  gendarmerieApres: gendarmerieApresAsset,
 };
 
 
@@ -44,17 +44,17 @@ export const pavillonThiais = {
   resume: "Rénovation d'un pavillon à Thiais, des espaces intérieurs jusqu'à la façade.",
   galerie: [
     {
-      image: pavillonThiaisCuisineAsset.url,
+      image: pavillonThiaisCuisineAsset,
       alt: "Cuisine rénovée avec îlot central dans le pavillon de Thiais",
       legende: "Cuisine et îlot central",
     },
     {
-      image: pavillonThiaisEscalierAsset.url,
+      image: pavillonThiaisEscalierAsset,
       alt: "Escalier courbe rénové dans le pavillon de Thiais",
       legende: "Escalier intérieur",
     },
     {
-      image: pavillonThiaisFacadeAsset.url,
+      image: pavillonThiaisFacadeAsset,
       alt: "Façade rénovée du pavillon de Thiais",
       legende: "Façade du pavillon",
     },
@@ -65,16 +65,16 @@ export const appartementHaussmannien = {
   titre: "Appartement haussmannien — rue Daru",
   resume:
     "Rénovation du séjour avec remise en état des décors, des murs et du parquet en point de Hongrie.",
-  avant: haussmannienDaruAvantAsset.url,
-  apres: haussmannienDaruApresAsset.url,
+  avant: haussmannienDaruAvantAsset,
+  apres: haussmannienDaruApresAsset,
   galerie: [
     {
-      image: daruParquetCouloirAsset.url,
+      image: daruParquetCouloirAsset,
       alt: "Couloir rénové avec parquet en point de Hongrie rue Daru",
       legende: "Parquet en point de Hongrie",
     },
     {
-      image: daruCouloirRenoveAsset.url,
+      image: daruCouloirRenoveAsset,
       alt: "Couloir haussmannien rénové avec moulures rue Daru",
       legende: "Moulures et finitions",
     },
@@ -87,22 +87,22 @@ export const constructionSoignolles = {
     "Construction de logements, du gros œuvre à la livraison : maçonnerie, charpente, couverture, menuiseries et façades.",
   galerie: [
     {
-      image: soignollesGrosOeuvreAsset.url,
+      image: soignollesGrosOeuvreAsset,
       alt: "Maçonnerie et pose de la charpente du chantier de Soignolles",
       legende: "Gros œuvre et charpente",
     },
     {
-      image: soignollesCharpenteAsset.url,
+      image: soignollesCharpenteAsset,
       alt: "Charpente en cours de pose sur le chantier de Soignolles",
       legende: "Pose de la charpente",
     },
     {
-      image: soignollesCouvertureAsset.url,
+      image: soignollesCouvertureAsset,
       alt: "Couverture et menuiseries en cours sur le chantier de Soignolles",
       legende: "Couverture et menuiseries",
     },
     {
-      image: soignollesApresAsset.url,
+      image: soignollesApresAsset,
       alt: "Logements de Soignolles après réalisation des façades",
       legende: "Façades après travaux",
     },
@@ -115,27 +115,27 @@ export const renovationLocalProfessionnel = {
     "Remise en état complète des espaces intérieurs : supports, peintures, sols carrelés, éclairage et accès sur cour.",
   galerie: [
     {
-      image: localProPiecePierreAsset.url,
+      image: localProPiecePierreAsset,
       alt: "Pièce rénovée avec mur en pierre apparent dans un local professionnel",
       legende: "Pierre apparente et finitions",
     },
     {
-      image: localProCouloirAsset.url,
+      image: localProCouloirAsset,
       alt: "Circulation rénovée et éclairée dans un local professionnel",
       legende: "Circulations intérieures",
     },
     {
-      image: localProPlateauCarreleAsset.url,
+      image: localProPlateauCarreleAsset,
       alt: "Plateau professionnel rénové avec sol carrelé et éclairage",
       legende: "Plateau principal",
     },
     {
-      image: localProSalleCarreleeAsset.url,
+      image: localProSalleCarreleeAsset,
       alt: "Salle annexe rénovée dans un local professionnel",
       legende: "Salle annexe",
     },
     {
-      image: localProReserveAsset.url,
+      image: localProReserveAsset,
       alt: "Réserve carrelée remise en état dans un local professionnel",
       legende: "Réserve",
     },
@@ -193,21 +193,21 @@ export const methode = [
 
 export const realisationsPhares = [
   {
-    image: gendarmerieApresAsset.url,
+    image: gendarmerieApresAsset,
     alt: "Gendarmerie nationale de Survilliers livrée après travaux",
     cible: "Entreprises",
     projet: "Gendarmerie de Survilliers (95)",
     resultat: "Construction et aménagement complets : gros œuvre, cellules sécurisées, façades et VRD.",
   },
   {
-    image: cantineMontmirailApresAsset.url,
+    image: cantineMontmirailApresAsset,
     alt: "Façade rénovée de la cantine de Montmirail",
     cible: "Entreprises",
     projet: "Cantine de Montmirail",
     resultat: "Reprise complète de la façade : supports, ouvertures et nouvelle finition.",
   },
   {
-    image: pavillonThiaisFacadeAsset.url,
+    image: pavillonThiaisFacadeAsset,
     alt: "Façade rénovée du pavillon de Thiais",
     cible: "Particuliers",
     projet: "Pavillon à Thiais",
@@ -336,22 +336,22 @@ export const gendarmerieSurvilliers = {
   ],
   galerie: [
     {
-      image: gendarmerieGrosOeuvreAsset.url,
+      image: gendarmerieGrosOeuvreAsset,
       alt: "Gros œuvre de la gendarmerie de Survilliers en cours d'élévation",
       legende: "Élévation du gros œuvre et réservations des ouvertures.",
     },
     {
-      image: gendarmerieInterieurAsset.url,
+      image: gendarmerieInterieurAsset,
       alt: "Couloir des cellules de garde à vue avec portes blindées",
       legende: "Cellules de garde à vue : portes blindées et verrouillage.",
     },
     {
-      image: gendarmerieEntreeAsset.url,
+      image: gendarmerieEntreeAsset,
       alt: "Entrée de la gendarmerie nationale de Survilliers terminée",
       legende: "Façade d'accueil, serrurerie et signalétique posées.",
     },
     {
-      image: gendarmerieVrdAsset.url,
+      image: gendarmerieVrdAsset,
       alt: "Voiries et abords de la gendarmerie de Survilliers livrés",
       legende: "Abords livrés : enrobés, bordures, marquage et espaces verts.",
     },
