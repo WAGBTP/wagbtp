@@ -1,10 +1,10 @@
-import logo from "@/assets/logo_wagbtp.png.asset.json";
+import logo from "@/assets/logo_wagbtp.png";
 
 /** Logo officiel WAG-BTP (image d'origine, sans fond ajouté). */
 export function LogoWagBtp({ onDark = false }: { onDark?: boolean }) {
   return (
     <img
-      src={logo.url}
+      src={logo}
       alt="WAG-BTP"
       width={786}
       height={918}
