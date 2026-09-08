@@ -13,6 +13,12 @@ const serverEnv = loadEnv(process.env["NODE_ENV"] ?? "development", process.cwd(
 Object.assign(process.env, serverEnv);
 
 export default defineConfig({
+  // Hostinger exécute le résultat du build comme une application Node.js.
+  // Sans ce preset, un build hors Hostinger peut produire un Worker Cloudflare,
+  // qui ne peut pas lire le fichier .env persistant du compte d'hébergement.
+  nitro: {
+    preset: "node-server",
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
