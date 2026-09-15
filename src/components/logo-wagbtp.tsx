@@ -8,7 +8,7 @@ export function LogoWagBtp({ onDark = false }: { onDark?: boolean }) {
       alt="WAG-BTP"
       width={786}
       height={918}
-      className={onDark ? "h-22 w-auto shrink-0" : "h-20 w-auto shrink-0"}
+      className={onDark ? "h-16 w-auto shrink-0" : "h-14 w-auto shrink-0"}
     />
   );
 }
