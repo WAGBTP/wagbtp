@@ -35,7 +35,7 @@ export function SiteHeader() {
           <span className="sr-only">WAG BTP — accueil</span>
         </Link>
 
-        <nav className="hidden items-center justify-center gap-8 lg:flex" aria-label="Navigation principale">
+        <nav className="hidden items-center justify-center gap-5 lg:flex xl:gap-8" aria-label="Navigation principale">
           {links.map((link) => (
             <Link
               key={link.to}
@@ -49,7 +49,7 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-6 lg:flex">
+        <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           <a
             href={company.phoneHref}
             className="text-[0.95rem] text-muted-foreground transition-colors hover:text-primary"
