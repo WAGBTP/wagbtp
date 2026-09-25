@@ -1,24 +1,24 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Building2, HardHat, ShieldCheck } from "lucide-react";
+import { ArrowRight, Award, Building2, Handshake, HardHat, Leaf, ShieldCheck } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { CtaBand, SectionHeading } from "@/components/site-sections";
-import { chiffres, company, img, methode, realisationsPhares, valeurs } from "@/lib/site-data";
+import { CtaBand, RealisationsExemples, SectionHeading } from "@/components/site-sections";
+import { chiffres, company, img, methode } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "WAG BTP — Entreprise générale tous corps d'état en Île-de-France" },
+      { title: "WAG BTP — Entreprise générale tous corps d'état en France" },
       {
         name: "description",
         content:
-          "WAG BTP, entreprise générale de bâtiment tous corps d'état depuis 2013 : rénovation et construction pour particuliers et entreprises en Île-de-France et Guadeloupe. Devis gratuit.",
+          "WAG BTP, entreprise générale de bâtiment tous corps d'état depuis 2013 : rénovation et construction pour particuliers et entreprises en France et Guadeloupe. Devis gratuit.",
       },
-      { property: "og:title", content: "WAG BTP — Votre vision, notre expertise chantier" },
+      { property: "og:title", content: "WAG BTP réalise votre habitat idéal clé en main" },
       {
         property: "og:description",
         content:
-          "Rénovation et construction tous corps d'état, clé en main. Un interlocuteur unique, un chantier suivi. Île-de-France et Guadeloupe.",
+          "Rénovation et construction tous corps d'état, clé en main. Un interlocuteur unique, un chantier suivi. France et Guadeloupe.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -38,16 +38,15 @@ function Accueil() {
           <p className="eyebrow eyebrow-gold rule-gold">
             Tous corps d'état · depuis {company.depuis}
           </p>
-          <h1 className="mt-6 text-[2.25rem] leading-[1.02] text-primary-foreground sm:text-[3.25rem] lg:text-[3.5rem]">
-            Votre vision,
-            <br />
-            <span className="text-gold">notre expertise</span>
-            <br />
-            chantier.
+          <h1 className="mt-6 text-[2.25rem] leading-[1.05] text-primary-foreground sm:text-[3.25rem] lg:text-[3.5rem]">
+            WAG BTP réalise <span className="text-gold">votre habitat idéal</span> clé en main.
           </h1>
-          <p className="mt-7 max-w-md text-lg leading-relaxed text-primary-foreground/85">
-            WAG BTP matérialise votre habitat idéal, clé en main. Rénovation, construction,
-            extension, terrasse — de l'étude à la réception.
+          <p className="mt-6 font-display text-xl font-bold text-primary-foreground">
+            Rénovation, Construction et Extension.
+          </p>
+          <p className="mt-4 max-w-md text-lg leading-relaxed text-primary-foreground/85">
+            WAG BTP pilote vos travaux tous corps d'état, de la conception à la concrétisation, avec
+            un interlocuteur unique et un suivi de chantier rigoureux.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -65,9 +64,6 @@ function Accueil() {
             </Button>
           </div>
 
-          <p className="mt-10 max-w-lg border-l-2 border-gold pl-4 text-sm leading-relaxed text-primary-foreground/65">
-            {company.promesse}
-          </p>
         </div>
 
         <img
@@ -82,7 +78,7 @@ function Accueil() {
       {/* DOUBLE ENTREE */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
         <SectionHeading
-          eyebrow="Deux entrées, deux discours"
+          eyebrow="Nos clients"
           titre="Dites-nous qui vous êtes, nous adaptons le chantier."
           texte="Particuliers et professionnels n'ont pas les mêmes attentes. Chaque parcours a sa page, ses réalisations et son formulaire."
         />
@@ -92,16 +88,22 @@ function Accueil() {
               to: "/particuliers" as const,
               icon: HardHat,
               titre: "Particuliers",
-              texte:
-                "Salle de bain, cuisine, séjour, rénovation complète, construction, extension, terrasse. Budget maîtrisé et chantier documenté.",
+              points: [
+                "Rénovation partielle ou complète : salle de bain, cuisine, extension, terrasse.",
+                "Un budget maîtrisé et un suivi de chantier documenté.",
+              ],
               lien: "Voir les prestations particuliers",
             },
             {
               to: "/entreprises" as const,
               icon: Building2,
               titre: "Entreprises",
-              texte:
-                "Parcs immobiliers, bureaux, locaux professionnels. Capacité d'exécution, pilotage multi-sites, reporting et interlocuteur unique.",
+              points: [
+                "Rénovation de parcs immobiliers : locaux professionnels et commerces (entrepôts…), marchés publics.",
+                "Pilotage multi-sites : comptes rendus réguliers, un interlocuteur unique.",
+                "Reporting.",
+                "Site occupé : protection et sécurité des usagers pendant les travaux, nettoyage quotidien de la zone d'intervention.",
+              ],
               lien: "Voir les prestations entreprises",
             },
           ].map((card, i) => (
@@ -114,7 +116,14 @@ function Accueil() {
             >
               <card.icon className="size-7 text-primary" aria-hidden="true" />
               <h3 className="mt-6 text-2xl text-card-foreground">{card.titre}</h3>
-              <p className="mt-4 flex-1 leading-relaxed text-muted-foreground">{card.texte}</p>
+              <ul className="mt-4 flex-1 space-y-2.5">
+                {card.points.map((p) => (
+                  <li key={p} className="flex items-start gap-3 leading-relaxed text-muted-foreground">
+                    <span className="mt-2.5 size-1.5 shrink-0 bg-gold" aria-hidden="true" />
+                    {p}
+                  </li>
+                ))}
+              </ul>
               <span className="mt-8 inline-flex items-center gap-2 font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary">
                 {card.lien}
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -138,45 +147,14 @@ function Accueil() {
         </div>
       </section>
 
-      {/* REALISATIONS */}
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
-        <SectionHeading
-          eyebrow="Réalisations"
-          titre="Trois chantiers, trois preuves."
-          texte="Logements collectifs, bâtiments publics, maisons individuelles : la même méthode, quelle que soit l'échelle."
-        />
-        <div className="mt-12 grid gap-0 border border-border md:grid-cols-3">
-          {realisationsPhares.map((r, i) => (
-            <article
-              key={r.projet}
-              className={`bg-card ${i > 0 ? "border-t border-border md:border-l md:border-t-0" : ""}`}
-            >
-              <img
-                src={r.image}
-                alt={r.alt}
-                width={1200}
-                height={900}
-                loading="lazy"
-                className="aspect-4/3 w-full object-cover"
-              />
-              <div className="p-7">
-                <p className="font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-gold">
-                  {r.cible}
-                </p>
-                <h3 className="mt-3 text-lg leading-snug text-card-foreground">{r.projet}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{r.resultat}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
+      <RealisationsExemples />
 
       {/* METHODE — frise horizontale sur anthracite */}
       <section className="surface-deep blueprint">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
           <SectionHeading
             eyebrow=""
-            titre="Cinq étapes, aucune zone d'ombre."
+            titre="5 étapes, aucune zone d'ombre."
             texte="De la première visite à la remise des clés, vous savez toujours où en est le chantier."
             onDark
           />
@@ -225,13 +203,22 @@ function Accueil() {
 
       {/* VALEURS */}
       <section className="bg-secondary">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:grid-cols-2 sm:px-6 sm:py-20 lg:grid-cols-4 lg:px-10">
-          {valeurs.map((v) => (
-            <div key={v.titre}>
-              <h2 className="eyebrow rule-gold">{v.titre}</h2>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{v.texte}</p>
-            </div>
-          ))}
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-10">
+          <SectionHeading eyebrow="Engagement" titre="Nos valeurs" />
+          <ul className="mt-10 grid gap-6 sm:grid-cols-3">
+            {[
+              { icon: Leaf, titre: "Éco-construction" },
+              { icon: Award, titre: "Rigueur et qualité" },
+              { icon: Handshake, titre: "Respect des engagements" },
+            ].map((v) => (
+              <li key={v.titre} className="flex items-center gap-4 border border-border bg-card p-6">
+                <span className="inline-flex size-12 shrink-0 items-center justify-center bg-primary/10">
+                  <v.icon className="size-6 text-primary" aria-hidden="true" />
+                </span>
+                <h3 className="text-lg text-card-foreground">{v.titre}</h3>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
