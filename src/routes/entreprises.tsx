@@ -66,7 +66,7 @@ function Entreprises() {
       {/* HERO */}
       <section className="grid lg:grid-cols-2">
         <div className="surface-deep blueprint flex flex-col justify-center px-4 py-14 sm:px-6 sm:py-20 lg:min-h-[32rem] lg:pl-10 lg:pr-14 xl:pl-16">
-          <p className="eyebrow eyebrow-gold rule-gold">Entreprises & gestionnaires</p>
+          <p className="eyebrow eyebrow-gold rule-gold">Entreprises & marchés publics</p>
           <h1 className="mt-6 text-[2.25rem] leading-[1.02] text-anthracite-foreground sm:text-[3.25rem]">
             Des chantiers tenus,
             <br />

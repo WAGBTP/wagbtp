@@ -27,6 +27,20 @@ import { company } from "@/lib/site-data";
 
 type Profil = "particulier" | "entreprise";
 
+const typesProjet = [
+  { slug: "salle-de-bain", label: "Salle de bain" },
+  { slug: "cuisine", label: "Cuisine" },
+  { slug: "sejour", label: "Séjour" },
+  { slug: "renovation-complete", label: "Rénovation complète" },
+  { slug: "construction-neuve", label: "Construction" },
+  { slug: "extension", label: "Extension" },
+  { slug: "terrasse", label: "Terrasse" },
+  { slug: "parc-immobilier", label: "Parc immobilier" },
+  { slug: "locaux-professionnels", label: "Locaux professionnels et commerces" },
+  { slug: "marches-publics", label: "Marchés publics" },
+  { slug: "autre", label: "Autre" },
+] as const;
+
 export const Route = createFileRoute("/contact")({
   validateSearch: (search: Record<string, unknown>) => {
     const profil = search["profil"];
@@ -72,6 +86,7 @@ const schema = z
     ville: z.string().trim().min(2, "Indiquez la ville ou le code postal.").max(80),
     typeProjet: z.string().trim().min(2, "Précisez le type de projet.").max(120),
     delai: z.string().trim().max(80).optional(),
+    disponibilites: z.string().trim().max(200).optional(),
     message: z
       .string()
       .trim()
@@ -105,8 +120,9 @@ function Contact() {
       email: "",
       telephone: "",
       ville: "",
-      typeProjet: search.projet ? search.projet.replace(/-/g, " ") : "",
+      typeProjet: typesProjet.find((t) => t.slug === search.projet)?.label ?? "",
       delai: "",
+      disponibilites: "",
       message: "",
       consentement: false as unknown as true,
     },
@@ -129,6 +145,7 @@ function Contact() {
           ville: values.ville,
           typeProjet: values.typeProjet,
           delai: values.delai || undefined,
+          disponibilites: values.disponibilites || undefined,
           message: values.message,
         },
       });
@@ -143,7 +160,7 @@ function Contact() {
 
 
   const infos = [
-    { icon: MapPin, titre: "Zone d'intervention", valeur: "Île-de-France · Guadeloupe" },
+    { icon: MapPin, titre: "Zone d'intervention", valeur: "France · Guadeloupe" },
     { icon: Phone, titre: "Téléphone", valeur: company.phone, href: company.phoneHref },
     { icon: Mail, titre: "E-mail", valeur: company.email, href: `mailto:${company.email}` },
     { icon: Clock, titre: "Délai de réponse", valeur: "Sous 24 à 48h ouvrées" },
@@ -360,14 +377,17 @@ function Contact() {
                           {profil === "entreprise" ? "Nature de l'intervention" : "Type de projet"}
                         </FormLabel>
                         <FormControl>
-                          <Input
-                            placeholder={
-                              profil === "entreprise"
-                                ? "Rénovation de plateau de bureaux"
-                                : "Rénovation salle de bain"
-                            }
+                          <select
                             {...field}
-                          />
+                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base md:text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                          >
+                            <option value="">Choisir…</option>
+                            {typesProjet.map((t) => (
+                              <option key={t.slug} value={t.label}>
+                                {t.label}
+                              </option>
+                            ))}
+                          </select>
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -382,6 +402,20 @@ function Contact() {
                         <FormLabel className={labelCls}>Délai souhaité (optionnel)</FormLabel>
                         <FormControl>
                           <Input placeholder="Dès que possible / 3 mois" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="disponibilites"
+                    render={({ field }) => (
+                      <FormItem className="sm:col-span-2">
+                        <FormLabel className={labelCls}>RDV : vos disponibilités</FormLabel>
+                        <FormControl>
+                          <Input placeholder="Ex. : mardi matin, jeudi après 17h" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
