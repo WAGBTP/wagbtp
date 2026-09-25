@@ -2,11 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { BeforeAfter, CtaBand, SectionHeading } from "@/components/site-sections";
+import { BeforeAfter, CtaBand, PhotoPlaceholder, SectionHeading } from "@/components/site-sections";
 import {
   appartementHaussmannien,
   constructionSoignolles,
-  img,
+  methode,
   pavillonThiais,
   projetsConstruction,
   projetsParticuliers,
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/particuliers")({
       {
         name: "description",
         content:
-          "Salle de bain, cuisine, séjour, rénovation complète, construction, extension et terrasse : WAG BTP pilote vos travaux clé en main en Île-de-France et Guadeloupe.",
+          "Salle de bain, cuisine, séjour, rénovation complète, construction, extension et terrasse : WAG BTP pilote vos travaux clé en main en France et Guadeloupe.",
       },
       { property: "og:title", content: "Particuliers — Rénovation et construction | WAG BTP" },
       {
@@ -44,14 +44,22 @@ function ProjetCard({
     titre: string;
     texte: string;
     inclus: string[];
+    labelInclus?: string;
+    avantApres?: boolean;
   };
 }) {
   return (
     <article id={projet.slug} className="flex flex-col border border-border bg-card p-6 sm:p-7">
       <h3 className="text-2xl text-card-foreground">{projet.titre}</h3>
       <p className="mt-3 leading-relaxed text-muted-foreground">{projet.texte}</p>
+      {projet.avantApres && (
+        <div className="mt-6 grid grid-cols-2 gap-3">
+          <PhotoPlaceholder label={`${projet.titre} — avant`} />
+          <PhotoPlaceholder label={`${projet.titre} — après`} />
+        </div>
+      )}
       <p className="mt-7 font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary">
-        Ce qui est inclus
+        {projet.labelInclus ?? "Nos prestations"}
       </p>
       <ul className="mt-4 flex-1 space-y-2.5">
         {projet.inclus.map((i) => (
@@ -86,8 +94,8 @@ function Particuliers() {
               <span className="text-primary">notre chantier.</span>
             </h1>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground">
-              Chaque prestation est chiffrée poste par poste : dépose, réseaux, supports, finitions.
-              Rien n'est laissé en option cachée.
+              Chaque prestation est chiffrée poste par poste : dépose, réseaux, structure, finitions.
+              Rien n'est laissé au hasard. Aucune surprise.
             </p>
             <Button asChild size="xl" className="mt-8">
               <Link to="/contact" search={{ profil: "particulier" }}>
@@ -98,13 +106,7 @@ function Particuliers() {
           </div>
 
           <figure className="relative">
-            <img
-              src={img.particuliersHero}
-              alt="Pavillon avec piscine et terrasse réalisé par WAG BTP"
-              width={1200}
-              height={900}
-              className="aspect-4/3 w-full bg-muted object-cover"
-            />
+            <PhotoPlaceholder label="Appartement haussmannien – rue Daru" />
             <figcaption className="absolute -bottom-4 left-0 bg-gold px-5 py-3 sm:-left-6">
               <span className="block font-display text-lg font-extrabold text-gold-foreground">
                 Clé en main
@@ -132,7 +134,7 @@ function Particuliers() {
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
           <SectionHeading
             eyebrow="Construction maison individuelle"
-            titre="Agrandir, construire, prolonger dehors."
+            titre="Construire, agrandir, étendre."
             texte="Du dossier d'urbanisme au raccord avec l'existant, nous prenons en charge l'ensemble des lots."
           />
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
@@ -245,20 +247,15 @@ function Particuliers() {
       {/* DEROULE */}
       <section className="border-t border-border">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
-          <SectionHeading eyebrow="Déroulé simplifié" titre="Ce qui se passe après votre message." />
-          <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            { t: "Échange", d: "Nous rappelons sous 24 à 48h ouvrées pour cadrer le besoin." },
-            { t: "Visite technique", d: "Relevé sur place, contraintes et faisabilité." },
-            { t: "Devis détaillé", d: "Chiffrage par poste, matériaux et délais annoncés." },
-            { t: "Chantier & réception", d: "Planning suivi, points d'avancement, levée des réserves." },
-          ].map((s, i) => (
-            <li key={s.t} className="border-t border-border pt-6">
+          <SectionHeading eyebrow="Les étapes" titre="5 étapes, aucune zone d'ombre." />
+          <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+          {methode.map((s) => (
+            <li key={s.etape} className="border-t border-border pt-6">
               <span className="font-display text-sm font-bold tracking-[0.18em] text-primary">
-                0{i + 1}
+                {s.etape}
               </span>
-              <h3 className="mt-3 text-lg">{s.t}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
+              <h3 className="mt-3 text-lg">{s.titre}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.texte}</p>
             </li>
           ))}
           </ol>

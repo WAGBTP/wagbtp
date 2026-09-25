@@ -14,11 +14,11 @@ import {
 export const Route = createFileRoute("/entreprises")({
   head: () => ({
     meta: [
-      { title: "Rénovation de parcs immobiliers, bureaux et locaux | WAG BTP" },
+      { title: "Parcs immobiliers, locaux professionnels et marchés publics | WAG BTP" },
       {
         name: "description",
         content:
-          "WAG BTP rénove parcs immobiliers, bureaux et locaux professionnels en Île-de-France : site occupé, pilotage multi-sites, reporting et interlocuteur unique.",
+          "WAG BTP rénove parcs immobiliers, locaux professionnels, commerces et bâtiments publics en France et Guadeloupe : site occupé, pilotage multi-sites, reporting et interlocuteur unique.",
       },
       { property: "og:title", content: "Entreprises — Rénovation tous corps d'état | WAG BTP" },
       {
@@ -267,7 +267,7 @@ function Entreprises() {
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
         <SectionHeading
           eyebrow="Nos engagements"
-          titre="Ce que vous obtenez en confiant un lot à WAG BTP."
+          titre="Ce que vous obtenez en confiant votre projet à WAG BTP."
         />
         <div className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {engagementsPro.map((e) => (
