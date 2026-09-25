@@ -14,6 +14,7 @@ interface DevisNotificationProps {
   ville?: string;
   typeProjet?: string;
   delai?: string;
+  disponibilites?: string;
   message?: string;
 }
 
@@ -36,6 +37,7 @@ function DevisNotification({
   ville = "",
   typeProjet = "",
   delai = "",
+  disponibilites = "",
   message = "",
 }: DevisNotificationProps) {
   return (
@@ -56,6 +58,7 @@ function DevisNotification({
           {ligne("Ville / code postal", ville)}
           {ligne("Type de projet", typeProjet)}
           {ligne("Délai souhaité", delai)}
+          {ligne("RDV : disponibilités", disponibilites)}
           <Hr style={{ borderColor: "#E5E4DE", margin: "20px 0" }} />
           <Text
             style={{ fontSize: "15px", lineHeight: 1.6, color: "#42424A", whiteSpace: "pre-line" }}

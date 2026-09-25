@@ -1,9 +1,68 @@
 import { Link } from "@tanstack/react-router";
-import { ChevronsLeftRight } from "lucide-react";
+import { ChevronsLeftRight, ImageIcon } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { company } from "@/lib/site-data";
+import { company, realisationsPhares } from "@/lib/site-data";
+
+/** Emplacement photo en attente des visuels fournis par WAG BTP. */
+export function PhotoPlaceholder({
+  label,
+  className = "aspect-4/3",
+}: {
+  label: string;
+  className?: string;
+}) {
+  return (
+    <div
+      role="img"
+      aria-label={`Emplacement photo : ${label}`}
+      className={`flex w-full flex-col items-center justify-center gap-3 border border-dashed border-border bg-muted p-4 text-center ${className}`}
+    >
+      <ImageIcon className="size-7 text-muted-foreground/60" aria-hidden="true" />
+      <span className="font-display text-[0.7rem] font-bold uppercase tracking-[0.16em] text-muted-foreground">
+        {label}
+      </span>
+      <span className="text-xs text-muted-foreground/70">Photo à venir</span>
+    </div>
+  );
+}
+
+/** Section « Quelques exemples » : réalisations phares. */
+export function RealisationsExemples() {
+  return (
+    <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
+      <SectionHeading
+        eyebrow="Réalisations"
+        titre="Quelques exemples"
+        texte="La même rigueur d'exécution, quels que soient le projet et le client."
+      />
+      <div className="mt-12 grid gap-0 border border-border md:grid-cols-3">
+        {realisationsPhares.map((r, i) => (
+          <article
+            key={r.projet}
+            className={`bg-card ${i > 0 ? "border-t border-border md:border-l md:border-t-0" : ""}`}
+          >
+            <img
+              src={r.image}
+              alt={r.alt}
+              width={1200}
+              height={900}
+              loading="lazy"
+              className="aspect-4/3 w-full object-cover"
+            />
+            <div className="p-7">
+              <p className="font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-gold">
+                {r.cible}
+              </p>
+              <h3 className="mt-3 text-lg leading-snug text-card-foreground">{r.projet}</h3>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export function SectionHeading({
   eyebrow,

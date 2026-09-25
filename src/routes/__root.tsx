@@ -118,8 +118,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "GeneralContractor",
           name: "WAG BTP",
           description:
-            "Entreprise générale de bâtiment tous corps d'état depuis 2013 : rénovation et construction pour particuliers et entreprises en Île-de-France et en Guadeloupe.",
-          telephone: "+33682758037",
+            "Entreprise générale de bâtiment tous corps d'état depuis 2013 : rénovation et construction pour particuliers et entreprises en France et en Guadeloupe.",
+          telephone: "+33186041991",
           email: "wagbtp@gmail.com",
           foundingDate: "2013",
           address: {
@@ -127,7 +127,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             addressLocality: "Asnières-sur-Seine",
             addressCountry: "FR",
           },
-          areaServed: ["Île-de-France", "Guadeloupe"],
+          areaServed: ["France", "Guadeloupe"],
           knowsLanguage: "fr-FR",
         }),
       },
