@@ -15,6 +15,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EntreprisesRouteImport } from './routes/entreprises'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as ParticuliersRouteImport } from './routes/particuliers'
+import { Route as QuiSommesNousRouteImport } from './routes/qui-sommes-nous'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const ParticuliersRoute = ParticuliersRouteImport.update({
   path: '/particuliers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuiSommesNousRoute = QuiSommesNousRouteImport.update({
+  id: '/qui-sommes-nous',
+  path: '/qui-sommes-nous',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/entreprises': typeof EntreprisesRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/particuliers': typeof ParticuliersRoute
+  '/qui-sommes-nous': typeof QuiSommesNousRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/entreprises': typeof EntreprisesRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/particuliers': typeof ParticuliersRoute
+  '/qui-sommes-nous': typeof QuiSommesNousRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/entreprises': typeof EntreprisesRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/particuliers': typeof ParticuliersRoute
+  '/qui-sommes-nous': typeof QuiSommesNousRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/entreprises'
     | '/mentions-legales'
     | '/particuliers'
+    | '/qui-sommes-nous'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/entreprises'
     | '/mentions-legales'
     | '/particuliers'
+    | '/qui-sommes-nous'
   id:
     | '__root__'
     | '/'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/entreprises'
     | '/mentions-legales'
     | '/particuliers'
+    | '/qui-sommes-nous'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,6 +118,7 @@ export interface RootRouteChildren {
   EntreprisesRoute: typeof EntreprisesRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   ParticuliersRoute: typeof ParticuliersRoute
+  QuiSommesNousRoute: typeof QuiSommesNousRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -152,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ParticuliersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/qui-sommes-nous': {
+      id: '/qui-sommes-nous'
+      path: '/qui-sommes-nous'
+      fullPath: '/qui-sommes-nous'
+      preLoaderRoute: typeof QuiSommesNousRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -162,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   EntreprisesRoute: EntreprisesRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
   ParticuliersRoute: ParticuliersRoute,
+  QuiSommesNousRoute: QuiSommesNousRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
