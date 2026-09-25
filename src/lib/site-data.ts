@@ -282,7 +282,7 @@ export const offresEntreprises = [
   {
     slug: "locaux-professionnels",
     titre: "Locaux professionnels et commerces",
-    sousTitre: "Plateaux tertiaires, sièges, espaces d'accueil",
+    sousTitre: "Boutiques, bureaux, entrepôts, locaux d'activité",
     texte:
       "Aménagement et rénovation de plateaux : cloisonnement, faux plafonds, sols souples, électricité et CVC. Travaux possibles en horaires décalés pour ne pas interrompre l'activité.",
     points: ["Travaux en horaires décalés", "Coordination des corps d'état", "Livraison par zones"],

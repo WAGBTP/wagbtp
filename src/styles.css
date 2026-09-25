@@ -192,12 +192,9 @@
   }
 }
 
-/* Grille technique discrète, esprit plan de chantier */
+/* Quadrillage supprimé à la demande du client */
 @utility blueprint {
-  background-image:
-    linear-gradient(to right, oklch(1 0 0 / 6%) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(1 0 0 / 6%) 1px, transparent 1px);
-  background-size: 56px 56px;
+  background-image: none;
 }
 
 @utility surface-deep {
