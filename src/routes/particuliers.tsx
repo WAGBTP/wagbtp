@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
+import heroDaru from "@/assets/particuliers-hero-daru.jpg";
 import { Button } from "@/components/ui/button";
 import { BeforeAfter, CtaBand, PhotoPlaceholder, SectionHeading } from "@/components/site-sections";
 import {
@@ -105,7 +106,7 @@ function Particuliers() {
           </div>
 
           <figure className="relative">
-            <PhotoPlaceholder label="Appartement haussmannien – rue Daru" />
+            <img src={heroDaru} alt="Appartement haussmannien rénové rue Daru, parquet en point de Hongrie et moulures" width={960} height={1280} className="aspect-4/5 w-full object-cover" />
             <figcaption className="absolute -bottom-4 left-0 bg-gold px-5 py-3 sm:-left-6">
               <span className="block font-display text-lg font-extrabold text-gold-foreground">
                 Clé en main
