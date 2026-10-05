@@ -45,7 +45,7 @@ function ProjetCard({
     texte: string;
     inclus: string[];
     labelInclus?: string;
-    avantApres?: boolean;
+    avantApres?: { avant: string; apres: string };
   };
 }) {
   return (
@@ -53,9 +53,8 @@ function ProjetCard({
       <h3 className="text-2xl text-card-foreground">{projet.titre}</h3>
       <p className="mt-3 leading-relaxed text-muted-foreground">{projet.texte}</p>
       {projet.avantApres && (
-        <div className="mt-6 grid grid-cols-2 gap-3">
-          <PhotoPlaceholder label={`${projet.titre} — avant`} />
-          <PhotoPlaceholder label={`${projet.titre} — après`} />
+        <div className="mt-6 overflow-hidden border border-border">
+          <BeforeAfter avant={projet.avantApres.avant} apres={projet.avantApres.apres} titre={projet.titre} />
         </div>
       )}
       <p className="mt-7 font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary">
@@ -184,12 +183,12 @@ function Particuliers() {
             titre={pavillonThiais.titre}
             texte={pavillonThiais.resume}
           />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-[1.35fr_0.65fr_0.65fr]">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
             {pavillonThiais.galerie.map((photo, index) => (
               <figure
                 key={photo.image}
                 className={`group relative overflow-hidden bg-muted ${
-                  index === 0 ? "sm:col-span-2 lg:col-span-1" : ""
+                  ""
                 }`}
               >
                 <img
@@ -199,7 +198,7 @@ function Particuliers() {
                   height={1200}
                   loading="lazy"
                   className={`w-full object-cover transition-transform duration-500 group-hover:scale-[1.02] ${
-                    index === 0 ? "aspect-4/3" : "aspect-4/3 lg:aspect-auto lg:h-full"
+                    "aspect-4/3 lg:aspect-3/4"
                   }`}
                 />
                 <figcaption className="absolute inset-x-0 bottom-0 bg-anthracite/85 px-4 py-3 font-display text-xs font-bold uppercase tracking-[0.18em] text-anthracite-foreground">

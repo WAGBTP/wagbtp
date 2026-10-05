@@ -25,6 +25,11 @@ import localProCouloirAsset from "@/assets/local-pro-couloir.jpg";
 import localProReserveAsset from "@/assets/local-pro-reserve.jpg";
 import localProFacadeCourAsset from "@/assets/local-pro-facade-cour.jpg";
 import localProPlateauCarreleAsset from "@/assets/local-pro-plateau-carrele.jpg";
+import sdbAvantAsset from "@/assets/sdb-particulier-avant.png";
+import sdbApresAsset from "@/assets/sdb-particulier-apres.png";
+import cuisineAvantAsset from "@/assets/cuisine-particulier-avant.png";
+import cuisineApresAsset from "@/assets/cuisine-particulier-apres.png";
+import clotureAsset from "@/assets/pavillon-cloture-renovee.png";
 import localProSalleCarreleeAsset from "@/assets/local-pro-salle-carrelee.jpg";
 
 export const img = {
@@ -57,6 +62,11 @@ export const pavillonThiais = {
       image: pavillonThiaisFacadeAsset,
       alt: "Façade rénovée du pavillon de Thiais",
       legende: "Façade du pavillon",
+    },
+    {
+      image: clotureAsset,
+      alt: "Façade et clôture rénovées en enduit blanc cassé",
+      legende: "Façade et clôture rénovées",
     },
   ],
 };
@@ -218,7 +228,7 @@ export const projetsParticuliers = [
     texte:
       "Reprise complète de la plomberie et de l'électricité. Dépose complète, étanchéité, carrelage et appareillages.",
     labelInclus: "Rénovation",
-    avantApres: true,
+    avantApres: { avant: sdbAvantAsset, apres: sdbApresAsset },
     inclus: ["Plomberie", "Pose des équipements", "Étanchéité, carrelage"],
   },
   {
@@ -226,7 +236,7 @@ export const projetsParticuliers = [
     titre: "Cuisine",
     texte:
       "De la conception à la réalisation : implantation, réseaux, revêtements, pose du mobilier et des plans de travail.",
-    avantApres: true,
+    avantApres: { avant: cuisineAvantAsset, apres: cuisineApresAsset },
     inclus: ["Plan d'implantation", "Réseaux eau / élec / gaz", "Revêtements sols et murs", "Pose mobilier et électroménager"],
   },
   {
