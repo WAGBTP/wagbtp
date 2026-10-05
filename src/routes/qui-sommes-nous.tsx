@@ -207,14 +207,16 @@ function QuiSommesNous() {
             <li key={m.nom} className="border border-border bg-card p-6 text-center">
               <img
                 src={m.photo}
-                alt={`Portrait de ${m.nom}`}
+                alt={m.role === "Président" ? `Portrait de ${m.nom}` : `Portrait — ${m.role}`}
                 width={200}
                 height={200}
                 loading="lazy"
                 className="mx-auto size-32"
               />
-              <h3 className="mt-5 text-lg text-card-foreground">{m.nom}</h3>
-              <p className="mt-1 font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary">
+              {m.role === "Président" ? (
+                <h3 className="mt-5 text-lg text-card-foreground">{m.nom}</h3>
+              ) : null}
+              <p className={`${m.role === "Président" ? "mt-1" : "mt-5"} font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary`}>
                 {m.role}
               </p>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{m.texte}</p>
