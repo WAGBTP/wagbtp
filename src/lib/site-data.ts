@@ -30,6 +30,7 @@ import sdbApresAsset from "@/assets/sdb-particulier-apres.png";
 import cuisineAvantAsset from "@/assets/cuisine-particulier-avant.png";
 import cuisineApresAsset from "@/assets/cuisine-particulier-apres.png";
 import clotureAsset from "@/assets/pavillon-cloture-renovee.png";
+import daruChantierAsset from "@/assets/daru-chantier-parquet.png";
 import localProSalleCarreleeAsset from "@/assets/local-pro-salle-carrelee.jpg";
 
 export const img = {
@@ -87,6 +88,11 @@ export const appartementHaussmannien = {
       image: daruCouloirRenoveAsset,
       alt: "Couloir haussmannien rénové avec moulures rue Daru",
       legende: "Moulures et finitions",
+    },
+    {
+      image: daruChantierAsset,
+      alt: "Compagnon WAG BTP reprenant le parquet en point de Hongrie rue Daru",
+      legende: "Reprise du parquet en cours",
     },
   ],
 };

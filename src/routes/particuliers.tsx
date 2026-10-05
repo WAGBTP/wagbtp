@@ -225,7 +225,7 @@ function Particuliers() {
             titre={appartementHaussmannien.titre}
           />
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:col-start-2">
+        <div className="grid gap-4 sm:grid-cols-3 lg:col-start-2">
           {appartementHaussmannien.galerie.map((photo) => (
             <figure key={photo.image} className="relative overflow-hidden bg-muted">
               <img
