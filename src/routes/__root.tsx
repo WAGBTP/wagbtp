@@ -46,7 +46,7 @@ function ErrorComponent({ error, reset }: { error: unknown; reset: () => void })
   useEffect(() => {
     // Après un nouveau déploiement, les anciens chunks hachés n'existent plus :
     // on recharge une seule fois pour récupérer le nouveau manifeste.
-    if (typeof window !== "undefined" && STALE_CHUNK_PATTERN.test(error.message)) {
+    if (typeof window !== "undefined" && STALE_CHUNK_PATTERN.test(error instanceof Error ? error.message : String(error))) {
       const key = "wagbtp:stale-chunk-reload";
       if (!sessionStorage.getItem(key)) {
         sessionStorage.setItem(key, "1");
