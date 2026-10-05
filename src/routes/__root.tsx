@@ -40,7 +40,7 @@ function NotFoundComponent() {
 const STALE_CHUNK_PATTERN =
   /Failed to fetch dynamically imported module|error loading dynamically imported module|Importing a module script failed/i;
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
