@@ -69,7 +69,7 @@ function Accueil() {
 
         <img
           src={img.hero}
-          alt="Artisan WAG BTP rénovant un parquet ancien dans un appartement"
+          alt="Villa contemporaine blanche avec terrasse en bois et piscine réalisée par WAG BTP"
           width={1600}
           height={1104}
           className="h-72 w-full bg-muted object-cover sm:h-96 lg:h-full"

@@ -1,5 +1,5 @@
 import logoAsset from "@/assets/logo_wagbtp.png";
-import accueilHeroAsset from "@/assets/wag1.png";
+import accueilHeroAsset from "@/assets/accueil-hero-villa.png";
 import cantineMontmirailApresAsset from "@/assets/facade-cantine-montmirail-renovee.jpg";
 import cantineMontmirailAvantAsset from "@/assets/cantine-montmirail-avant.png";
 import gendarmerieAvantAsset from "@/assets/gendarmerie-avant.jpg";
