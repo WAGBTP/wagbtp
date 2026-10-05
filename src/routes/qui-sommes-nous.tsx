@@ -216,7 +216,7 @@ function QuiSommesNous() {
               {m.role === "Président" ? (
                 <h3 className="mt-5 text-lg text-card-foreground">{m.nom}</h3>
               ) : null}
-              <p className={`${m.role === "Président" ? "mt-1" : "mt-5"} font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary">
+              <p className={`${m.role === "Président" ? "mt-1" : "mt-5"} font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-primary`}>
                 {m.role}
               </p>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{m.texte}</p>
