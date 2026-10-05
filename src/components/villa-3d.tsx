@@ -25,7 +25,7 @@ export function Villa3D() {
         className={
           agrandi
             ? "fixed inset-0 z-[100] bg-background"
-            : "relative h-[32rem] overflow-hidden bg-muted shadow-[0_0_60px_30px_var(--color-card)] sm:h-[38rem]"
+            : "relative h-[32rem] overflow-hidden bg-muted shadow-[0_0_24px_10px_var(--color-card)] sm:h-[38rem]"
         }
       >
         <iframe
