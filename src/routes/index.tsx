@@ -3,6 +3,7 @@ import { ArrowRight, Award, Building2, Handshake, HardHat, Leaf, ShieldCheck } f
 
 import { Button } from "@/components/ui/button";
 import { CtaBand, RealisationsExemples, SectionHeading } from "@/components/site-sections";
+import { Villa3D } from "@/components/villa-3d";
 import { chiffres, company, img, methode } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
@@ -74,6 +75,8 @@ function Accueil() {
           className="h-72 w-full bg-muted object-cover sm:h-96 lg:h-full"
         />
       </section>
+
+      <Villa3D />
 
       {/* DOUBLE ENTREE */}
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-10">
