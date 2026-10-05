@@ -39,7 +39,7 @@ export function Villa3D() {
           variant="gold"
           size="sm"
           onClick={() => setAgrandi((v) => !v)}
-          className="absolute bottom-4 right-4 z-10 shadow-lg"
+          className="absolute left-4 top-4 z-10 shadow-lg sm:left-auto sm:top-auto sm:bottom-4 sm:right-4"
           aria-label={agrandi ? "Réduire l'animation" : "Agrandir l'animation"}
         >
           {agrandi ? <Minimize2 /> : <Maximize2 />}
