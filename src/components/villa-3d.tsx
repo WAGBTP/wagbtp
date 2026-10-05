@@ -25,7 +25,7 @@ export function Villa3D() {
         className={
           agrandi
             ? "fixed inset-0 z-[100] bg-background"
-            : "relative h-[32rem] overflow-hidden bg-muted sm:h-[38rem]"
+            : "relative h-[32rem] overflow-hidden bg-muted shadow-[0_0_60px_30px_var(--color-card)] sm:h-[38rem]"
         }
       >
         <iframe
@@ -34,12 +34,6 @@ export function Villa3D() {
           className="size-full border-0"
           loading="lazy"
         />
-        {!agrandi && (
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 shadow-[inset_0_0_48px_24px_var(--color-background)]"
-          />
-        )}
         <Button
           type="button"
           variant="gold"
