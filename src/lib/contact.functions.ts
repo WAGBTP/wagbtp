@@ -11,6 +11,7 @@ const payloadSchema = z.object({
   ville: z.string().min(1).max(120),
   typeProjet: z.string().min(1).max(160),
   delai: z.string().max(120).optional(),
+  disponibilites: z.string().max(200).optional(),
   message: z.string().min(10).max(4000),
 });
 

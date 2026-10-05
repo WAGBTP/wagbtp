@@ -88,7 +88,7 @@ function DevisConfirmation({
             Une précision à ajouter ? Répondez simplement à cet e-mail.
           </Text>
           <Text style={{ fontSize: "13px", lineHeight: 1.6, color: "#6B6B73" }}>
-            WAG BTP — Rénovation & construction · Île-de-France · Guadeloupe
+            WAG BTP — Rénovation & construction · France · Guadeloupe
           </Text>
         </Container>
       </Body>

@@ -40,13 +40,13 @@ function NotFoundComponent() {
 const STALE_CHUNK_PATTERN =
   /Failed to fetch dynamically imported module|error loading dynamically imported module|Importing a module script failed/i;
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
     // Après un nouveau déploiement, les anciens chunks hachés n'existent plus :
     // on recharge une seule fois pour récupérer le nouveau manifeste.
-    if (typeof window !== "undefined" && STALE_CHUNK_PATTERN.test(error.message)) {
+    if (typeof window !== "undefined" && STALE_CHUNK_PATTERN.test(error instanceof Error ? error.message : String(error))) {
       const key = "wagbtp:stale-chunk-reload";
       if (!sessionStorage.getItem(key)) {
         sessionStorage.setItem(key, "1");
@@ -118,8 +118,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "GeneralContractor",
           name: "WAG BTP",
           description:
-            "Entreprise générale de bâtiment tous corps d'état depuis 2013 : rénovation et construction pour particuliers et entreprises en Île-de-France et en Guadeloupe.",
-          telephone: "+33682758037",
+            "Entreprise générale de bâtiment tous corps d'état depuis 2013 : rénovation et construction pour particuliers et entreprises en France et en Guadeloupe.",
+          telephone: "+33186041991",
           email: "wagbtp@gmail.com",
           foundingDate: "2013",
           address: {
@@ -127,7 +127,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             addressLocality: "Asnières-sur-Seine",
             addressCountry: "FR",
           },
-          areaServed: ["Île-de-France", "Guadeloupe"],
+          areaServed: ["France", "Guadeloupe"],
           knowsLanguage: "fr-FR",
         }),
       },

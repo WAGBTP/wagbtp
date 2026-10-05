@@ -10,6 +10,7 @@ const links = [
   { to: "/", label: "Accueil", exact: true },
   { to: "/particuliers", label: "Particuliers", exact: false },
   { to: "/entreprises", label: "Entreprises", exact: false },
+  { to: "/qui-sommes-nous", label: "Qui sommes-nous", exact: false },
   { to: "/contact", label: "Contact", exact: false },
 ] as const;
 
@@ -28,13 +29,13 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-secondary">
-      <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:px-6 lg:grid-cols-[auto_1fr_auto] lg:px-10">
+      <div className="mx-auto grid h-20 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 sm:px-6 lg:grid-cols-[auto_1fr_auto] lg:px-10">
         <Link to="/" className="flex min-w-0 items-center" onClick={() => setOpen(false)}>
           <LogoWagBtp />
           <span className="sr-only">WAG BTP — accueil</span>
         </Link>
 
-        <nav className="hidden items-center justify-center gap-8 lg:flex" aria-label="Navigation principale">
+        <nav className="hidden items-center justify-center gap-5 lg:flex xl:gap-8" aria-label="Navigation principale">
           {links.map((link) => (
             <Link
               key={link.to}
@@ -48,7 +49,7 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-6 lg:flex">
+        <div className="hidden items-center gap-4 lg:flex xl:gap-6">
           <a
             href={company.phoneHref}
             className="text-[0.95rem] text-muted-foreground transition-colors hover:text-primary"
@@ -82,7 +83,7 @@ export function SiteHeader() {
 
       {open && (
         <nav
-          className="absolute inset-x-0 top-full z-40 h-[calc(100dvh-4rem)] overflow-y-auto border-t border-border bg-background px-4 pb-28 pt-2 lg:hidden"
+          className="absolute inset-x-0 top-full z-40 h-[calc(100dvh-5rem)] overflow-y-auto border-t border-border bg-background px-4 pb-28 pt-2 lg:hidden"
           aria-label="Navigation mobile"
         >
           {links.map((link) => (

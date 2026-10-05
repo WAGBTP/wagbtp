@@ -12,7 +12,7 @@ export function SiteFooter() {
           <LogoWagBtp onDark />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-anthracite-foreground/60">
             Entreprise générale de bâtiment tous corps d'état depuis {company.depuis}, en
-            Île-de-France et en Guadeloupe.
+            France et en Guadeloupe.
           </p>
         </div>
 
@@ -36,7 +36,6 @@ export function SiteFooter() {
               <MapPin className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
               <span>{company.address}</span>
             </li>
-            <li className="text-anthracite-foreground/60">{company.president}</li>
           </ul>
         </div>
 
@@ -56,6 +55,11 @@ export function SiteFooter() {
             <li>
               <Link to="/entreprises" className="hover:text-gold">
                 Entreprises
+              </Link>
+            </li>
+            <li>
+              <Link to="/qui-sommes-nous" className="hover:text-gold">
+                Qui sommes-nous
               </Link>
             </li>
             <li>
@@ -80,7 +84,7 @@ export function SiteFooter() {
       <div className="border-t border-anthracite-foreground/10">
         <div className="mx-auto max-w-7xl px-4 py-5 text-xs text-anthracite-foreground/50 sm:px-6 lg:px-10">
           © {new Date().getFullYear()} WAG BTP — Tous corps d'état · Asnières-sur-Seine ·
-          Île-de-France & Guadeloupe
+          France & Guadeloupe
         </div>
       </div>
     </footer>

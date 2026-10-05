@@ -1,5 +1,5 @@
 import logoAsset from "@/assets/logo_wagbtp.png";
-import accueilHeroAsset from "@/assets/wag1.png";
+import accueilHeroAsset from "@/assets/accueil-hero-villa.png";
 import cantineMontmirailApresAsset from "@/assets/facade-cantine-montmirail-renovee.jpg";
 import cantineMontmirailAvantAsset from "@/assets/cantine-montmirail-avant.png";
 import gendarmerieAvantAsset from "@/assets/gendarmerie-avant.jpg";
@@ -25,6 +25,12 @@ import localProCouloirAsset from "@/assets/local-pro-couloir.jpg";
 import localProReserveAsset from "@/assets/local-pro-reserve.jpg";
 import localProFacadeCourAsset from "@/assets/local-pro-facade-cour.jpg";
 import localProPlateauCarreleAsset from "@/assets/local-pro-plateau-carrele.jpg";
+import sdbAvantAsset from "@/assets/sdb-particulier-avant.png";
+import sdbApresAsset from "@/assets/sdb-particulier-apres.png";
+import cuisineAvantAsset from "@/assets/cuisine-particulier-avant.png";
+import cuisineApresAsset from "@/assets/cuisine-particulier-apres.png";
+import clotureAsset from "@/assets/pavillon-cloture-renovee.png";
+import daruChantierAsset from "@/assets/daru-chantier-parquet.png";
 import localProSalleCarreleeAsset from "@/assets/local-pro-salle-carrelee.jpg";
 
 export const img = {
@@ -58,13 +64,18 @@ export const pavillonThiais = {
       alt: "Façade rénovée du pavillon de Thiais",
       legende: "Façade du pavillon",
     },
+    {
+      image: clotureAsset,
+      alt: "Façade et clôture rénovées en enduit blanc cassé",
+      legende: "Façade et clôture rénovées",
+    },
   ],
 };
 
 export const appartementHaussmannien = {
   titre: "Appartement haussmannien — rue Daru",
   resume:
-    "Rénovation du séjour avec remise en état des décors, des murs et du parquet en point de Hongrie.",
+    "Rénovation du séjour avec remise en état des décors, des murs et du parquet en point de Hongrie, parquet posé à l'anglaise.",
   avant: haussmannienDaruAvantAsset,
   apres: haussmannienDaruApresAsset,
   galerie: [
@@ -77,6 +88,11 @@ export const appartementHaussmannien = {
       image: daruCouloirRenoveAsset,
       alt: "Couloir haussmannien rénové avec moulures rue Daru",
       legende: "Moulures et finitions",
+    },
+    {
+      image: daruChantierAsset,
+      alt: "Compagnon WAG BTP reprenant le parquet en point de Hongrie rue Daru",
+      legende: "Reprise du parquet en cours",
     },
   ],
 };
@@ -146,13 +162,12 @@ export const company = {
   name: "WAG BTP",
   tagline: "Votre vision, notre expertise chantier",
   promesse:
-    "WAG BTP pilote vos travaux tous corps d'état, de la rénovation à la construction, avec un interlocuteur unique et un suivi de chantier visible.",
-  phone: "06 82 75 80 37",
-  phoneHref: "tel:+33682758037",
+    "WAG BTP pilote vos travaux tous corps d'état, de la conception à la concrétisation, avec un interlocuteur unique et un suivi de chantier rigoureux.",
+  phone: "01 86 04 19 91",
+  phoneHref: "tel:+33186041991",
   email: "wagbtp@gmail.com",
-  president: "Willy Merciris, Président",
   address: "Tours d'Asnières Hall A, 4 Avenue Laurent Cély, 92600 Asnières-sur-Seine",
-  zones: "Île-de-France (92, 75, 93, 94, 78, 91, 95, 77) et Guadeloupe",
+  zones: "France et Guadeloupe",
   delaiReponse: "Réponse sous 24 à 48h ouvrées",
   depuis: "2013",
 };
@@ -177,41 +192,38 @@ export const valeurs = [
 ];
 
 export const chiffres = [
-  { valeur: "2013", libelle: "Entreprise fondée par Willy Merciris" },
-  { valeur: "25 ans+", libelle: "D'expérience BTP cumulée dans l'équipe" },
-  { valeur: "2", libelle: "Territoires : Île-de-France et Guadeloupe" },
+  { valeur: "2013", libelle: "Année de création de l'entreprise" },
+  { valeur: "+ de 25 ans", libelle: "D'expérience BTP cumulés dans l'équipe" },
+  { valeur: "2", libelle: "Territoires : France et Guadeloupe" },
   { valeur: "Tous", libelle: "Corps d'état pilotés en interne" },
 ];
 
 export const methode = [
-  { etape: "01", titre: "Visite", texte: "Rendez-vous sur site, relevé et écoute de votre besoin." },
-  { etape: "02", titre: "Devis", texte: "Chiffrage détaillé, poste par poste, sans zone d'ombre." },
-  { etape: "03", titre: "Planning", texte: "Calendrier des corps d'état et date de réception fixée." },
-  { etape: "04", titre: "Chantier suivi", texte: "Un interlocuteur unique, des points d'avancement documentés." },
-  { etape: "05", titre: "Réception", texte: "Levée des réserves, remise des clés et garanties." },
+  { etape: "01", titre: "Visite", texte: "Rendez-vous sur site, expression de vos besoins, relevé." },
+  { etape: "02", titre: "Devis", texte: "Chiffrage détaillé par lot, métier par métier, en toute transparence, puis signature." },
+  { etape: "03", titre: "Planning", texte: "Calendrier d'enchaînement des tâches et date de réception finale fixée." },
+  { etape: "04", titre: "Chantier suivi", texte: "Un interlocuteur unique disponible, des points d'avancement documentés et réguliers." },
+  { etape: "05", titre: "Réception", texte: "Entreprise assurée, garanties légales appliquées, un référent tout au long du chantier." },
 ];
 
 export const realisationsPhares = [
   {
     image: gendarmerieApresAsset,
     alt: "Gendarmerie nationale de Survilliers livrée après travaux",
-    cible: "Entreprises",
-    projet: "Gendarmerie de Survilliers (95)",
-    resultat: "Construction et aménagement complets : gros œuvre, cellules sécurisées, façades et VRD.",
+    cible: "Marché public",
+    projet: "Gendarmerie nationale : antenne de télécommunications, gros œuvre, ravalement",
   },
   {
     image: cantineMontmirailApresAsset,
-    alt: "Façade rénovée de la cantine de Montmirail",
-    cible: "Entreprises",
-    projet: "Cantine de Montmirail",
-    resultat: "Reprise complète de la façade : supports, ouvertures et nouvelle finition.",
+    alt: "Chantier réalisé pour Air France à Parly",
+    cible: "Entreprise",
+    projet: "Air France / Parly",
   },
   {
     image: pavillonThiaisFacadeAsset,
     alt: "Façade rénovée du pavillon de Thiais",
-    cible: "Particuliers",
-    projet: "Pavillon à Thiais",
-    resultat: "Rénovation intérieure et façade, de la cuisine à l'escalier.",
+    cible: "Particulier",
+    projet: "Pavillon construit clé en main",
   },
 ];
 
@@ -220,14 +232,17 @@ export const projetsParticuliers = [
     slug: "salle-de-bain",
     titre: "Salle de bain",
     texte:
-      "Dépose complète, reprise de la plomberie et de l'électricité, étanchéité, carrelage et pose des équipements.",
-    inclus: ["Plomberie et évacuations", "Étanchéité et carrelage", "Électricité et ventilation", "Pose des sanitaires"],
+      "Reprise complète de la plomberie et de l'électricité. Dépose complète, étanchéité, carrelage et appareillages.",
+    labelInclus: "Rénovation",
+    avantApres: { avant: sdbAvantAsset, apres: sdbApresAsset },
+    inclus: ["Plomberie", "Pose des équipements", "Étanchéité, carrelage"],
   },
   {
     slug: "cuisine",
     titre: "Cuisine",
     texte:
       "De la conception à la réalisation : implantation, réseaux, revêtements, pose du mobilier et des plans de travail.",
+    avantApres: { avant: cuisineAvantAsset, apres: cuisineApresAsset },
     inclus: ["Plan d'implantation", "Réseaux eau / élec / gaz", "Revêtements sols et murs", "Pose mobilier et électroménager"],
   },
   {
@@ -235,7 +250,7 @@ export const projetsParticuliers = [
     titre: "Séjour",
     texte:
       "Ouverture de mur porteur, isolation, plâtrerie, sols et peinture pour une pièce de vie plus lumineuse.",
-    inclus: ["Étude structure si ouverture", "Isolation et plâtrerie", "Parquet ou carrelage", "Peinture et éclairage"],
+    inclus: ["Étude de structure en cas d'ouverture de mur", "Revêtements de sol", "Peinture"],
   },
   {
     slug: "renovation-complete",
@@ -256,13 +271,13 @@ export const projetsConstruction = [
   {
     slug: "extension",
     titre: "Extension",
-    texte: "Agrandissement maçonné ou ossature, raccordé proprement à l'existant.",
+    texte: "Agrandissement maçonné ou autres ossatures, raccordé proprement à l'existant.",
     inclus: ["Dossier d'urbanisme", "Gros œuvre et toiture", "Isolation et menuiseries", "Raccord à l'existant"],
   },
   {
     slug: "terrasse",
     titre: "Terrasse",
-    texte: "Terrasse bois, composite ou carrelée sur plots, avec évacuation des eaux.",
+    texte: "Terrasse bois, composite, dalle gravillonnée sur plots, avec évacuations.",
     inclus: ["Préparation du support", "Structure et plots", "Pose du platelage", "Garde-corps et finitions"],
   },
 ];
@@ -273,35 +288,44 @@ export const offresEntreprises = [
     titre: "Parcs immobiliers",
     sousTitre: "Résidences, copropriétés, bailleurs",
     texte:
-      "Rénovation des parties communes, ravalement, remise en état de logements entre deux locataires. Interventions en site occupé, avec information des résidents et respect des horaires.",
-    points: ["Planning par cage d'escalier", "Site occupé et voisinage géré", "Reporting photo hebdomadaire"],
+      "Rénovation des parties communes, ravalement, remise en état de logements entre deux locataires. Avec communication des résultats et respect des horaires.",
+    points: [
+      "Planning par zone d'intervention",
+      "Gestion en site occupé, relations avec le voisinage",
+      "Reporting régulier",
+    ],
   },
   {
-    slug: "bureaux",
-    titre: "Bureaux",
-    sousTitre: "Plateaux tertiaires, sièges, espaces d'accueil",
+    slug: "locaux-professionnels",
+    titre: "Locaux professionnels et commerces",
+    sousTitre: "Boutiques, bureaux, entrepôts, locaux d'activité",
     texte:
       "Aménagement et rénovation de plateaux : cloisonnement, faux plafonds, sols souples, électricité et CVC. Travaux possibles en horaires décalés pour ne pas interrompre l'activité.",
     points: ["Travaux en horaires décalés", "Coordination des corps d'état", "Livraison par zones"],
   },
   {
-    slug: "locaux-professionnels",
-    titre: "Locaux professionnels & commerces",
-    sousTitre: "Boutiques, cabinets, locaux d'activité",
+    slug: "marches-publics",
+    titre: "Marchés publics",
+    sousTitre: "Collectivités, bâtiments publics",
     texte:
-      "Création et remise en état de locaux commerciaux : vitrines, agencement, mise aux normes accessibilité et sécurité, finitions soignées avant ouverture.",
-    points: ["Mise aux normes ERP", "Délais courts avant ouverture", "Un seul interlocuteur"],
+      "Interventions pour les collectivités et bâtiments publics, du chiffrage à la réception.",
+    points: [
+      "Création et remise en état de locaux",
+      "Vitrerie, agencement, menuiserie",
+      "Construction",
+      "Rénovation",
+    ],
   },
 ];
 
 export const engagementsPro = [
   {
     titre: "Interlocuteur unique",
-    texte: "Un conducteur de travaux référent pour l'ensemble des lots et des sites.",
+    texte: "1 référent pour l'ensemble des lots et des sites.",
   },
   {
     titre: "Pilotage multi-sites",
-    texte: "Plusieurs adresses menées en parallèle avec un planning consolidé.",
+    texte: "Plusieurs adresses suivies en même temps.",
   },
   {
     titre: "Reporting",

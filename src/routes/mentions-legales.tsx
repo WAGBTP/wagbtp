@@ -38,19 +38,26 @@ function MentionsLegales() {
             <br />
             Téléphone : {company.phone} — E-mail : {company.email}
           </p>
-          <p className="mt-3">
-            Les informations d'immatriculation (SIRET, forme juridique, siège social, TVA
-            intracommunautaire, assurances décennale et responsabilité civile professionnelle)
-            doivent être complétées par l'entreprise avant la mise en ligne définitive.
-          </p>
         </section>
 
         <section>
-          <h2 className="text-xl text-foreground">Hébergement</h2>
-          <p className="mt-3">
-            Le site est hébergé par son prestataire d'hébergement web. Les coordonnées complètes de
-            l'hébergeur sont disponibles sur simple demande à {company.email}.
-          </p>
+          <h2 className="text-xl text-foreground">Identité de l'entreprise</h2>
+          <dl className="mt-3 grid gap-x-6 gap-y-2 sm:grid-cols-[auto_1fr]">
+            {[
+              ["Raison sociale", "WAG BTP"],
+              ["Forme juridique", "[À COMPLÉTER]"],
+              ["SIRET", "[À COMPLÉTER]"],
+              ["Directeur de publication", "[À COMPLÉTER]"],
+              ["Hébergeur", "[À COMPLÉTER]"],
+              ["Siège", "59 rue de Ponthieu, 75008 Paris"],
+              ["Téléphone", "01 86 04 19 91"],
+            ].map(([k, v]) => (
+              <div key={k} className="contents">
+                <dt className="font-medium text-foreground">{k}</dt>
+                <dd>{v}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         <section>

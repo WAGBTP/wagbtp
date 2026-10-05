@@ -4,6 +4,7 @@
   <url><loc>/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>/particuliers</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>/entreprises</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>/qui-sommes-nous</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>/contact</loc><changefreq>yearly</changefreq><priority>0.8</priority></url>
   <url><loc>/mentions-legales</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
   <url><loc>/confidentialite</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>

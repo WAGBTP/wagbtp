@@ -16,6 +16,23 @@ type MailConfig = {
   fromEmail: string
 }
 
+function normalizeEnvValue(value: string | undefined, key?: string) {
+  if (!value) return undefined
+
+  let normalized = value.trim()
+  if (key && normalized.startsWith(`${key}=`)) {
+    normalized = normalized.slice(key.length + 1).trim()
+  }
+  if (
+    (normalized.startsWith('"') && normalized.endsWith('"')) ||
+    (normalized.startsWith("'") && normalized.endsWith("'"))
+  ) {
+    normalized = normalized.slice(1, -1).trim()
+  }
+
+  return normalized || undefined
+}
+
 function parseEnvFile(contents: string) {
   const values: Record<string, string> = {}
 
@@ -41,9 +58,9 @@ function parseEnvFile(contents: string) {
 }
 
 async function loadMailConfig(): Promise<MailConfig> {
-  let apiKey = process.env['RESEND_API_KEY']
-  let siteName = process.env['MAIL_FROM_NAME']
-  let fromEmail = process.env['MAIL_FROM_EMAIL']
+  let apiKey = normalizeEnvValue(process.env['RESEND_API_KEY'], 'RESEND_API_KEY')
+  let siteName = normalizeEnvValue(process.env['MAIL_FROM_NAME'], 'MAIL_FROM_NAME')
+  let fromEmail = normalizeEnvValue(process.env['MAIL_FROM_EMAIL'], 'MAIL_FROM_EMAIL')
 
   // Hostinger remplace hbuilds/current à chaque déploiement. Si les variables
   // ne sont pas configurées dans hPanel, charge le fichier privé persistant
@@ -67,9 +84,9 @@ async function loadMailConfig(): Promise<MailConfig> {
       try {
         const values = parseEnvFile(await readFile(candidate, 'utf8'))
         if (!values['RESEND_API_KEY']) continue
-        apiKey = values['RESEND_API_KEY']
-        siteName ??= values['MAIL_FROM_NAME']
-        fromEmail ??= values['MAIL_FROM_EMAIL']
+        apiKey = normalizeEnvValue(values['RESEND_API_KEY'], 'RESEND_API_KEY')
+        siteName ??= normalizeEnvValue(values['MAIL_FROM_NAME'], 'MAIL_FROM_NAME')
+        fromEmail ??= normalizeEnvValue(values['MAIL_FROM_EMAIL'], 'MAIL_FROM_EMAIL')
         break
       } catch {
         // Essaie le chemin Hostinger suivant sans journaliser de secret.
@@ -80,6 +97,12 @@ async function loadMailConfig(): Promise<MailConfig> {
   if (!apiKey) {
     throw new Error(
       "RESEND_API_KEY n'est pas configurée dans Hostinger ni dans ~/domains/wagbtp.fr/.env",
+    )
+  }
+
+  if (!apiKey.startsWith('re_')) {
+    throw new Error(
+      "La valeur RESEND_API_KEY chargée par Hostinger n'est pas une clé Resend valide (elle doit commencer par re_)",
     )
   }
 
