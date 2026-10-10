@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Award, Building2, Handshake, HardHat, Leaf, ShieldCheck } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { CtaBand, RealisationsExemples, SectionHeading } from "@/components/site-sections";
+import { CtaBand, SectionHeading } from "@/components/site-sections";
 import { Villa3D } from "@/components/villa-3d";
 import { chiffres, company, img, methode } from "@/lib/site-data";
 
@@ -83,7 +83,6 @@ function Accueil() {
         <SectionHeading
           eyebrow="Nos clients"
           titre="Dites-nous qui vous êtes, nous adaptons le chantier."
-          texte="Particuliers et professionnels n'ont pas les mêmes attentes. Chaque parcours a sa page, ses réalisations et son formulaire."
         />
         <div className="mt-12 grid gap-0 border border-border md:grid-cols-2">
           {[
@@ -150,7 +149,6 @@ function Accueil() {
         </div>
       </section>
 
-      <RealisationsExemples />
 
       {/* METHODE — frise horizontale sur anthracite */}
       <section className="surface-deep blueprint">
