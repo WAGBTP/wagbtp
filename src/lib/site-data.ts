@@ -11,9 +11,8 @@ import gendarmerieInterieurAsset from "@/assets/gendarmerie-interieur.jpg";
 import gendarmerieEntreeAsset from "@/assets/gendarmerie-entree.png";
 import gendarmerieVrdAsset from "@/assets/gendarmerie-vrd.jpg";
 import wag2Asset from "@/assets/wag2.png";
-import pavillonThiaisCuisineAsset from "@/assets/pavillon-thiais-cuisine-interieur.jpg";
+import pavillonThiaisCuisineRenoveeAsset from "@/assets/pavillon-thiais-cuisine-renovee.png";
 import pavillonThiaisEscalierAsset from "@/assets/pavillon-thiais-escalier.jpg";
-import pavillonThiaisFacadeAsset from "@/assets/pavillon-thiais-facade.jpg";
 import haussmannienDaruAvantAsset from "@/assets/haussmannien-daru-avant.jpg";
 import haussmannienDaruApresAsset from "@/assets/haussmannien-daru-apres.jpg";
 import daruCouloirRenoveAsset from "@/assets/daru-couloir-renove.jpg";
@@ -52,19 +51,14 @@ export const pavillonThiais = {
   resume: "Rénovation d'un pavillon à Thiais, des espaces intérieurs jusqu'à la façade.",
   galerie: [
     {
-      image: pavillonThiaisCuisineAsset,
-      alt: "Cuisine rénovée avec îlot central dans le pavillon de Thiais",
+      image: pavillonThiaisCuisineRenoveeAsset,
+      alt: "Cuisine rénovée lumineuse et épurée avec îlot central dans le pavillon de Thiais",
       legende: "Cuisine et îlot central",
     },
     {
       image: pavillonThiaisEscalierAsset,
       alt: "Escalier courbe rénové dans le pavillon de Thiais",
       legende: "Escalier intérieur",
-    },
-    {
-      image: pavillonThiaisFacadeAsset,
-      alt: "Façade rénovée du pavillon de Thiais",
-      legende: "Façade du pavillon",
     },
     {
       image: clotureAsset,
