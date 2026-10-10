@@ -34,7 +34,11 @@ export function SiteFooter() {
             </li>
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 size-4 shrink-0 text-gold" aria-hidden="true" />
-              <span>{company.address}</span>
+              <span>
+                {company.address}
+                <br />
+                59 rue de Ponthieu, 75008 Paris
+              </span>
             </li>
           </ul>
         </div>
@@ -83,7 +87,7 @@ export function SiteFooter() {
 
       <div className="border-t border-anthracite-foreground/10">
         <div className="mx-auto max-w-7xl px-4 py-5 text-xs text-anthracite-foreground/50 sm:px-6 lg:px-10">
-          © {new Date().getFullYear()} WAG BTP — Tous corps d'état · Asnières-sur-Seine ·
+          © {new Date().getFullYear()} WAG BTP — Tous corps d'état · Paris ·
           France & Guadeloupe
         </div>
       </div>
