@@ -124,7 +124,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           foundingDate: "2013",
           address: {
             "@type": "PostalAddress",
-            addressLocality: "Asnières-sur-Seine",
+            addressLocality: "Paris",
             addressCountry: "FR",
           },
           areaServed: ["France", "Guadeloupe"],

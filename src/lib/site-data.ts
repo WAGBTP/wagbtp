@@ -1,17 +1,18 @@
 import logoAsset from "@/assets/logo_wagbtp.png";
 import accueilHeroAsset from "@/assets/accueil-hero-villa.png";
+import airFranceCargoAsset from "@/assets/airfrance-cargo-bornes-recharge.jpg";
 import cantineMontmirailApresAsset from "@/assets/facade-cantine-montmirail-renovee.jpg";
 import cantineMontmirailAvantAsset from "@/assets/cantine-montmirail-avant.png";
 import gendarmerieAvantAsset from "@/assets/gendarmerie-avant.jpg";
 import gendarmerieApresAsset from "@/assets/gendarmerie-apres.jpg";
+import gendarmerieApresSurvilliersAsset from "@/assets/gendarmerie-survilliers-apres.png";
 import gendarmerieGrosOeuvreAsset from "@/assets/gendarmerie-gros-oeuvre.jpg";
 import gendarmerieInterieurAsset from "@/assets/gendarmerie-interieur.jpg";
 import gendarmerieEntreeAsset from "@/assets/gendarmerie-entree.png";
 import gendarmerieVrdAsset from "@/assets/gendarmerie-vrd.jpg";
 import wag2Asset from "@/assets/wag2.png";
-import pavillonThiaisCuisineAsset from "@/assets/pavillon-thiais-cuisine-interieur.jpg";
+import pavillonThiaisCuisineRenoveeAsset from "@/assets/pavillon-thiais-cuisine-renovee.png";
 import pavillonThiaisEscalierAsset from "@/assets/pavillon-thiais-escalier.jpg";
-import pavillonThiaisFacadeAsset from "@/assets/pavillon-thiais-facade.jpg";
 import haussmannienDaruAvantAsset from "@/assets/haussmannien-daru-avant.jpg";
 import haussmannienDaruApresAsset from "@/assets/haussmannien-daru-apres.jpg";
 import daruCouloirRenoveAsset from "@/assets/daru-couloir-renove.jpg";
@@ -41,7 +42,7 @@ export const img = {
   cantineMontmirailAvant: cantineMontmirailAvantAsset,
   cantineMontmirailApres: cantineMontmirailApresAsset,
   gendarmerieAvant: gendarmerieAvantAsset,
-  gendarmerieApres: gendarmerieApresAsset,
+  gendarmerieApres: gendarmerieApresSurvilliersAsset,
 };
 
 
@@ -50,19 +51,14 @@ export const pavillonThiais = {
   resume: "Rénovation d'un pavillon à Thiais, des espaces intérieurs jusqu'à la façade.",
   galerie: [
     {
-      image: pavillonThiaisCuisineAsset,
-      alt: "Cuisine rénovée avec îlot central dans le pavillon de Thiais",
+      image: pavillonThiaisCuisineRenoveeAsset,
+      alt: "Cuisine rénovée lumineuse et épurée avec îlot central dans le pavillon de Thiais",
       legende: "Cuisine et îlot central",
     },
     {
       image: pavillonThiaisEscalierAsset,
       alt: "Escalier courbe rénové dans le pavillon de Thiais",
       legende: "Escalier intérieur",
-    },
-    {
-      image: pavillonThiaisFacadeAsset,
-      alt: "Façade rénovée du pavillon de Thiais",
-      legende: "Façade du pavillon",
     },
     {
       image: clotureAsset,
@@ -166,7 +162,7 @@ export const company = {
   phone: "01 86 04 19 91",
   phoneHref: "tel:+33186041991",
   email: "wagbtp@gmail.com",
-  address: "Tours d'Asnières Hall A, 4 Avenue Laurent Cély, 92600 Asnières-sur-Seine",
+  address: "59 rue de Ponthieu, 75008 Paris",
   zones: "France et Guadeloupe",
   delaiReponse: "Réponse sous 24 à 48h ouvrées",
   depuis: "2013",
@@ -214,14 +210,14 @@ export const realisationsPhares = [
     projet: "Gendarmerie nationale : antenne de télécommunications, gros œuvre, ravalement",
   },
   {
-    image: cantineMontmirailApresAsset,
-    alt: "Chantier réalisé pour Air France à Parly",
+    image: airFranceCargoAsset,
+    alt: "Bornes de recharge électrique installées sur le parking d'Air France-Cargo",
     cible: "Entreprise",
-    projet: "Air France / Parly",
+    projet: "Air France-Cargo : parking, installation de bornes de recharge électrique",
   },
   {
-    image: pavillonThiaisFacadeAsset,
-    alt: "Façade rénovée du pavillon de Thiais",
+    image: clotureAsset,
+    alt: "Pavillon livré clé en main, façade et clôture rénovées",
     cible: "Particulier",
     projet: "Pavillon construit clé en main",
   },

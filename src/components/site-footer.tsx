@@ -83,7 +83,7 @@ export function SiteFooter() {
 
       <div className="border-t border-anthracite-foreground/10">
         <div className="mx-auto max-w-7xl px-4 py-5 text-xs text-anthracite-foreground/50 sm:px-6 lg:px-10">
-          © {new Date().getFullYear()} WAG BTP — Tous corps d'état · Asnières-sur-Seine ·
+          © {new Date().getFullYear()} WAG BTP — Tous corps d'état · Paris ·
           France & Guadeloupe
         </div>
       </div>
