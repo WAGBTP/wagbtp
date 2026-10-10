@@ -166,7 +166,7 @@ export const company = {
   phone: "01 86 04 19 91",
   phoneHref: "tel:+33186041991",
   email: "wagbtp@gmail.com",
-  address: "Tours d'Asnières Hall A, 4 Avenue Laurent Cély, 92600 Asnières-sur-Seine",
+  address: "59 rue de Ponthieu, 75008 Paris",
   zones: "France et Guadeloupe",
   delaiReponse: "Réponse sous 24 à 48h ouvrées",
   depuis: "2013",
