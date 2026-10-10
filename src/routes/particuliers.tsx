@@ -184,7 +184,7 @@ function Particuliers() {
             titre={pavillonThiais.titre}
             texte={pavillonThiais.resume}
           />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-3">
             {pavillonThiais.galerie.map((photo, index) => (
               <figure
                 key={photo.image}
