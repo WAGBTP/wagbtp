@@ -1,5 +1,6 @@
 import logoAsset from "@/assets/logo_wagbtp.png";
 import accueilHeroAsset from "@/assets/accueil-hero-villa.png";
+import airFranceCargoAsset from "@/assets/airfrance-cargo-bornes-recharge.jpg";
 import cantineMontmirailApresAsset from "@/assets/facade-cantine-montmirail-renovee.jpg";
 import cantineMontmirailAvantAsset from "@/assets/cantine-montmirail-avant.png";
 import gendarmerieAvantAsset from "@/assets/gendarmerie-avant.jpg";
@@ -214,14 +215,14 @@ export const realisationsPhares = [
     projet: "Gendarmerie nationale : antenne de télécommunications, gros œuvre, ravalement",
   },
   {
-    image: cantineMontmirailApresAsset,
-    alt: "Chantier réalisé pour Air France à Parly",
+    image: airFranceCargoAsset,
+    alt: "Bornes de recharge électrique installées sur le parking d'Air France-Cargo",
     cible: "Entreprise",
-    projet: "Air France / Parly",
+    projet: "Air France-Cargo : parking, installation de bornes de recharge électrique",
   },
   {
-    image: pavillonThiaisFacadeAsset,
-    alt: "Façade rénovée du pavillon de Thiais",
+    image: clotureAsset,
+    alt: "Pavillon livré clé en main, façade et clôture rénovées",
     cible: "Particulier",
     projet: "Pavillon construit clé en main",
   },
