@@ -361,7 +361,7 @@ function Contact() {
                       <FormItem>
                         <FormLabel className={labelCls}>Ville ou code postal</FormLabel>
                         <FormControl>
-                          <Input placeholder="92600 Asnières-sur-Seine" {...field} />
+                          <Input placeholder="75008 Paris" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
