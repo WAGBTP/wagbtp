@@ -5,6 +5,7 @@ import cantineMontmirailApresAsset from "@/assets/facade-cantine-montmirail-reno
 import cantineMontmirailAvantAsset from "@/assets/cantine-montmirail-avant.png";
 import gendarmerieAvantAsset from "@/assets/gendarmerie-avant.jpg";
 import gendarmerieApresAsset from "@/assets/gendarmerie-apres.jpg";
+import gendarmerieApresSurvilliersAsset from "@/assets/gendarmerie-survilliers-apres.png";
 import gendarmerieGrosOeuvreAsset from "@/assets/gendarmerie-gros-oeuvre.jpg";
 import gendarmerieInterieurAsset from "@/assets/gendarmerie-interieur.jpg";
 import gendarmerieEntreeAsset from "@/assets/gendarmerie-entree.png";
@@ -42,7 +43,7 @@ export const img = {
   cantineMontmirailAvant: cantineMontmirailAvantAsset,
   cantineMontmirailApres: cantineMontmirailApresAsset,
   gendarmerieAvant: gendarmerieAvantAsset,
-  gendarmerieApres: gendarmerieApresAsset,
+  gendarmerieApres: gendarmerieApresSurvilliersAsset,
 };
 
 
